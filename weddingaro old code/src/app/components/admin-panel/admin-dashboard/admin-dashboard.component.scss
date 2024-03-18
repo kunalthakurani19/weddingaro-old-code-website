@@ -1,0 +1,166 @@
+
+.dashboardCard_Container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1rem;
+
+}
+
+
+.card {
+    width: 320px;
+    height: 150px;
+    border-radius: 10px;
+
+}
+
+
+.chart-container {
+    height: 570px;
+    width: 100%;
+}
+
+.analyticsDiv {
+    display: flex;
+    justify-content: space-around;
+}
+
+.analyticsImg {
+    width: 500px;
+    height: 400px;
+}
+
+.chart-cards {
+    width: 200px;
+    height: 190px;
+    // border-radius: 15px 0px 0px 0px;
+    border: 0px 0px 1px 0px;
+    background: #F335351A;
+}
+
+.reviewnMessageDiv {
+    display: flex;
+    justify-content: space-around;
+}
+
+.message-box {
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+}
+
+.pending-message {
+    border-top: 5px solid #f3b640;
+}
+
+.tips>h5 {
+    color: rgba(0, 0, 0, 0.7);
+    font-style: 20px;
+}
+
+.tips {
+    border-top: 3px solid #f3b640;
+}
+
+.view-all-messages {
+    margin-top: 30px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.view-all-messages>button {
+    border: transparent !important;
+    padding: 5px 30px !important;
+    background: #f33535;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 5px !important;
+}
+
+.custom-badge {
+    background: #f33535 !important;
+    color: #fff !important;
+    // padding: 10px !important;
+    margin-right: 5px !important;
+    font-size: 17px !important;
+}
+
+
+
+
+
+
+
+@media (min-width : 300px) {
+    .dashboardCard_Container {
+        flex-wrap: wrap;
+    }
+
+    .chart-container {
+        height: max-content;
+    }
+
+    .analyticsDiv {
+        gap: 2.5rem;
+        flex-direction: column;
+    }
+
+    .chartCardsDiv {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .chart-cards h5,
+    h6 {
+        font-size: 0.9rem;
+    }
+
+    .analyticsImg {
+        width: 100%;
+        height: auto;
+    }
+
+    .reviewnMessageDiv {
+        flex-direction: column;
+    }
+}
+
+@media (min-width : 750px) {
+
+    .navItemsDiv {
+        flex-direction: row;
+    }
+
+    .chart-cards h5,
+    h6 {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width : 800px) and (max-width : 1320px) {
+    .card {
+        width: 23%;
+        gap: 2%;
+    }
+}
+
+
+@media (min-width : 1200px) {
+    .analyticsDiv {
+        flex-direction: row;
+        justify-content: start;
+        align-items: flex-start;
+        gap: 2.5rem;
+    }
+
+    .chartCardsDiv {
+        flex-direction: column;
+    }
+
+    .reviewnMessageDiv {
+        flex-direction: row;
+    }
+}

@@ -1,0 +1,39 @@
+.photo-upload-container {
+  height: 400px;
+}
+
+.edit-business {
+  width: 100%;
+  max-width: 979px;
+  height: auto;
+  background: #9747ff1a;
+  border-radius: 15px;
+}
+
+.uploaded-image-container {
+  max-width: 100%;
+}
+
+.title-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px 10px 0px 0px;
+}
+
+/* Ensure the image upload area is responsive */
+.mt-2.cursor.text-center img {
+  width: 100%;
+  height: auto;
+  max-width: 80%; /* Adjust the max-width as needed */
+}
+
+// .delete-icon {
+//   position: absolute;
+//   top: 15px; /* Adjust this value to your liking */
+//   right: 15px; /* Adjust this value to your liking */
+//   font-size: 30px; /* Adjust this value for the circle size */
+//   // border: 2px solid #ff0000; /* Red outline */
+//   // border-radius: 50%;
+//   // background-color: white;
+//   padding: 2px; /* Adjust this value for the circle size */
+// }

@@ -1,0 +1,235 @@
+<!-- <div class="mx-auto position-relative">
+  <img loading="lazy" src="../../../../assets/images/bg.svg" />
+
+  <div class="position-absolute inner-div-out">
+    <div class="search-box">
+      <app-search-bar></app-search-bar>
+    </div>
+  </div>
+</div>
+<div class="page-width">
+  <div class="mb-5">
+    <div class="ff-b m-50 text-h">Find beauty and fashion professionals</div>
+    <app-custom-slider [g]="62">
+      <div class="carousel-wrapper-div">
+        <a #carouselA class="carousel-a" routerLink="filter" *ngFor="let image of images; let i = index">
+          <div>
+            <div (mouseenter)="hoveredIndex = i" (mouseleave)="hoveredIndex = null" class="position-relative img-div"
+              style="height: 150px; width: 170px; overflow: hidden">
+              <img loading="lazy" class="img-c" src="{{ image.src }}" alt="{{ image.alt }}" />
+              <div class="hover-div" *ngIf="i === hoveredIndex">
+                <div>
+                  <p>{{ image.alt }}</p>
+                  <p>{{ 4 }} Venues</p>
+                </div>
+              </div>
+            </div>
+            <div class="custom-text-hover" style="font-weight: bold">
+              {{ image.alt }}
+            </div>
+          </div>
+        </a>
+      </div>
+    </app-custom-slider>
+  </div>
+  <app-advertisment [title]="'Bridal lehenga shops'"
+    [description]="'Shop for the most unique, beautiful lehengas from local bridal shops and top lehenga designers'"
+    [imgurl]="'../../../../assets/images/middeimage2.svg'" [btntext]="'Find bridal shops'" [width]="'50%'">
+
+  </app-advertisment>
+  <div class="m-5"></div>
+  <app-custom-slider [g]="20">
+    <div class="venue-carousel-wrapper py-2">
+      <ng-container *ngFor="let venue of venuesList">
+        <app-venue-card [cardInput]="venue"></app-venue-card>
+      </ng-container>
+    </div>
+  </app-custom-slider>
+
+
+  <app-advertisment [title]="'Bridal jewellery'"
+    [description]="'Find the top bridal jewellery shops near you to buy your Polki, Kundan, gold or silver jewellery for your wedding.'"
+    [imgurl]="'../../../../assets/images/middleimg3.svg'" [btntext]="'Find jewellery'"   [width]="'50%'"></app-advertisment>
+
+  <app-custom-slider [g]="20">
+    <div class="venue-carousel-wrapper py-2">
+      <ng-container *ngFor="let venue of venuesList">
+        <app-venue-card [cardInput]="venue"></app-venue-card>
+      </ng-container>
+    </div>
+  </app-custom-slider>
+
+
+  <app-advertisment [title]="'Bridal makeup salon'"
+    [description]="'Entrust the most skilled beauticians for your hair and makeup and you will feel more beautiful than ever on your wedding.'"
+    [imgurl]="'../../../../assets/images/middleimg4.svg'" [btntext]="'Find beauty salons'" [width]="'50%'"></app-advertisment>
+
+
+  <app-custom-slider [g]="20">
+    <div class="venue-carousel-wrapper py-2">
+      <ng-container *ngFor="let venue of venuesList">
+        <app-venue-card [cardInput]="venue"></app-venue-card>
+      </ng-container>
+    </div>
+  </app-custom-slider>
+
+
+  <div class="my-5">
+    <div class="mx-5 venue-heading my-30">
+      All the beauty experts you need for your wedding hair and makeup
+    </div>
+    <div class="m-5 d-flex gap-4">
+      <a href="#" class="btn custom-text-hover venue-link-button" role="button">Mehndi Artists</a>
+      <a href="#" class="btn custom-text-hover venue-link-button" role="button">Bridal Makeup Artists</a>
+      <a href="#" class="btn custom-text-hover venue-link-button" role="button">Makeup Salon</a>
+      <a href="#" class="btn custom-text-hover venue-link-button" role="button">Bridal Jewellery</a>
+      <a href="#" class="btn custom-text-hover venue-link-button" role="button">Bridal Lehenga</a>
+      <a href="#" class="btn custom-text-hover venue-link-button" role="button">Trousseau Packing</a>
+    </div>
+    <app-custom-slider [g]="20">
+      <div class="venue-carousel-wrapper py-2">
+        <ng-container *ngFor="let venue of venuesList">
+          <app-venue-card [cardInput]="venue"></app-venue-card>
+        </ng-container>
+      </div>
+    </app-custom-slider>
+  </div>
+
+  <app-tipsand-faq></app-tipsand-faq>
+
+ 
+
+  <div class="factors-container mx-5 my-5">
+    <div class="venue-heading">All type of wedding venues</div>
+    <div>
+      <ul class="list-unstyled all-type-venues">
+        <li>
+          <i class="mr-5 custom-text-color fas fa-arrow-right"></i> Banquet
+          Halls
+        </li>
+        <li>
+          <i class="mr-5 custom-text-color fas fa-arrow-right"></i> Hotels
+        </li>
+        <li>
+          <i class="mr-5 custom-text-color fas fa-arrow-right"></i> Marriage
+          Garden
+        </li>
+        <li>
+          <i class="mr-5 custom-text-color fas fa-arrow-right"></i> Kalyana
+          Mandapams
+        </li>
+        <li>
+          <i class="mr-5 custom-text-color fas fa-arrow-right"></i> Wedding
+          Resorts
+        </li>
+        <li>
+          <i class="mr-5 custom-text-color fas fa-arrow-right"></i> Wedding
+          Lawns Farmhouses
+        </li>
+      </ul>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="container-fluid">
+  <div class="container-fluid m-0 p-0">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-6 col-12 mt-4 order-md-1 order-2">
+        <h2 class="main-font al">
+          Brides</h2>
+        <div class="home-search-div">
+          <div class="home-search-in">
+            <app-search-bar (searchFilter)="searchVenues($event)" [location]="location"></app-search-bar>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carousel Column -->
+
+
+
+
+
+
+
+      <div class="col-md-6 col-12 d-flex align-items-end justify-content-end mb-4 order-md-2 order-1">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators rounded-3">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+              aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+              aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner" style="border-top-left-radius: 500px; border-bottom-left-radius: 500px;">
+            <div class="carousel-item active">
+              <div class="d-flex justify-content-center">
+                <img
+              loading="lazy"    src="https://images.unsplash.com/photo-1587271636175-90d58cdad458?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGluZGlhbiUyMGJyaWRlfGVufDB8MHwwfHx8MA%3D%3D"
+                  class="img-fluid " alt="...">
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="d-flex justify-content-center">
+                <img
+              loading="lazy"    src="https://images.unsplash.com/photo-1457904297262-2dcf97b883ef?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fHdlZGRpbmclMjB2ZW5kb3JzfGVufDB8MHwwfHx8MA%3D%3D"
+                  class="img-fluid " alt="...">
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="d-flex justify-content-center">
+                <img
+              loading="lazy"    src="https://images.unsplash.com/photo-1601120979732-eccca4667cad?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTV8fGluZGlhbiUyMGJyaWRlfGVufDB8MHwwfHx8MA%3D%3D"
+                  class="img-fluid " alt="...">
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" *ngIf="!location.length">
+
+    <div class="">
+
+      <ng-container *ngIf="venuesByCity.length > 0 else noData">
+        <app-bride-city-venues [venues]="venuesByCity"></app-bride-city-venues>
+      </ng-container>
+      <ng-template #noData>
+        <div class="text-center mt-5">
+          <img loading="lazy" class="rounded-3 shadow " src="https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/noresultfound.png" height="400" width="350" alt=""
+            srcset="">
+        </div>
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="container" *ngIf="location.length ">
+    <ng-container *ngIf="venuesList.length else noData ">
+      <ng-container *ngFor="let venue of venuesList">
+        <app-venue-card [cardInput]="venue"></app-venue-card>
+      </ng-container>
+    </ng-container>
+
+    <ng-template #noData>
+      <div class="text-center mt-5">
+        <img loading="lazy" class="rounded-3 shadow " src="https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/noresultfound.png" height="400" width="350" alt="" srcset="">
+      </div>
+    </ng-template>
+  </div>
+
+
+  <div class="m-5"></div>
+
+</div>

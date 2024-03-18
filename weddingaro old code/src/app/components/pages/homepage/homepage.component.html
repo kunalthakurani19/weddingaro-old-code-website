@@ -1,0 +1,451 @@
+<div class="container-fluid" style="overflow: hidden;">
+
+  <div class="m-0 p-0">
+    <div class="container-fluid">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-md-6 col-12 mt-4 order-md-1 order-2">
+          <h2 class="main-font al wfs-30 ">
+            <strong> Explore all the essential details to prepare for your special day. </strong>
+          </h2> <br>
+          <h5 class="main-font al wfs-20 ">
+            Design your wedding using Weddingaro , granting you control over your to-do list, budget, online platform,
+            vendors, and additional elements.</h5> <br>
+          <div class="home-search-div ">
+            <div class="home-search-in">
+              <app-search-bar-for-homepage (searchFilter)="handleSearchFilter($event)"
+                [location]="location"></app-search-bar-for-homepage>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carousel Column -->
+        <div class="col-md-6 col-12 d-flex align-items-center justify-content-center mb-4 order-md-2 order-1">
+          <carousel [isAnimated]="true">
+            <slide *ngFor="let photo of landingImages">
+              <img loading="lazy" [src]="photo.imageSrc" class="w-100 img-fluid"
+                style="border-top-left-radius: 500px ; border-bottom-left-radius: 500px ;" alt="...">
+            </slide>
+          </carousel>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="m-2 py-2 featured_MainContainer">
+
+    </div>
+
+    <div class="container-fluid mt-5 pt-2">
+      <!-- <div class=""> -->
+      <!-- <img loading="lazy" src="../../../../assets/images/homeBg.svg" height="250px" width="100%"  style="object-fit: cover; " /> -->
+      <!-- <div class="position-absolute inner-div-out">
+      <div class="search-box">
+        <app-search-bar (searchFilter)="searchVenues($event)" [location]="location"></app-search-bar>
+      </div>
+    </div> -->
+      <!-- </div> -->
+
+
+
+
+
+
+      <ng-container *ngIf="searchPerformed" class="m-0 p-0">
+        <div class="featured-wedding-title">Search Result: {{stores.length}} </div>
+        <ng-container *ngIf="stores && stores.length > 0; else noData">
+          <div class="row p-0 m-0">
+            <div *ngFor="let venue of stores" class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+              <app-venue-card [cardInput]="venue"></app-venue-card>
+            </div>
+          </div>
+        </ng-container>
+        <ng-template #noData>
+          <div class="text-center">
+            <img loading="lazy" class="rounded-3 shadow"
+              src="https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/noresultfound.png" height="400"
+              width="350" alt="" srcset="">
+          </div>
+        </ng-template>
+      </ng-container>
+
+
+
+
+
+
+
+      <div *ngIf="venuesList.length > 0">
+
+        <div class=" featured-wedding-title "><strong> Featured Wedding Venues</strong> </div>
+        <!-- uncommet -->
+        <div class="">
+          <app-custom-slider [g]="3">
+            <div class="venue-carousel-wrapper py-2">
+              <ng-container>
+                <ng-container *ngFor="let venue of venuesList">
+                  <app-venue-card [cardInput]="venue"></app-venue-card>
+                </ng-container>
+              </ng-container>
+
+            </div>
+          </app-custom-slider>
+        </div>
+        <div class="text-center mt-3">
+          <a (click)="navigateToVendors('64f9a605e2e951ddb9c0de1a','','wedding-venues')" type="button" class="btn text-white custom-background px-4 ">
+            View All <i class="fa-solid fa-chevron-right mx-1 text-white"></i>
+          </a>
+        </div>
+
+      </div>
+
+
+
+
+      <div *ngIf="vendorList.length > 0">
+        <div class=" featured-wedding-title mt-5"> <strong> Featured Wedding Vendors </strong> </div>
+        <!-- uncoment -->
+
+        <div class="">
+          <app-custom-slider [g]="20">
+            <div class="venue-carousel-wrapper py-2">
+              <ng-container>
+                <ng-container *ngFor="let venue of vendorList">
+                  <app-venue-card [cardInput]="venue"></app-venue-card>
+                </ng-container>
+              </ng-container>
+              <!-- <ng-template #noVenues>
+            <img loading="lazy" src="https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/no-data.png" alt="No venues available" />
+          </ng-template> -->
+            </div>
+          </app-custom-slider>
+        </div>
+        <div class="text-center mt-3">
+          <div (click)="navigateToVendors('64f9a605e2e951ddb9c0de1b','','weddingvendors')" type="button"
+            class="btn text-white custom-background px-4 ">
+            View All <i class="fa-solid fa-chevron-right mx-1 text-white"></i>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div *ngIf="brideList.length > 0">
+        <div class=" mt-5 featured-wedding-title "><strong> Bride Section </strong> </div>
+        <div class="">
+          <app-custom-slider [g]="20">
+            <div class="venue-carousel-wrapper py-2">
+              <ng-container>
+                <ng-container *ngFor="let venue of brideList">
+                  <app-venue-card [cardInput]="venue"></app-venue-card>
+                </ng-container>
+              </ng-container>
+              <ng-template #noVenues>
+                <img loading="lazy" src="https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/no-data.png"
+                  alt="No venues available" />
+              </ng-template>
+            </div>
+          </app-custom-slider>
+        </div>
+        <div class="text-center mt-3">
+          <div (click)="navigateToVendors('64f9a605e2e951ddb9c0de1c','','brides')" type="button"
+            class="btn text-white custom-background px-4">
+            View All <i class="fa-solid fa-chevron-right mx-1 text-white"></i>
+          </div>
+        </div>
+      </div>
+
+
+      <div *ngIf="groomList.length > 0 ">
+
+        <div class=" featured-wedding-title mt-5"> <strong> Groom Section </strong> </div>
+        <div class="">
+          <app-custom-slider [g]="20">
+            <div class="venue-carousel-wrapper py-2">
+              <ng-container>
+                <ng-container *ngFor="let venue of groomList">
+                  <app-venue-card [cardInput]="venue"></app-venue-card>
+                </ng-container>
+              </ng-container>
+              <ng-template #noVenues>
+                <img loading="lazy" src="https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/no-data.png"
+                  alt="No venues available" />
+              </ng-template>
+            </div>
+          </app-custom-slider>
+        </div>
+        <div class="text-center mt-3">
+          <div (click)="navigateToVendors('64f9a605e2e951ddb9c0de1d','','grooms')" type="button"
+            class="btn text-white custom-background px-4">
+            View All <i class="fa-solid fa-chevron-right mx-1 text-white"></i>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- <div class="w-100 featured-wedding-title mt-5">
+        <div class=" featured-wedding-title"><strong> Real weddings </strong> </div>
+        <div class="mt-2  fs-17 featuredDescription">
+          View the works of professionals from different locations.
+        </div>
+        <div class="mt-4">
+          <app-custom-slider [g]="20">
+            <div class="venue-carousel-wrapper py-2">
+              <app-wedding-card [weddingInput]="wedding" *ngFor="let wedding of weddingsIist" routerLink="/comming-soon"
+                class="custom-text-hover"></app-wedding-card>
+            </div>
+          </app-custom-slider>
+        </div>
+        <div class="text-center mb-4 mt-3">
+          <a [routerLink]="'/comming-soon'" type="button" class="btn text-white custom-background px-4">
+            View All <i class="fa-solid fa-chevron-right mx-1 text-white"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="w-100 px-5">
+        <div class="featured-wedding-title mt-5">
+
+          <strong>
+            Wedding ideas
+          </strong>
+
+        </div>
+        <div class="mb-2 featuredDescription text-start">
+          Get inspired by different people wedding stories.
+        </div>
+        <div class="mb-4 d-flex justify-content-around weddingIdeasGallery">
+          <div class="text-center d-inline-block ideasDiv cursor-hover-red" *ngFor="let idea of weddingIdeas">
+            <div class="zoom-img" [routerLink]="[idea.route]">
+              <img loading="lazy" [src]="idea.imageSrc" alt="" srcset="" />
+            </div>
+            <div class="ideaDiv-text text-muted mt-1">{{ idea.title }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="w-100 ms-2 mt-5">
+          <div class="d-flex justify-content-around bannerDiv">
+            <div class="card mb-3 article-card">
+              <div class="articleCard_TextContainer cursor-hover-red" routerLink="/comming-soon">
+                <h5 class="">before the wedding</h5>
+                <p class="">
+                  The Ultimate 2024 Wedding Calendar To Help You Choose Your
+                  Marriage Date.
+                </p>
+              </div>
+
+              <div class="articleCard_ImageContainer">
+                <img loading="lazy" src="https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/article-image.png" class="rounded-start" alt="..." />
+              </div>
+            </div>
+            <div class="card mb-3 article-card">
+              <div class="articleCard_TextContainer cursor-hover-red" routerLink="/comming-soon">
+                <h5 class="">before the wedding</h5>
+                <p class="">
+                  The Ultimate 2024 Wedding Calendar To Help You Choose Your
+                  Marriage Date.
+                </p>
+              </div>
+
+              <div class="articleCard_ImageContainer">
+                <img loading="lazy" src="https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/article-image.png" class="rounded-start" alt="..." />
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-around bannerDiv">
+            <div class="card mb-3 article-card">
+              <div class="articleCard_TextContainer cursor-hover-red" routerLink="/comming-soon">
+                <h5 class="">before the wedding</h5>
+                <p class="">
+                  Plan Your D-Day With These Budget Wedding Destination
+                </p>
+              </div>
+
+              <div class="articleCard_ImageContainer">
+                <img loading="lazy" src="https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/article-image.png" class="rounded-start" alt="..." />
+              </div>
+            </div>
+            <div class="card mb-3 article-card">
+              <div class="articleCard_TextContainer cursor-hover-red" routerLink="/comming-soon">
+                <h5 class="">before the wedding</h5>
+                <p class="">
+                  Top 7 Wedding Trends To Bookmark For Your 2023 Wedding
+                </p>
+              </div>
+
+              <div class="articleCard_ImageContainer">
+                <img loading="lazy" src="https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/article-image.png" class="rounded-start" alt="..." />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <button type="button" class="btn text-white custom-background px-4" routerLink="/comming-soon">
+            All Articles <i class="fa-solid fa-chevron-right mx-1 text-white"></i>
+          </button>
+        </div>
+      </div> -->
+      <!-- <div class="w-100 mt-60 p-3">
+    <div class="featured-wedding-title ms-5">Community</div>
+    <div class="mt-20  featuredDescription">
+      Get answers of your questions with the help of other people’s wedding
+      plans.
+    </div>
+    <div class="my-30 community-container">
+      <div class="community-card-box">
+        <div class="avatar-box">
+          <div class="avatar-div custom-background">K</div>
+        </div>
+        <div class="community-card">
+          <div class="comm-div p-20">
+            <div class="community-heading">Hii from rajdhani food</div>
+            <div class="community-deatils">Caterers & Decorators</div>
+          </div>
+          <div class="community-owner custom-background px-20">
+            <div class="community-owner-name">Kyle</div>
+            <div class="community-date">Dec 4, 2022 at 21:42</div>
+          </div>
+        </div>
+      </div>
+      <div class="community-card-box">
+        <div class="avatar-box">
+          <div class="avatar-div custom-background">M</div>
+        </div>
+        <div class="community-card">
+          <div class="comm-div p-20">
+            <div class="community-heading">How make money</div>
+            <div class="community-deatils">
+              Do you know of a really reliable platform where I can combine my
+              passion for sports and making money?
+            </div>
+          </div>
+          <div class="community-owner custom-background px-20">
+            <div class="community-owner-name">Max</div>
+            <div class="community-date">Dec 30, 2022 at 07:52</div>
+          </div>
+        </div>
+      </div>
+      <div class="community-card-box">
+        <div class="avatar-box">
+          <div class="avatar-div custom-background">S</div>
+        </div>
+        <div class="community-card">
+          <div class="comm-div p-20">
+            <div class="community-heading">
+              Wedding hashtag for Prateek and Sonali
+            </div>
+            <div class="community-deatils">
+              Please suggest a wedding hashtag for Prateek and Sonali
+            </div>
+          </div>
+          <div class="community-owner custom-background px-20">
+            <div class="community-owner-name">Shane</div>
+            <div class="community-date">Feb 2, 2023 at 19:28</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <button type="button" class="btn text-white custom-background px-4" routerLink="/comming-soon">
+        All Discussions
+        <i class="fa-solid fa-chevron-right mx-1 text-white"></i>
+      </button>
+    </div>
+
+  </div> -->
+      <!-- <div class="w-100 mt-60 p-3">
+    <div class="mx-4 featured-wedding-title">Community</div>
+    <div class="mx-4 featuredDescription">
+      Get answers of your questions with the help of other people’s wedding
+      plans.
+    </div>
+    <div class="destination">
+      <div class="destination-card">
+        <div class="destination-img">
+          <img loading="lazy" src="../../../../assets/images/destination6.svg" alt="" />
+        </div>
+        <div class="destination-link rounded text-center custom-button-white">
+          Brazil
+        </div>
+      </div>
+      <div class="destination-card">
+        <div class="destination-img">
+          <img loading="lazy" src="../../../../assets/images/destination5.svg" alt="" />
+        </div>
+        <div class="destination-link rounded text-center custom-button-white">
+          France
+        </div>
+      </div>
+      <div class="destination-card">
+        <div class="destination-img">
+          <img loading="lazy" src="../../../../assets/images/destination4.svg" alt="" />
+        </div>
+        <div class="destination-link rounded text-center custom-button-white">
+          Italy
+        </div>
+      </div>
+      <div class="destination-card">
+        <div class="destination-img">
+          <img loading="lazy" src="../../../../assets/images/destination3.svg" alt="" />
+        </div>
+        <div class="destination-link rounded text-center custom-button-white">
+          Mexico
+        </div>
+      </div>
+      <div class="destination-card">
+        <div class="destination-img">
+          <img loading="lazy" src="../../../../assets/images/destination2.svg" alt="" />
+        </div>
+        <div class="destination-link rounded text-center custom-button-white">
+          Portugal
+        </div>
+      </div>
+      <div class="destination-card">
+        <div class="destination-img">
+          <img loading="lazy" src="../../../../assets/images/destination1.svg" alt="" />
+        </div>
+        <div class="destination-link rounded text-center custom-button-white">
+          Spain
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <button type="button" class="btn text-white custom-background px-4">
+        All Discussions
+        <i class="fa-solid fa-chevron-right mx-1 text-white"></i>
+      </button>
+    </div>
+  </div>  -->
+      <div class="w-100 p-3">
+        <div class="fs-24 mt-5 fw-500 custom-text-color text-start" *ngFor="let item of navbarItems; let i = index;">
+          {{item.parentTitle}} by category
+          <div class="text-start">
+            <ng-container *ngFor="let type of item.children; let last = last">
+              <span (click)="navigateToSector(item.queryParams,'',item.route)"
+                class="fw-300 text-dark me-2 fs-20 no-link-style cursor-hover-red">
+                {{ type.title }}
+              </span>
+              <ng-container *ngIf="!last">
+                <span class="separator">|</span>
+              </ng-container>
+            </ng-container>
+          </div>
+
+        </div>
+      </div>
+      <!-- <div class="w-100 mt-60 mb-80 p-3">
+    <div class="fs-24 fw-500">Wedding vendors by location</div>
+    <div class="mt-40">
+      <ul class="list-unstyled locations-list">
+        <li class="text-black" *ngFor="let location of locations">
+          <a class="fw-300 fs-20 no-link-style cursor-hover-red" [routerLink]="'/wedding-venues/ {{ location }}'">
+            {{ location }}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div> -->
+    </div>
+  </div>

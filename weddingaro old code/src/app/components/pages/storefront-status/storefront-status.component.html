@@ -1,0 +1,57 @@
+<div class="container">
+
+
+    <div class="p-4">
+        <div class="fs-18 px-3 py-2 mt-2 d-flex justify-content">
+            <div style="margin-right: 10px; ">
+                <circle-progress [percent]="status" [title]="status + '%'"></circle-progress>
+            </div>
+            <div>
+                <h3 class="">
+                    Complete your storefront
+                </h3>
+                <h6 class="pb fw-lighter my-2">
+                    YOU ARE JUST <strong>{{remaining}}</strong> STEPS AWAY FROM COMPLETING YOUR WEDDINGWIRE.IN STOREFRONT.
+                </h6>
+                <h6 class="pb fw-lighter">
+                    Complete your Storefront, so couples have more information about your business and are more likely
+                    to
+                    contact you.
+                </h6>
+            </div>
+
+        </div>
+
+
+
+
+        <div class="mt-20">
+            <div class="photo-grid">
+                <div class="container p-5 rounded-3" *ngFor="let item of completedKeys" style="background-color: rgb(246, 246, 246); ">
+                    
+                    <div class="text-center">
+                        <img loading="lazy" class="m-3" src="/assets/images/check.svg" alt="" height="50x" >
+                        <p> {{item.toUpperCase()}} is filled</p>
+                    </div>
+                </div>
+                <div class="container p-5 rounded-3 cursor-hover" *ngFor="let item of remainingKeys" style="background-color: rgb(246, 246, 246);" (click)="navigateToRoute(item)">
+                    
+                    <div class="text-center">
+                        <img loading="lazy" class="m-3" src="/assets/images/discarded.svg" alt="" height="50x" >
+                        <p> {{item.toUpperCase()}} is not filled</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+
+</div>

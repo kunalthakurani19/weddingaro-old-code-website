@@ -1,0 +1,291 @@
+// .navbar {
+//   z-index: 5001 !important;
+//   width: 100%;
+//   height: 90px;
+//   background-color: #fff !important;
+//   font-family: "Inter", sans-serif;
+//   font-size: 22px;
+//   font-weight: 400;
+//   line-height: 24px;
+//   letter-spacing: 0.05em;
+// }
+
+// .row-container {
+//   // column-count: 2 !important; /* Adjust the number of columns as needed */
+//   column-gap: 20px !important;
+//   /* Adjust the gap between columns as needed */
+// }
+
+// .navbar-brand {
+//   margin-left: 1rem !important;
+//   // border: 1px solid red;
+//   max-width: 20%;
+// }
+
+// .navbar-brand .mobile_logo {
+//   display: inline;
+//   width: 100%;
+// }
+
+// .navbar-brand .desktop_logo {
+//   display: none;
+// }
+
+// .navbar-brand img {
+//   width: 100%;
+//   image-rendering: optimizeQuality;
+// }
+
+// .navbar-nav {
+//   display: flex;
+//   gap: 1rem;
+//   font-size: 1.25rem !important;
+// }
+
+// .dropdownn {
+//   position: static !important;
+//   margin-top: 0rem;
+//   font-weight: 500;
+//   line-height: normal;
+//   letter-spacing: 1px;
+// }
+
+// .dropdown1 {
+//   font-weight: 500;
+//   line-height: normal;
+//   letter-spacing: 1px;
+// }
+
+// // .dropdown-menu {
+// //   width: 98vw;
+// //   margin: 0rem calc(100vw - 99vw);
+// //   box-shadow: 1px 5px 6px #7c7c7c;
+// //   padding: 3rem 0rem !important;
+// //   cursor: pointer;
+// // }
+
+// .dropdown-henu {
+//   width: 98vw;
+//   margin: 0rem calc(100vw - 99vw) !important;
+//   border-radius: 0px !important;
+//   border-top: 0.3px solid grey !important;
+//   width: 100vw;
+//   margin: 0rem calc(0vw) !important;
+//   box-shadow: 1px 5px 6px #7c7c7c;
+//   padding: 3rem 0rem !important;
+//   cursor: pointer;
+// }
+
+// .navItemDiv {
+//   font-weight: 300;
+//   font-style: normal;
+//   display: grid;
+//   grid-template-columns: repeat(3, 1fr);
+//   row-gap: 2rem;
+// }
+
+// .dropdown-item {
+//   width: fit-content !important;
+// }
+
+// .dropdownn:hover .dropdown-menu {
+//   display: block;
+// }
+
+// @media (min-width: 993px) {
+//   .navbar-brand .mobile_logo {
+//     display: none;
+//   }
+
+//   .navbar-brand .desktop_logo {
+//     display: block;
+//   }
+//   .navbar-toggler1 {
+//     display: none !important;
+//   }
+//   .custom-sidebar-bg{
+//     display: none !important;
+//   }
+// }
+
+// @media (min-width: 993px) and (max-width: 1250px) {
+//   .navbar-nav {
+//     font-size: 1rem !important;
+//   }
+// }
+
+// .cursor-hover-red:hover {
+//   color: #f33535;
+//   cursor: pointer;
+// }
+// .your-class-name:hover {
+//   color: red; /* Change this to the desired color */
+// }
+
+// .ml-3 {
+//   margin-left: 4px !important;
+// }
+// .container {
+//   overflow: hidden;
+//   background-color: #333;
+//   font-family: Arial;
+// }
+// .navbar-toggler {
+//   color: black !important;
+// }
+// .container a {
+//   float: left;
+//   font-size: 16px;
+//   color: white;
+//   text-align: center;
+//   padding: 14px 16px;
+//   text-decoration: none;
+// }
+
+// .dropdownn {
+//   float: left;
+//   overflow: hidden;
+// }
+
+// .dropdownn .dropbtn {
+//   font-size: 16px;
+//   border: none;
+//   outline: none;
+//   color: black;
+//   padding: 14px 16px;
+//   background-color: inherit;
+// }
+
+// .container a:hover,
+// .dropdownn:hover .dropbtn {
+// }
+
+// .dropdown-content {
+//   display: none;
+//   position: absolute;
+//   background-color: #f9f9f9;
+//   min-width: 250px;
+//   max-width: 550px;
+//   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+//   z-index: 1;
+// }
+
+// .dropdown-content a {
+//   float: none;
+//   color: black;
+//   padding: 12px 16px;
+//   text-decoration: none;
+//   display: block;
+//   text-align: left;
+// }
+
+// .dropdown-content a:hover {
+//   background-color: #ddd;
+// }
+
+// .dropdownn:hover .dropdown-content {
+//   display: block;
+  
+// }
+
+// /* Add this to your CSS */
+// /* Add this to your CSS */
+// .column {
+//   float: left;
+//   width: calc(100% / 2); /* Adjust the number of columns as needed */
+//   box-sizing: border-box;
+// }
+
+// .navbar-toggler1 {
+//   border: none !important;
+//   background: transparent !important;
+// }
+// .custom-sidebar-bg {
+//   position: fixed !important;
+//   background: rgba(255, 255, 255, 0.6);
+//   height: 100%;
+//   width: 100%;
+//   z-index: 5000 !important;
+//   display: flex !important;
+//   justify-content: end !important;
+//   display: block;
+//   top: 0;
+// }
+// .custom-sidebar-bg > div {
+//   background: white !important;
+//   width: 65% !important;
+//   height: 100% !important;
+//   padding-bottom: 90px!important;
+//   overflow-x: scroll !important;
+// }
+// .ws{
+//   white-space: nowrap;
+// }
+// .close-div{
+//   height: 90px !important;
+//   display: flex !important;
+//   align-items: center !important;
+//   justify-content: end !important;
+//   padding-right: 30px !important;
+// }
+// .close-div>button{
+//   border: none !important;
+//   background: transparent !important;
+//   font-size: 24px !important;
+// }
+
+
+.responsive-logo {
+  height: auto;
+  max-width: 100%;
+}
+
+// @media (max-width: 768px) {
+//   .responsive-logo {
+//     max-width: 95%; /* Adjust the percentage as needed */
+//   }
+// }
+
+.transparent-dropdown-item {
+  background-color: transparent !important;
+}
+.mega-dropdown {
+  display: none; /* Hide the mega dropdown by default */
+  width: 100%;
+  left: 0;
+  right: 0;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease; /* Adding transition for smooth effect */
+}
+
+.nav-item:hover .mega-dropdown {
+  display: block; /* Show the mega dropdown on hover */
+}
+
+.mega-dropdown .container {
+  width: 100%;
+  max-width: 100%;
+}
+
+.mega-dropdown h5 {
+  color: #333;
+}
+
+.mega-dropdown ul {
+  padding: 0;
+  list-style: none;
+}
+
+.mega-dropdown ul li {
+  margin-bottom: 10px;
+
+}
+
+@media (max-width: 768px) {
+  .mega-dropdown {
+    // display: block; /* Show the mega dropdown by default on small screens */
+    position: static;
+  }
+}

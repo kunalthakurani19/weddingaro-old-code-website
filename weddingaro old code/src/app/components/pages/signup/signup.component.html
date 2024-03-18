@@ -1,0 +1,237 @@
+<div class="formMainContainer">
+  <div class="imageContainer">
+
+    <div class="signup-banner">
+      <div class="sign-text ">
+        {{role=='user' ? 'Plan your Wedding hassle free' : 'Boost your business with us'}}
+      </div>
+      <div class="mt-2">
+        with Weddingaro
+      </div>
+    </div>
+    <img loading="lazy" class="flowers" [src]="role=='user'?'https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/flowers-signup.png':'https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/vendor-signup.png'"
+      alt="" srcset="">
+  </div>
+  <div class=" formContainer ">
+    <div class="text-center custom-text-color">
+      <img loading="lazy" src="https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/logo_desktop.png" routerLink="/home" alt="Logo" height="75" class="d-inline-block align-text-top">
+    </div>
+    <div class="w-100 text-center fs-3 font-weight-light mt-4">
+      Plan your wedding Join Us
+    </div>
+    <div class="text-center ">
+      Already have an account? <span class="custom-text-color cursor" routerLink="/login/user">Log In</span>
+    </div>
+
+
+    <div class="signup-form mt-4">
+      <form class="example-form " [formGroup]="registrationForm">
+        <div class="formfield_div">
+          <div class="">
+            <mat-form-field class="example-full-width">
+              <mat-label>First Name</mat-label>
+              <input type="text" matInput formControlName="fname" placeholder="Ex.Dinesh">
+              <ng-container
+                *ngIf="this.registrationForm.get('fname')?.invalid && this.registrationForm.get('fname')?.touched">
+                <mat-error *ngIf="this.registrationForm.get('fname')?.errors?.required">
+                  First Name is required
+                </mat-error>
+              </ng-container>
+            </mat-form-field>
+
+          </div>
+          <div class="">
+            <mat-form-field class="example-full-width">
+              <mat-label>Last Name</mat-label>
+              <input type="text" matInput formControlName="lname" placeholder="Ex.Kumar">
+              <ng-container
+                *ngIf="this.registrationForm.get('lname')?.invalid && this.registrationForm.get('lname')?.touched">
+                <mat-error *ngIf="this.registrationForm.get('lname')?.errors?.required">
+                  Last Name is required
+                </mat-error>
+              </ng-container>
+            </mat-form-field>
+
+          </div>
+        </div>
+        <div class="formfield_div">
+          <div>
+            <mat-form-field class="example-full-width">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com"
+                (focusout)="checkValidation('email')">
+              <ng-container
+                *ngIf="this.registrationForm.get('email')?.invalid && this.registrationForm.get('email')?.touched || !errorMsg.email.isValid">
+                <mat-error *ngIf="this.registrationForm.get('email')?.errors?.email">
+                  Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="this.registrationForm.get('email')?.errors?.required">
+                  Email is required
+                </mat-error>
+                <mat-error *ngIf="!errorMsg.email.isValid">
+                  {{errorMsg.email.msg}}
+                </mat-error>
+              </ng-container>
+
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="formfield_div">
+          <div class="">
+            <mat-form-field class="example-full-width">
+              <mat-label>Password</mat-label>
+              <input [type]="showPassword ? 'text' : 'password'" matInput formControlName="password">
+              <mat-icon matSuffix (click)="toggleShowPassword()">
+                {{ showPassword ? 'visibility_off' : 'visibility' }}
+              </mat-icon>
+              <ng-container
+                *ngIf="this.registrationForm.get('password')?.invalid && this.registrationForm.get('password')?.touched">
+                <mat-error *ngIf="this.registrationForm.get('password')?.errors?.required">
+                  Password is required
+                </mat-error>
+              </ng-container>
+            </mat-form-field>
+          </div>
+          <div class="">
+            <mat-form-field class="example-full-width">
+              <mat-label>Confirm Password</mat-label>
+              <input type="password" matInput formControlName="confirmpassword">
+              <ng-container *ngIf="this.registrationForm.get('confirmpassword')?.touched">
+                <mat-error *ngIf="this.registrationForm.get('confirmpassword')?.errors?.required">
+                  Confirm password is required
+                </mat-error>
+                <mat-error
+                  *ngIf="this.registrationForm.get('confirmpassword')?.value!==this.registrationForm.get('password')?.value && !this.registrationForm.get('confirmpassword')?.errors?.required">
+                  Confirm password is doesn't match with password
+                </mat-error>
+              </ng-container>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="formfield_div">
+          <!-- <div class="col-6">
+              <mat-form-field class="example-full-width" >
+                <mat-label>Enter Location</mat-label>
+                <input  matInput>
+              </mat-form-field>
+            </div> -->
+          <div class="">
+            <mat-form-field>
+              <mat-label>Select Country</mat-label>
+              <mat-select formControlName="countrycode">
+                <mat-option *ngFor="let countryCode of countryCodes" [value]="countryCode.dial_code">
+                  {{ countryCode.dial_code }} - {{ countryCode.code }}
+                </mat-option>
+              </mat-select>
+              <ng-container
+                *ngIf="this.registrationForm.get('countrycode')?.invalid && this.registrationForm.get('countrycode')?.touched">
+                <mat-error *ngIf="this.registrationForm.get('countrycode')?.errors?.required">
+                  Please select your country
+                </mat-error>
+              </ng-container>
+            </mat-form-field>
+          </div>
+          <div class="">
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Phone Number</mat-label>
+              <input type="tel" matInput formControlName="mobile" (input)="onPhoneNumberInput($event)"
+                (blur)="checkValidation('mobile')"
+                [ngClass]="{ 'invalid-input': registrationForm.get('mobile')?.invalid && registrationForm.get('mobile')?.touched }" />
+              <ng-container
+                *ngIf="(registrationForm.get('mobile')?.invalid && registrationForm.get('mobile')?.touched) || !errorMsg.mobile.isValid">
+                <mat-error *ngIf="registrationForm.get('mobile')?.errors?.required">
+                  Mobile number is required
+                </mat-error>
+                <mat-error *ngIf="registrationForm.get('mobile')?.errors?.pattern">
+                  Please enter a valid mobile number with 10 digits
+                </mat-error>
+                <mat-error *ngIf="!errorMsg.mobile.isValid">
+                  {{errorMsg.mobile.msg}}
+                </mat-error>
+              </ng-container>
+            </mat-form-field>
+
+
+
+          </div>
+
+        </div>
+
+
+        <!-- <div class="row">
+            <div class="col-6">
+              <div class="col-6">
+                <mat-form-field>
+                  <mat-label>Choose Date</mat-label>
+                  <select matNativeControl required>
+
+                  </select>
+                </mat-form-field>
+              </div>
+              <mat-form-field>
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <mat-form-field class="example-full-width" >
+                <mat-label>Phone Number</mat-label>
+                <input type="text" matInput>
+              </mat-form-field>
+            </div>
+          </div> -->
+      </form>
+
+
+      <div class="w-100  text-center">
+        <button class="btn custom-button text-white " style="width: 90% !important; "
+          (click)="isSignupWithGoogle  ? signUpWithGoogle() :onSubmit()" [disabled]="this.registrationForm.invalid"
+          [ngClass]="{'custom-text-color':this.registrationForm.invalid}">
+          Sign up
+        </button>
+      </div>
+      <div class="terms text-center mt-1">
+        By clicking 'Sign up' I accept the Terms of Use of Weddingaro.
+      </div>
+      <div class="d-flex w-100 justify-content-center mt-4" *ngIf="!isSignupWithGoogle && role=='user'">
+        <hr style="width: 210px;" class="mx-2">
+        <span class="mt-1">Or</span>
+        <hr style="width: 210px;" class="mx-2">
+      </div>
+      <div class="mt-1 text-center" *ngIf="!isSignupWithGoogle && role=='user'">
+        <button class="btn btn-social-icon btn-google" (click)="signInWithGoogle()">
+          <asl-google-signin-button type="standard" size="large"> </asl-google-signin-button>
+        </button>
+        <!-- <img loading="lazy" src="/assets/images/facebook-signup.png" class="mt-2 auth-signup" alt="/assets/" srcset="">
+        <img loading="lazy" src="/assets/images/google-signup.png" class="mt-2 auth-signup" alt="/assets/" srcset="">
+        <img loading="lazy" src="/assets/images/apple-signup.png" class="mt-2 auth-signup" alt="/assets/" srcset=""> -->
+      </div>
+      <!-- <div class="fs-14 text-center mt-4 text-secondary">
+        Are you a vendor? <span class="custom-text-color">Vendor login</span>
+      </div> -->
+      <div class="fs-14 text-center mt-1 text-secondary">
+        {{role=='user'?'Are you a vendor?' : 'Are you a user?'}} <span class="custom-text-color cursor"
+          [routerLink]="role=='user' ? '/signup/vendor' : '/signup/user' ">
+          {{role=='user'?'Vendor Signup' : 'User Signup'}}</span>
+      </div>
+      <div class="d-flex justify-content-around fs-12 mt-5 text-secondary mt-3">
+        <div routerLink="/contact-us" class="cursor-hover-red">
+          Contact Us
+        </div>
+        <div routerLink="/terms-and-condition" class="cursor-hover-red">
+          Terms & Condition
+        </div>
+        <div routerLink="/about-us" class="cursor-hover-red">
+          About Us
+        </div>
+      </div>
+      <div [routerLink]="'/'" class="text-center fs-12 text-secondary mt-2 cursor-hover-red ">
+        Weddingaro.com
+      </div>
+    </div>
+  </div>
+</div>

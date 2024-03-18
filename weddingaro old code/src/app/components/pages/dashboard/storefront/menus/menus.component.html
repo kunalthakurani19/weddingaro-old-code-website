@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-9 col-md-12">
+      <div class="menus-div">
+        <div>
+          <h2 class="menus">Menus</h2>
+          <div class="d-md-flex flex-md-row gap-md-4 details align-items-center">
+            <div>
+              <img loading="lazy" src="../../../../../../assets/images/menus.svg" alt="" />
+            </div>
+            <div class="fs-18">
+              <h5>Add the menus you offer to couples</h5>
+              <p class="pb">
+                Share menus highlighting the cuisines you offer, serving style,
+                bar options, and more.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="all-menu d-md-flex flex-md-row flex-md-wrap justify-content-md-between gap-md-4">
+          <div class="menu-card">
+            <div class="top-div">
+              <img loading="lazy" src="https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/addMenu.png" />
+            </div>
+            <button class="card-button" (click)="openModal('Add')">
+              Add menu
+            </button>
+          </div>
+          <!-- edit menu -->
+          <div class="add-menu menu-card" *ngFor="let item of menus">
+            <div class="top-div edit-top">
+              <h5>{{item.menuName}}</h5>
+              <div [innerHTML]="item.menuDetails"></div>
+              <p>Price: ₹{{item.price}}</p>
+            </div>
+            <button class="card-button" (click)="openModal('Edit',item)">Edit</button>
+          </div>
+        </div>
+      </div>
+    <!-- edit and add model -->
+    <div *ngIf="showModal" class="custom-modal-background" [formGroup]="menuForm">
+      <div class="custom-modal">
+        <div class="d-flex flex-row flex-nowrap justify-content-between">
+          <h2>{{ modalType }} menu</h2>
+          <button (click)="closeModal()" type="button" class="btn-close" aria-label="Close"></button>
+        </div>
+        <div class="d-flex gap-5">
+          <div>
+            <label for="dishName" class="form-label">Name of the menu <span class="label-color">*</span></label>
+            <input type="text" class="form-control" id="dishName" placeholder="Enter menu name"
+              formControlName="menuName" />
+          </div>
+          <div>
+            <label for="dishPrice" class="form-label">Price <span class="label-color">*</span></label>
+            <div class="input-group fs-24">
+              <span style="margin-right: 10px">₹</span>
+              <input type="number" class="form-control" id="dishPrice" min=0 formControlName="price" />
+            </div>
+          </div>
+        </div>
+        <div>
+          <label class="form-label">Menu detail <span class="label-color">*</span></label>
+          <ckeditor [editor]="Editor" formControlName="menuDetails"></ckeditor>
+        </div>
+        <div class="d-flex flex-row gap-3">
+          <button *ngIf="modalType === 'Add'" class="btn btn-danger" [disabled]="menuForm.invalid"
+            (click)="submitForm()">
+            Add menu
+          </button>
+          <button (click)="closeModal()" *ngIf="modalType === 'Add'" class="remove-button">
+            Cancel
+          </button>
+          <button *ngIf="modalType === 'Edit'" class="btn btn-danger" [disabled]="menuForm.invalid"
+            (click)="updateStore()">
+            Save changes
+          </button>
+          <button *ngIf="modalType === 'Edit'" class="remove-button" (click)="deleteMenu()">
+            Remove
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-12">
+    <app-common-store-sidebar></app-common-store-sidebar>
+  </div>
+</div>

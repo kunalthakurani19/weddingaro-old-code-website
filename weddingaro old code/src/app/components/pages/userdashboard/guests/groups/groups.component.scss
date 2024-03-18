@@ -1,0 +1,22 @@
+.group-table-image {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 5px;
+  align-items: center !important;
+  text-align: center !important;
+}
+td,
+th {
+  padding: 10px 0px !important;
+}
+select {
+  border: none !important;
+  outline: none;
+}
+tbody > tr {
+  border-top: 1px solid gray !important;
+}
+.td-button>button{
+  border: none !important;
+  background: transparent !important;
+}

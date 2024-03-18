@@ -1,0 +1,149 @@
+<!-- <div class="search-outer-div">
+    <div class="inner-div custom-background ">
+        <div>
+            <input value="{{ selectedFilter }}" (blur)="blurVenueDropdown()" (focus)="toggleVenueDropdown()"
+                [placeholder]="selectedFilter" class="form-text-input form-control" readonly />
+        </div>
+        <div>
+            <input value="{{ selectedCity }}" (blur)="blurCityDropdown()" (focus)="toggleCityDropdown()"
+                [placeholder]="selectedCity" class="form-text-input form-control" readonly />
+        </div>
+        <div>
+            <button type="button" class="search-button" (click)="search()">Search</button>
+        </div>
+    </div>
+
+    <div class="d-flex select-options" *ngIf="showVenue"> -->
+
+<!-- this is already comment from -->
+<!-- <ng-container *ngFor="let item of navbarItems; let i = index"> -->
+<!-- <div *ngIf="i % 12 === 0"> -->
+<!-- <div class="column"
+            *ngFor="let venue of this.filters['category'].slice(i, i + 12)" (click)="selectVenue(venue)">
+           
+            <div class="custom-text-hover m-2">
+              {{ venue.name }}
+            </div>
+          </div> -->
+<!-- <div>
+                {{ item.parentTitle }}
+            </div>
+            <ng-container *ngIf="item.children.length > 0">
+                <div class="column" *ngFor="let child of item.children; let i = index">
+                    <div class="custom-text-hover m-1">{{ child.title }}
+                    </div>
+                </div>
+            </ng-container> -->
+<!-- </div> -->
+
+
+
+<!-- </ng-container> -->
+<!-- Add this HTML code to create a table structure -->
+<!-- Add this HTML code to create a table structure -->
+
+<!-- end -->
+<!-- <table>
+            <tr>
+                <th *ngFor="let item of navbarItems">{{ item.parentTitle }}</th>
+            </tr>
+            <tr>
+                <td *ngFor="let item of navbarItems">
+                    <ng-container *ngIf="item.children.length > 0">
+                        <div *ngFor="let child of item.children" (click)="selectVenue(child)"
+                            class="custom-text-hover m-1">{{ child.title }}</div>
+                    </ng-container>
+                </td>
+            </tr>
+        </table>
+
+
+
+
+    </div> -->
+
+<!-- <div class="  select-options" *ngIf="showCity">
+        <div class="column" (click)="selectCity('')">
+            <div class="custom-text-hover m-2">
+                {{ 'All' }}
+            </div>
+            <ng-container *ngFor="let cityitem of cityOptions; let i = index">
+                <div *ngIf="i % 4 === 0">
+                    <div class="column" *ngFor="let city of cityOptions.slice(i, i + 4)"
+                        (click)="selectCity(city);$event.stopPropagation()">
+                        <div class="custom-text-hover m-2">
+                            {{ city }}
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div> -->
+
+
+<!-- 
+    <div class="select-options" *ngIf="showCity">
+        <div class="" (click)="selectCity('')">
+            <div class="custom-text-hover m-2">
+                {{ 'All' }}
+            </div>
+            <ng-container *ngFor="let cityitem of cityOptions; let i = index">
+                <div *ngIf="i % 4 === 0" class="row">
+                    <div class="column" *ngFor="let city of cityOptions.slice(i, i + 4)"
+                        (click)="selectCity(city);$event.stopPropagation()">
+                        <div class="custom-text-hover m-2">
+                            {{ city }}
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div> -->
+
+<!-- search-bar-for-homepage.component.html -->
+<div class="search-outer-div">
+  <div class="inner-div custom-background ">
+    <div>
+      <input value="{{ selectedFilter }}" (blur)="blurVenueDropdown()" (focus)="toggleVenueDropdown()"
+        [placeholder]="selectedFilter || 'Search for'" class="form-text-input form-control" readonly />
+    </div>
+    <div>
+      <input value="{{ selectedCity }}" (blur)="blurCityDropdown()" (focus)="toggleCityDropdown()"
+        [placeholder]="selectedCity || 'Enter City'" class="form-text-input form-control " readonly />
+    </div>
+    <div>
+      <button type="button" class="search-button" (click)="search()" ><strong> Search</strong></button>
+    </div>
+  </div>
+
+  <div class="d-flex select-options" *ngIf="showVenue">
+    <table>
+      <tr>
+        <th *ngFor="let item of navbarItems">{{ item.parentTitle }}</th>
+      </tr>
+
+      <td *ngFor="let item of navbarItems">
+        <ng-container *ngIf="item.children.length > 0">
+          <div *ngFor="let child of item.children" (click)="selectVenue(child)" class="custom-text-hover m-1">{{
+            child.title }}</div>
+        </ng-container>
+      </td>
+
+    </table>
+  </div>
+
+  <div class="select-options" *ngIf="showCity">
+    <div class="" (click)="selectCity('')">
+      <div class="custom-text-hover m-2" (click)="clearSelection()">All</div>
+      <!-- <button type="button" (click)="clearSelection()">ALL</button> -->
+      <ng-container *ngFor="let cityitem of cityOptions; let i = index">
+        <div *ngIf="i % 4 === 0" class="row">
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3 " *ngFor="let city of cityOptions.slice(i, i + 4)"
+            (click)="selectCity(city);$event.stopPropagation()">
+            <div class="custom-text-hover col-12 col-sm-6 col-md-4 col-lg-3 m-3">{{ city }}</div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

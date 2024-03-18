@@ -1,0 +1,131 @@
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-transparent" >
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/home" href="#">
+      <img loading="lazy" src="https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/logo_desktop.png" alt="Logo" height="65" class="d-inline-block align-text-top">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+      aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item dropdown position-static" *ngFor="let item of navbarItems; let i = index">
+          <a class="nav-link dropdown-toggle" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            {{ item.parentTitle }}
+          </a>
+          <div class="dropdown-menu mega-dropdown" aria-labelledby="navbarScrollingDropdown">
+            <div class="container">
+              <div class="row">
+                <ng-container *ngFor="let child of item.children; let i = index">
+                  <div class="col-md-3">
+                    <ul class="list-unstyled">
+                      <li><a class="dropdown-item cursor-hover-red transparent-dropdown-item " (click)="navigateToSector(item.queryParams,child.queryParams, item.route)">{{ child.title }}</a></li>
+                    </ul>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <div *ngIf="!(authService.isLoggedIn | async)">
+          <button type="button" class="btn btn-primary custom-button mr-4" routerLink="/signup/user">
+            Sign Up
+          </button>
+          <button type="button" class="btn btn-primary custom-button ml-3" routerLink="/login/user">
+            Login
+          </button>
+        </div>
+        <div *ngIf="authService.isLoggedIn | async">
+          <ng-container *ngIf="role === 'user'; else vendorDashboard">
+            <app-user-profile-dashboard></app-user-profile-dashboard>
+          </ng-container>
+
+          <ng-template #vendorDashboard>
+            <app-vendor-profile-dashboard></app-vendor-profile-dashboard>
+          </ng-template>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</nav> -->
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-transparent ">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/home" href="#">
+      <img loading="lazy" src="https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/logo_desktop.png" alt="Logo"
+        height="65" class="d-inline-block align-text-top">
+    </a>
+
+    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarMobile"
+      aria-controls="navbarMobile" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+
+    </button>
+
+    <!-- Side navigation for mobile -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="navbarMobile" aria-labelledby="navbarMobileLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="navbarMobileLabel">Menu</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <!-- Your navigation items go here -->
+        <ul class="navbar-nav me-auto my-2 my-lg-0 ">
+          <li class="nav-item dropdown position-static" *ngFor="let item of navbarItems; let i = index">
+            <a class="nav-link dropdown-toggle main-font wfs-20" style="color: black;  " role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              {{ item.parentTitle }}
+            </a>
+            <div class="dropdown-menu mega-dropdown">
+              <div class="container">
+                <div class="row">
+                  <ng-container *ngFor="let child of item.children; let i = index">
+                    <div class="col-md-3">
+                      <ul class="list-unstyled">
+                        <li>
+                          <a class="dropdown-item cursor-hover-red transparent-dropdown-item "
+                            (click)="navigateToEachCategoryStore(item.parentTitle, child.title)">{{ child.title
+                            }}</a>
+
+                        </li>
+                      </ul>
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <div *ngIf="!(authService.isLoggedIn | async)">
+            <button type="button" class="btn btn-primary custom-button mr-4" routerLink="/signup/user">
+              Sign Up
+            </button>
+            <button type="button" class="btn btn-primary custom-button ml-3" routerLink="/login/user">
+              Login
+            </button>
+          </div>
+          <div *ngIf="authService.isLoggedIn | async">
+            <ng-container *ngIf="role === 'user'; else vendorDashboard">
+              <app-user-profile-dashboard></app-user-profile-dashboard>
+            </ng-container>
+
+            <ng-template #vendorDashboard>
+              <app-vendor-profile-dashboard></app-vendor-profile-dashboard>
+            </ng-template>
+          </div>
+
+        </form>
+        <ul class="navbar-nav">
+        </ul>
+      </div>
+    </div>
+
+
+  </div>
+</nav>

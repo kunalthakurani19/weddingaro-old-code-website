@@ -1,0 +1,174 @@
+.formMainContainer {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.imageContainer {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  width: 100% !important;
+  height: 100% !important;
+
+}
+
+.flowers {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top; 
+}
+
+.formContainer {
+  flex: 1;
+  overflow-y: scroll;
+  padding: 20px; 
+}
+
+
+
+
+
+.signup-banner {
+  width: 100%;
+  padding: 1rem;
+  margin: 1rem;
+  margin-top: 5rem; 
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 10px; 
+}
+
+
+.sign-text {
+  font-family: Baskervville;
+  font-size: 2rem;
+  font-weight: 700;
+  // max-width: 200px;
+
+}
+
+
+.formfield_div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.terms {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+
+}
+
+.auth-signup {
+  width: 390px;
+  height: 40px;
+}
+
+
+// Responsive Design
+
+
+// mobile responsive
+
+@media (min-width:300px) {
+
+  .formMainContainer {
+    flex-direction: column;
+  }
+
+  .signup-banner {
+    width: calc(100% - 2rem);
+  }
+
+  .formContainer {
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sign-text {
+    font-size: 1.5rem;
+  }
+
+  .signup-form {
+    width: 100%;
+
+  }
+
+  .formfield_div {
+    flex-direction: column;
+    align-items: baseline;
+    // 
+    padding: 0rem 2rem;
+  }
+
+  .formfield_div div {
+    width: 100%;
+  }
+
+  .mat-mdc-form-field {
+    width: 100%;
+  }
+}
+
+@media (min-width:600px) {
+
+  // .formfield_div div {
+  //   width: 50%;
+  // }
+  .formMainContainer {}
+
+  .imageContainer {
+    height: 50vh;
+    width: 100%;
+  }
+
+  .flowers {
+    height: 100%;
+  }
+
+  .formContainer {
+    width: 100vw;
+  }
+
+  .formfield_div {
+    flex-direction: row;
+
+    padding: 0rem 1rem;
+    gap: 1rem;
+  }
+}
+
+
+@media (min-width : 1200px) {
+  .formMainContainer {
+    flex-direction: row;
+  }
+
+  .imageContainer {
+    height: calc(100vh - 250px);
+    width: auto;
+  }
+
+  .formContainer {
+    width: auto;
+    gap: 0rem;
+  }
+}

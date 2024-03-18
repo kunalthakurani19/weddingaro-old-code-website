@@ -1,0 +1,53 @@
+.carousel-button {
+  max-width: 45px;
+  display: flex;
+  width: 100%;
+  min-height: 150px !important;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-button:hover {
+  background: radial-gradient(
+    74.37% 50% at 50% 50%,
+    rgba(243, 102, 104, 0.3) 0%,
+    rgba(243, 102, 102, 0) 100%
+  );
+}
+
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 187px;
+  height: 100%;
+  user-select: none;
+  position: relative;
+}
+
+@media screen and (max-width: 767px) {
+  .main-container {
+    display: block;
+  }
+
+  .main-container-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .carousel-button {
+    max-width: 100%;
+    width: 100%;
+    min-height: auto !important;
+    margin-bottom: 10px; // Add some space between buttons in mobile
+  }
+
+  /* Hide left and right icons on mobile */
+  .carousel-button i {
+    display: none;
+  }
+}

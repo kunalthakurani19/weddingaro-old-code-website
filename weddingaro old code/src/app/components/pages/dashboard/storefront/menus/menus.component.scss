@@ -1,0 +1,114 @@
+.menus {
+  font-family: Baskervville;
+  font-size: 35px;
+  margin-bottom: 20px !important;
+}
+
+.menus-div {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 50px !important;
+}
+
+.details {
+  border-radius: 15px !important;
+  background: rgba(151, 71, 255, 0.1) !important;
+  padding: 20px !important;
+}
+
+.menu-card {
+  width: 100%; /* Take full width on smaller screens */
+  max-width: 310px;
+  height: 310px !important;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.top-div {
+  height: 260px !important;
+  width: 100% !important;
+}
+
+.card-button {
+  border: transparent !important;
+  background: #f33535;
+  width: 100% !important;
+  font-size: 20px !important;
+  height: 50px !important;
+  color: #fff !important;
+  &:hover {
+    background-color: #fff !important;
+    color: #f33535 !important;
+  }
+}
+
+
+.custom-modal-background {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw !important;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-modal {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+}
+.label-color {
+  color: #f33535 !important;
+}
+input {
+  border-radius: 5px !important;
+}
+:host ::ng-deep .ck-editor__editable_inline {
+  min-height: 300px;
+}
+.description-div {
+  width: 690px !important;
+  height: 350px !important;
+}
+.done-button {
+  border: 1px solid #f33535 !important;
+  border-radius: 5px !important;
+  background: #f33535;
+  padding: 5px 50px !important;
+  color: #fff !important;
+  &:hover {
+    background-color: #fff !important;
+    color: #f33535 !important;
+  }
+}
+.remove-button {
+  border: transparent !important;
+  padding: 5px 50px !important;
+  border-radius: 5px !important;
+}
+.edit-top {
+  display: flex !important;
+  flex-direction: column !important;
+  flex-wrap: nowrap !important;
+  justify-content: space-around !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+.edit-top > h5 {
+  border-bottom: 3px solid rgba(0, 0, 0, 0.20);;
+}
+.all-menu {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  gap: 20px !important;
+}

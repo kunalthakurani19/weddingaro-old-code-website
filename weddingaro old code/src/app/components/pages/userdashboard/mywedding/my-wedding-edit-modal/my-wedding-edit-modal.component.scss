@@ -1,0 +1,19 @@
+.image-radio-button {
+  display: inline-block;
+  margin-right: 20px; /* Adjust spacing between image radio buttons */
+}
+
+.image-radio-button label {
+  display: block;
+  cursor: pointer;
+}
+
+.image-radio-button input[type="radio"] {
+  display: none; /* Hide the default radio button input */
+}
+
+.image-radio-button img {
+  width: 30px; /* Adjust the image size as needed */
+}
+
+

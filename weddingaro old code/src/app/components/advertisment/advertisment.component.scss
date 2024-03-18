@@ -1,0 +1,25 @@
+.centered-card {
+    position: absolute;
+    top: 60%;
+    left: 10%;
+    transform: translate(-10%, -50%);
+    background-color: rgba(255, 255, 255, 0.8); /* Background color with some transparency */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 75%;
+  }
+  
+  /* Style for the image container */
+  .image-container {
+    position: relative;
+   
+     /* Set the maximum width of the image container */
+  }
+  
+  /* Style for the image itself */
+  .image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }

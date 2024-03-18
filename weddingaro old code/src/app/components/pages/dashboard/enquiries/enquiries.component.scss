@@ -1,0 +1,170 @@
+.circle-element {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 200px;
+    height: 22px;
+}
+
+.circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 9999px;
+}
+
+.text {
+    width: 70px;
+    height: 22px;
+    left: 22px;
+    top: 0;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    word-wrap: break-word;
+    color: rgba(0, 0, 0, 0.80);
+}
+
+
+.bullet {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.cursor-pointer.active {
+    background-color: #e6e6e6;
+    /* You can adjust the color as needed */
+}
+
+.active {
+    background-color: #e6e6e6;
+    /* You can adjust the color as needed */
+    font-weight: bold;
+}
+
+.card {
+    height: 150px;
+    /* Set your desired fixed height here */
+    overflow: hidden;
+    /* Hide any overflowing content */
+}
+
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    
+  }
+  
+  /* Hide the default checkbox */
+  .custom-checkbox input[type="checkbox"] {
+    display: none;
+  }
+  
+  /* Style the custom checkbox */
+  .checkmark {
+    width: 25px;
+    height: 25px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Style the checkmark icon */
+  .checkmark svg {
+    visibility: hidden;
+  }
+  
+  /* Show the checkmark icon when the checkbox is checked */
+  .custom-checkbox input[type="checkbox"]:checked + .checkmark svg {
+    visibility: visible;
+  }
+/* Add hover effect to the text when cursor points to it */
+.w-80.cursor-pointer:hover,
+.w-80.cursor-pointer:hover:not(.active) {
+   /* You can change this to the desired hover color */
+  text-decoration: underline; /* You can add any other desired hover styles here */
+  cursor: pointer; /* To change the cursor appearance on hover */
+}
+
+.cursor-pointer1:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+
+  
+  /* Styles for the left sidebar */
+.folder-title {
+  color: black;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  letter-spacing: 1.26px;
+  word-wrap: break-word;
+}
+
+.folder-item {
+  color: black;
+  font-size: 1.25rem;
+  font-weight: 400;
+  word-wrap: break-word;
+  user-select: none;
+}
+
+.count {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 1.125rem;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+/* Styles for the status items */
+.status-bullet {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 0.75rem;
+}
+
+.status-item {
+  color: black;
+  font-size: 1.1875rem;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+/* Styles for the tools section */
+.tools-title {
+  color: black;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1.26px;
+  word-wrap: break-word;
+}
+
+.tools-item {
+  font-size: 1.25rem;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-ripple .mat-ripple-element {
+  opacity: 0.03 !important;
+  background-color: red !important;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: red;
+}
+/* Additional styles if needed for the right content area */

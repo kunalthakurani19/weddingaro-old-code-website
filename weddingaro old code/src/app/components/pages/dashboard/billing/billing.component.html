@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-3">
+    <ul class="list-unstyled border-end py-4 border-2 border-dark-subtle mb-0 side-item">
+      <li
+        *ngFor="let item of sideItems"
+        class="mx-5 text-center cursor"
+        [routerLink]="item.route"
+      >
+        <div class="d-flex flex-row flex-nowrap gap-3">
+          <img loading="lazy" [src]="item.icon" height="30px" />
+          <div class="fs-21 fw-500" routerLinkActive="custom-text-color">
+            {{ item.title }}
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="col-9">
+    <router-outlet></router-outlet>
+  </div>
+</div>

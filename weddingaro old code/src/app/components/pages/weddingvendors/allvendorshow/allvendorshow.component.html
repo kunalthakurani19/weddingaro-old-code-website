@@ -1,0 +1,41 @@
+<!-- <div class="container-fluid mt-4">
+  <div class="row">
+      
+      <div class="col-lg-2 col-md-3 col-sm-12">
+          <div class="fw-500 fs-18  mb-4 ">STATUS</div>
+        
+          <div *ngFor="let item of status" class="mb-3 d-flex align-items-center cursor-hover">
+              <div [style.background-color]="item.color" class="rounded-circle me-3 status-bullet"></div>
+
+              <div class="flex-grow-1 status-item" [routerLink]="item.route" routerLinkActive="custom-text-color">
+                  {{ item.title }}
+              </div>
+              <div class="count">{{ item.count }}</div>
+          </div>
+
+          <hr />
+          <div class="fw-500 fs-18  mb-4 ">BY CATEGORY</div>
+
+          <div *ngFor="let item of inboxitem" class="mb-3 d-flex align-items-center cursor-hover">
+              
+
+              <div class="flex-grow-1 status-item" [routerLink]="item.route" routerLinkActive="custom-text-color">
+                  {{ item.title }}
+              </div>
+              <div class="count">{{ item.count }}</div>
+          </div>
+
+
+        
+      </div>
+
+
+
+
+
+      <div class="col-lg-10 col-md-9 col-sm-12 pt-lg-0 pt-md-4">
+          
+      </div>
+  </div>
+</div> -->
+<router-outlet></router-outlet>

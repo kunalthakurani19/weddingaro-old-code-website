@@ -1,0 +1,102 @@
+<div class="container-fluid" style="overflow-x: auto;">
+  <div class="row p-0 m-0">
+    <div class="col-12 col-md-9">
+      <div class="store-front-header fw-light">
+        Weddings calendar
+      </div>
+      
+
+      <div class="fs-18 questions rounded-4 px-3 py-3 mt-2 d-flex justify-content">
+        <div style="margin-right: 10px; ">
+          <img loading="lazy" src="/assets/images/Tear-Off Calendar.png" class="img-fluid" alt="Business Image">
+        </div>
+        <div>
+          <h5 class="pb fw-lighter">
+            Let couples know the days that you are no longer available and those that you can still offer your services.
+          </h5>
+          <h6 class="pb fw-lighter">
+            This allows you to receive higher-quality leads and increases your bookings.
+          </h6>
+        </div>
+
+      </div>
+
+
+
+      <div class="availibility-container shadow border-1 mt-5">
+        <div class="w-100 p-4">
+          <h4 class="fw-light">
+            You are unavailable on:
+          </h4>
+        </div>
+        <div class="d-flex justify-content-evenly w-100">
+          <form [formGroup]="dateRangeForm">
+            <div class="d-flex  w-100">
+              <div class="mx-2">
+                <mat-form-field appearance="outline">
+                  <mat-label>Starting date</mat-label>
+                  <input matInput [matDatepicker]="startDatePicker" formControlName="startDate" [min]="minDate"
+                    [max]="dateRangeForm.get('endDate')?.value">
+                  <mat-datepicker-toggle matIconSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+                  <mat-datepicker #startDatePicker></mat-datepicker>
+                  <mat-error *ngIf="dateRangeForm.get('startDate')?.invalid && dateRangeForm.get('startDate')?.touched">
+                    Start date is required.
+                  </mat-error>
+
+                </mat-form-field>
+              </div>
+              <div class="mx-2">
+                <mat-form-field appearance="outline">
+                  <mat-label>Ending Date</mat-label>
+                  <input matInput [matDatepicker]="endDatePicker" formControlName="endDate"
+                    [min]=" dateRangeForm.get('startDate')?.value || minDate">
+                  <mat-datepicker-toggle matIconSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+                  <mat-datepicker #endDatePicker></mat-datepicker>
+                  <mat-error *ngIf="dateRangeForm.get('endDate')?.invalid && dateRangeForm.get('endDate')?.touched">
+                    End date is required.
+                  </mat-error>
+                </mat-form-field>
+
+              </div>
+            </div>
+          </form>
+          <div class="mt-2 w-25">
+            <button class="btn btn-danger" [disabled]="dateRangeForm.invalid" style="width: 100px;"
+              (click)="submitForm()">Add</button>
+          </div>
+        </div>
+      </div>
+      <div class="mt-5 d-flex flex-wrap">
+        <div class="un-card shadow border-1 mx-3 my-3 " *ngFor="let item of availibilites">
+          <div class="custom-text-color text-center w-100 fs-3 mt-2 text-uppercase">
+            unavailable
+          </div>
+          <hr>
+          <div class="w-100 d-flex justify-content-around mt-5">
+            <div class="schedule border-black text-center">
+              <div class="mb-2 custom-text-color">From</div>
+              <div class="text-wrap  text-center">
+                {{item.startDate}}
+              </div>
+            </div>
+            <div class="schedule border-black text-center">
+              <div class="mb-2 custom-text-color">To</div>
+              <div class="text-wrap  text-center">
+                {{item.endDate}}
+              </div>
+            </div>
+          </div>
+          <div class="w-100 text-end mt-5">
+            <mat-icon color="warn" class="cursor" (click)="deleteSchedule(item.uuid)">delete</mat-icon>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-12 col-md-3 mt-3 mt-md-0">
+      <app-common-store-sidebar></app-common-store-sidebar>
+    </div>
+
+  </div>
+</div>

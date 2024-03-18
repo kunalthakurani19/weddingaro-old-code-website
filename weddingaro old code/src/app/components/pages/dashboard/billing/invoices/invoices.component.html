@@ -1,0 +1,35 @@
+<div class="out-div">
+  <h2 class="ff-b m-0 p-0 fs-35">Invoices</h2>
+  <div class="discription-div">
+    <p class="fs-20 fw-500 p-0 m-0 mb-10">
+      Check the invoices of your services at Weddingaro.com
+    </p>
+    <p class="fs-19 p-0 m-0">
+      You'll get and be able to print all the details of the services hired by
+      clicking on each invoice.
+    </p>
+  </div>
+  <div>
+    <div class="table-div">
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th class="table-cell" *ngFor="let item of ths">{{ item }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-row" *ngFor="let item of invoices">
+            <td class="table-cell">{{ item.dueDate }}</td>
+            <td class="table-cell">{{ item.invoiceNumber }}</td>
+            <td class="table-cell">{{ item.amount }}</td>
+            <td class="table-cell button-td">
+              <button class="table-button due-button">
+                <img loading="lazy" src="/assets/images/downloadIcon.svg" alt="" />
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

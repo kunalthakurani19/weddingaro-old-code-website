@@ -1,0 +1,183 @@
+<div class="container-fluid">
+  <div class="row p-0 m-0">
+    <div class="col-lg-9 col-md-12" [formGroup]="eventForm">
+      <div class="store-front-header fw-light">
+        Weddings calendar
+      </div>
+
+      <div class="fs-18 questions rounded-4 px-3 py-3 mt-2 d-flex justify-content">
+        <div>
+          <h5 class="pb fw-lighter">
+            Add details about upcoming events you are hosting.
+          </h5>
+          <h6 class="pb fw-lighter">
+            Events encourage potential clients to attend and learn more about your business.
+          </h6>
+        </div>
+      </div>
+
+      <div class="row rounded-2 row border-black p-3 mt-4 border-dark-subtle"
+        style="height: 270px; border: 0.5px solid black;">
+        <div class="row">
+          <div class="col-7">
+            <div class="form-group w-100 my-2">
+              <label for="">Event Name<span class="text-danger">*</span></label>
+              <input type="text" class="form-control" formControlName="eventName">
+              <mat-error *ngIf="eventForm.get('eventName')?.invalid && eventForm.get('eventName')?.touched">
+                Event name is required.
+              </mat-error>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="form-group w-100 my-2">
+              <label for="">Event Type<span class="text-danger">*</span></label>
+              <select class="form-select" aria-label="Default select example" formControlName="eventType">
+                <option selected value="">Select</option>
+                <option *ngFor="let item of typeOfEvents" [value]="item">{{item}}</option>
+              </select>
+              <mat-error *ngIf="eventForm.get('eventType')?.invalid && eventForm.get('eventType')?.touched">
+                Event type is required.
+              </mat-error>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex">
+          <div class="">
+            <mat-form-field class="w-50 " appearance="outline">
+              <mat-label>Starting date</mat-label>
+              <input matInput [matDatepicker]="startDatePicker" formControlName="startDate" [min]="minDate"
+                [max]="eventForm.get('endDate')?.value">
+              <mat-datepicker-toggle matIconSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #startDatePicker></mat-datepicker>
+              <mat-error *ngIf="eventForm.get('startDate')?.invalid && eventForm.get('startDate')?.touched">
+                Start date is required.
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="mx-2" style="width: 200px;" appearance="outline">
+              <mat-label>Start Time</mat-label>
+              <input matInput matTimepicker formControlName="startTime" mode="12h">
+              <mat-error *ngIf="eventForm.get('startTime')?.invalid && eventForm.get('startTime')?.touched">
+                End time should be greater than start time.
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="">
+            <mat-form-field class="w-50" appearance="outline">
+              <mat-label>Ending Date</mat-label>
+              <input matInput [matDatepicker]="endDatePicker" formControlName="endDate"
+                [min]="eventForm.get('startDate')?.value || minDate">
+              <mat-datepicker-toggle matIconSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #endDatePicker></mat-datepicker>
+              <mat-error *ngIf="eventForm.get('endDate')?.invalid && eventForm.get('endDate')?.touched">
+                End date is required.
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="mx-2" style="width: 200px;" appearance="outline">
+              <mat-label>End Time</mat-label>
+              <input matInput matTimepicker formControlName="endTime" mode="12h">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="row rounded-2 row border-black p-3 mt-4 border-dark-subtle"
+        style="height: 270px; border: 0.5px solid black;">
+        <div class="row ">
+          <div class="col-8 mt-4 ">
+            <div class="form-group w-100 my-2">
+              <label for="">Address<span class="text-danger">*</span></label>
+              <input type="text" class="form-control" placeholder="Enter Complete Event Address"
+                formControlName="address">
+              <mat-error *ngIf="eventForm.get('address')?.invalid && eventForm.get('address')?.touched">
+                Address is required.
+              </mat-error>
+            </div>
+            <div class="form-group w-100 my-2">
+              <label for="">City<span class="text-danger">*</span></label>
+              <input type="text" class="form-control" #inputField formControlName="city">
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="my-2">
+              <google-map #myGoogleMap [center]="center" [options]="options" height="230px" width="100%" [zoom]="14">
+              </google-map>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row rounded-2 row border-black p-3 mt-4 border-dark-subtle"
+        style="height: 500px; border: 0.5px solid black;">
+        <div class="row ">
+          <div class="col-7 mt-4 ">
+            <div class="form-group w-100 my-2">
+              <label for="" class="mb-2">Description<span class="text-danger">*</span></label>
+              <ckeditor [editor]="Editor" formControlName="description"></ckeditor>
+              <mat-error *ngIf="eventForm.get('description')?.invalid && eventForm.get('description')?.touched">
+                Description is required.
+              </mat-error>
+            </div>
+          </div>
+          <div class="col-3 ">
+            <div>
+              <label for="" class="mt-4 mb-2">Image</label>
+              <div class=" rounded-2 border-black border-dark-subtle text-center "
+                style="height: 250px;width: 100%; border: 0.5px solid black;">
+                <div class="mt-5">
+                  <input type="file" style="display: none;" (change)="onFileSelected($event)" #fileInput
+                    accept="image/*">
+                  <img loading="lazy" *ngIf="selectedImage" [src]="selectedImage" height="150px" width="100%" alt=""
+                    (click)="fileInput.click()" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)"
+                    (drop)="onDrop($event)">
+                  <div *ngIf="!selectedImage" class="mt-5">
+                    <img loading="lazy" src="/assets/images/photo-icon.png" height="68px" alt="">
+                  </div>
+                </div>
+                <button class="btn btn-danger mt-1" (click)="fileInput.click()">{{selectedImage?'Update Image':'Add
+                  Image'}}</button>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-3">
+              <button class="btn btn-danger" [disabled]="eventForm.invalid || invalidTime" (click)="submitForm()">Post
+                Event</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-5 row">
+        <h4 class="mb-1">
+          {{this.events.length}} Event
+        </h4>
+        <div class="row rounded-2 shadow row border-black p-3 mt-3 border-dark-subtle" style="height: 150px; "
+          *ngFor="let item of events">
+          <div class="schedule col-2  border-black text-center">
+            <div class="text-wrap mt-4 text-center custom-text-color">
+              {{item.startDate}}
+            </div>
+          </div>
+          <div class="col-1">
+            <div class="vertical-line mx-3" style="height:110px"></div>
+          </div>
+          <div class="col-8 d-inline-block p-2">
+            <div class="text-muted fw-light mx-1">{{item.eventType}}</div>
+            <div class="text-bold fs-5 mx-1 text-truncate text-wrap" style="width: 400px;">{{item.eventName}}</div>
+            <div class="text-muted fw-light mx-1">from {{convertTo12HourFormat(item?.startTime)}} to {{
+              convertTo12HourFormat(item?.endTime)}}</div>
+            <div class="text-muted fw-light mx-1">Event Status : {{getStatusFromDate(item?.startDate)}}</div>
+          </div>
+          <div class="col-1 d-flex align-items-end">
+            <div class="">
+              <button class="btn btn-danger" (click)="deleteEvent(item.uuid)">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-12">
+      <app-common-store-sidebar></app-common-store-sidebar>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,281 @@
+<div class="container mt-2">
+  <div class="row justify-content-center no-gutters">
+    <div class="align-items-center">
+      <div class="text-black-50 fs-5 cursor-hover" routerLink="/dashboard/enquiries/inbox" style="
+          font-weight: 400;
+          word-wrap: break-word;
+          display: flex;
+          align-items: center;
+        ">
+        <mat-icon class="mr-5 mt-1">keyboard_backspace</mat-icon> Go Back
+      </div>
+    </div>
+
+   <div class="container">
+  <div class="card shadow-sm rounded" style="height: 100%; background: #3eafed">
+    <div class="card bg-white shadow-sm rounded position-relative mt-1" style="height: 120px; width: 100%;">
+      <div class="container mt-3">
+        <div class="row justify-content-start">
+          <div class="col-12 col-md-8 col-lg-6">
+            <div class="text-break" style="
+                    color: black;
+                    font-size: 35px;
+                    font-family: Baskervville;
+                    font-weight: 400;
+                  ">
+              Deeksha Sharma
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="text-muted" style="
+                        font-size: 15px;
+                        font-family: Inter;
+                        font-weight: 400;
+                        word-wrap: break-word;
+                      ">
+                  Message sent on 07/06/2023 at 11:28
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col d-flex align-items-end justify-content-end">
+            
+            <div class="btn-group">
+              <button class="btn border dropdown-toggle" type="button" data-bs-toggle="dropdown" style="display: flex; align-items: center;">
+                <div class="rounded-circle me-3 status-bullet" style="background-color: #3eafed;"></div> <!-- Colored bullet prefix -->
+                <span>Replied</span>
+              </button>
+              <ul class="dropdown-menu">
+                <!-- Add dropdown menu items here -->
+                <li>
+                  <a class="dropdown-item d-flex align-items-center cursor-hover">
+                    <div class="rounded-circle me-3 status-bullet" style="background-color: 
+                    #F3B640;"></div>
+                    <span>Pending</span>
+                  </a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item d-flex align-items-center cursor-hover">
+                    <div class="rounded-circle me-3 status-bullet" style="background-color: #3da854;"></div>
+                    <span>Booked</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a class="dropdown-item d-flex align-items-center cursor-hover">
+                    <div class="rounded-circle me-3 status-bullet" style="background-color: #ED3E5E;"></div>
+                    <span>Discarded</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            
+           
+
+           
+
+            <!-- Add the three buttons here -->
+            <button type="button" class="btn mx-1 mr-5 custom-button1" [ngClass]="{ 'read-button': isRead, 'unread-button': !isRead }" (click)="toggleReadStatus()">
+              {{ isRead ? 'Unread' : 'Read' }}
+            </button>
+            
+            
+
+            <div class="print mr-5">
+              <div class="rectangle-306"></div>
+              <img loading="lazy" class="print2" src="assets\images\printIcon.svg" />
+            </div>
+
+            <div class="print mr-5">
+              <div class="rectangle-306"></div>
+              <img loading="lazy" class="print2" src="assets\images\shareIcon.svg" />
+            </div>
+
+            <div class="print mr-5">
+              <div class="rectangle-306"></div>
+              <img loading="lazy" class="print2" src="assets\images\threeDot.svg" />
+            </div>
+            
+            
+
+           
+            
+
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="m-4"></div>
+
+    <div class="container-fluid">
+      <div class="row ">
+        <div class="col-8">
+          <div class="container-fluid">
+            <div class="container align-items-start m-0 p-0">
+              <div class="row m-0 p-0">
+                <div class="col-1 align-self-end d-flex justify-content-center m-0 p-0">
+                  <img loading="lazy" src="assets\images\chatImg.svg" class="img-fluid rounded-circle" alt="Profile Image"
+                    />
+                </div>
+                <div class="col-11 m-0 p-0">
+                  <ckeditor [editor]="Editor" formControlName="description"></ckeditor>
+                </div>
+              </div>
+            </div>
+            
+            <div class="m-5"></div>
+
+            <div class="container align-items-start m-0 p-0">
+              <div class="row m-0 p-0">
+                <div class="col-1 align-self-end d-flex justify-content-center m-0 p-0">
+                  <img loading="lazy" src="assets\images\chatImg.svg" class="img-fluid rounded-circle" alt="Profile Image"
+                    />
+                </div>
+                <div class="col-11 m-0 p-0">
+                  <div class="container p-3" style="
+                  border-radius: 15px;
+                  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+                "> 
+                    <p>Dear guest thank you for showing interest in Hotel Gracia Golf. Our
+                      property is located at Golf Course Road Gurgaon. For further
+                      information please contact 9999575044</p>
+                   
+                      <div class="row">
+                        <div class="col datetext d-flex justify-content-between">
+                          <span>on 07/06/2023 at 11:55</span>
+                          <img loading="lazy" src="assets\images\seen.svg" alt="Seen" class="small-img ml-2">
+                        </div>
+                      </div>
+                    
+                  </div>
+                 
+                </div>
+              </div>
+            </div>
+
+
+            <div class="m-4"></div>
+
+
+            <div class="containerforline">
+              <div class="line"><mat-divider></mat-divider></div>
+              <div class="text mat-typography">RECEIVED ON 07/06/2023 AT 11:28</div>
+              <div class="line"><mat-divider></mat-divider></div> 
+            </div>
+
+            <div class="m-4"></div>
+
+            <div class="container align-items-end m-0 p-0">
+              <div class="row m-0 p-0 align-items-end">
+                <div class="col-11 m-0 p-0 align-items-end">
+                  <div class="container p-3" style="
+                  border-radius: 15px;
+                  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+                "> 
+                    <p><strong>Deeksha Sharma</strong></p>
+                   
+                      <div class="row">
+                        <div class="col d-flex justify-content-between">
+                          <span
+                          ><span class="phone-number-view-telephone-span">Event: </span
+                          ><span class="phone-number-view-telephone-span">December 2023</span></span
+                        >
+                          <span
+                          ><span class="phone-number-view-telephone-span">Phone number: </span
+                          ><span class="phone-number-view-telephone-span2">View telephone</span></span
+                        >
+                        </div>
+                        
+                      </div>
+
+                      <div class="row">
+                        <div class="col d-flex justify-content-between">
+                          <span
+                          ><span class="phone-number-view-telephone-span">Number of guests: </span
+                          ><span class="phone-number-view-telephone-span">200-300</span></span
+                        >
+                          <span
+                          ><span class="phone-number-view-telephone-span">Searching: </span
+                          ><span class="phone-number-view-telephone-span">Banquet Halls in Gurgaon</span></span
+                        >
+                        </div>
+                        
+                      </div>
+
+                      <hr>
+
+                      <p class="descriptext">Hello - we would love information on packages and services for Hotel
+                        Gracia Golf. Look forward to hearing from you!</p>
+
+                  </div>
+                 
+                </div>
+                <div class="col-1 align-self-end align-items-end  m-0 p-0 ">
+                  <img loading="lazy" src="assets\images\profilePic.png" class="img-fluid rounded-circle" alt="Profile Image"
+                    />
+                </div>
+              </div>
+            </div>
+            
+
+
+            
+           
+          
+
+            
+
+           
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="container-fluid">
+            <div class="row no-gutters">
+              <div class="card" style="
+                  border-radius: 15px;
+                  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+                ">
+                <img loading="lazy" src="assets/images/profilePic.png" class="mx-auto d-block rounded-circle mt-4 img-fluid"
+                  alt="Profile Picture" style="
+                    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+                    max-width: 150px;
+                    max-height: 150px;
+                  " />
+                <div class="card-body text-center">
+                  <h3 class="mb-0">Deeksha Sharma</h3>
+                  <p class="text-muted">
+                    Searching: Banquet Halls in<br />Gurgaon
+                  </p>
+                  <hr style="border: 0.5px rgba(0, 0, 0, 0.3) solid" />
+                  <p class="text-muted">Event: December 2023</p>
+                  <p class="text-muted">Number of guests: 200-300</p>
+                  <hr style="border: 0.5px rgba(0, 0, 0, 0.3) solid" />
+                  <h4>HOW DID IT GO?</h4>
+                  <div class="d-flex justify-content-center align-items-center">
+                    <div class="bg-success text-white rounded-circle d-flex justify-content-center align-items-center"
+                      style="
+                        width: 60px;
+                        height: 60px;
+                        border: 1px solid #3da854;
+                      "></div>
+                  </div>
+                  <div class="font-weight-bold" style="font-size: 20px">
+                    Booked
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,329 @@
+<div class="h-100 w-100">
+  <div class="dashboardCard_Container">
+    <ng-container *ngFor="let item of cards">
+      <div class="rounded-2 border-1 card text-center">
+        <div class=" text-center mt-4 ">
+          <img loading="lazy" [src]="item.icon" height="40px">
+          <span class="text-bold fs-3 align-middle mx-1">0</span>
+        </div>
+        <div style="font-family: Inter;
+    /* font-size: 20px; */
+    font-weight: 400;
+    ">{{item.title}}</div>
+        <div class="text-muted  mt-1">in the last 12 months</div>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="mt-4 p-2">
+    <h3 class="fw-light mb-4">Analytics</h3>
+    <div class="mt-2 chart-container border-1 shadow rounded-4">
+      <div class="analyticsDiv">
+        <div class="chartCardsDiv">
+          <div class="text-center chart-cards align-content-center d-grid fw-light "
+            *ngFor="let item of chartCards;let i = index"
+            [ngStyle]="{'background-color': i==0  ? 'F335351A' : '#fff' }">
+            <h5>
+              {{item.value}}
+            </h5>
+            <h6 class="">
+              {{item.title}}
+            </h6>
+          </div>
+        </div>
+        <div class="chartImgDiv">
+          <div class="mt-2 text-center">
+            <h3 class="fw-light">
+              Storefront impressions
+            </h3>
+            <h5 class="text-muted fw-light">
+              View the monthly Storefront impressions you received on Weddingaro.
+            </h5>
+          </div>
+          
+          <div class=" mt-4 text-center">
+            <img loading="lazy" src="https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/no-data.png" alt="" srcset="" class="analyticsImg">
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div> 
+<div class="reviewnMessageDiv gap-5">
+  <div style="max-width: 828px" class="p-4 flex-grow-1">
+    <div>
+      <h4>Recent messages</h4>
+      <div class="d-flex flex-column gap-3 mt-4"> 
+        <!-- <div
+          class="d-flex align-items-center justify-content-between gap-5 px-5 py-2 message-box pending-message"
+          style="max-width: 828px"
+        >
+          <div>
+            <img
+              loading="lazy"src="../../../../assets/images/w1.svg"
+              width="80px"
+              class="rounded-circle"
+              alt=""
+            />
+          </div>
+          <div class="">
+            <h5>Arun</h5>
+            <p>
+              <small>On 29/06/2023 at 16:16</small>
+              <span class="badge text-bg-light">Light</span>
+            </p>
+            <p>
+              We would like to learn more about packages and rates for weddings
+              at Hotel Gracia Golf. Can you send through some additional
+              information? Thanks!
+            </p>
+          </div>
+          <div style="min-height: 120px; border: 1px solid gray"></div>
+          <div class="fs-14" style="color: #787878; text-align: center">
+            <div>
+              <i class="fa-solid fa-users"></i>
+              <p class="text-nowrap">0-100 guests</p>
+            </div>
+            <div>
+              <i class="fa-regular fa-calendar"></i>
+              <p class="text-nowrap">0-100 guests</p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="d-flex align-items-center justify-content-between gap-5 px-5 py-2 message-box pending-message"
+          style="max-width: 828px"
+        >
+          <div>
+            <img
+              loading="lazy"src="../../../../assets/images/w1.svg"
+              width="80px"
+              class="rounded-circle"
+              alt=""
+            />
+          </div>
+          <div class="">
+            <h5>Arun</h5>
+            <p>
+              <small>On 29/06/2023 at 16:16</small>
+              <span class="badge text-bg-light">Light</span>
+            </p>
+            <p>
+              We would like to learn more about packages and rates for weddings
+              at Hotel Gracia Golf. Can you send through some additional
+              information? Thanks!
+            </p>
+          </div>
+          <div style="min-height: 120px; border: 1px solid gray"></div>
+          <div class="fs-14" style="color: #787878; text-align: center">
+            <div>
+              <i class="fa-solid fa-users"></i>
+              <p class="text-nowrap">0-100 guests</p>
+            </div>
+            <div>
+              <i class="fa-regular fa-calendar"></i>
+              <p class="text-nowrap">0-100 guests</p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="d-flex align-items-center justify-content-between gap-5 px-5 py-2 message-box pending-message"
+          style="max-width: 828px"
+        >
+          <div>
+            <img
+              loading="lazy"src="../../../../assets/images/w1.svg"
+              width="80px"
+              class="rounded-circle"
+              alt=""
+            />
+          </div>
+          <div class="">
+            <h5>Arun</h5>
+            <p>
+              <small>On 29/06/2023 at 16:16</small>
+              <span class="badge text-bg-light">Light</span>
+            </p>
+            <p>
+              We would like to learn more about packages and rates for weddings
+              at Hotel Gracia Golf. Can you send through some additional
+              information? Thanks!
+            </p>
+          </div>
+          <div style="min-height: 120px; border: 1px solid gray"></div>
+          <div class="fs-14" style="color: #787878; text-align: center">
+            <div>
+              <i class="fa-solid fa-users"></i>
+              <p class="text-nowrap">0-100 guests</p>
+            </div>
+            <div>
+              <i class="fa-regular fa-calendar"></i>
+              <p class="text-nowrap">0-100 guests</p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="d-flex align-items-center justify-content-between gap-5 px-5 py-2 message-box pending-message"
+          style="max-width: 828px"
+        >
+          <div>
+            <img
+              loading="lazy"src="../../../../assets/images/w1.svg"
+              width="80px"
+              class="rounded-circle"
+              alt=""
+            />
+          </div>
+          <div class="">
+            <h5>Arun</h5>
+            <p>
+              <small>On 29/06/2023 at 16:16</small>
+              <span class="badge text-bg-light">Light</span>
+            </p>
+            <p>
+              We would like to learn more about packages and rates for weddings
+              at Hotel Gracia Golf. Can you send through some additional
+              information? Thanks!
+            </p>
+          </div>
+          <div style="min-height: 120px; border: 1px solid gray"></div>
+          <div class="fs-14" style="color: #787878; text-align: center">
+            <div>
+              <i class="fa-solid fa-users"></i>
+              <p class="text-nowrap">0-100 guests</p>
+            </div>
+            <div>
+              <i class="fa-regular fa-calendar"></i>
+              <p class="text-nowrap">0-100 guests</p>
+            </div>
+          </div>
+        </div> -->
+      <!-- </div>
+    </div> -->
+    <!-- <div class="view-all-messages">
+      <button>View all messages</button>
+    </div> -->
+    <!-- <div class="view-all-messages">
+      <h5 class="custom-text-color text-bg-light bg-white">No Messages</h5>
+    </div> -->
+    <!-- <div class="my-50">
+      <h4>Recent reviews</h4> -->
+      <!-- <div class="reviws-carusel">
+        <div
+          id="carouselExampleAutoplaying"
+          class="carousel slide"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div style="padding: 30px 80px">
+                <div class="d-flex flex-row gap-4">
+                  <div>
+                    <img
+              loading="lazy"        src="../../../../assets/images/w1.svg"
+                      width="80px"
+                      class="rounded-circle"
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <h5>Arun</h5>
+                    <p>
+                      <span class="badge custom-badge"
+                        >4.5 <i class="fa-solid fa-star"></i
+                      ></span>
+                      <small>Sent on 05/09/2022</small>
+                    </p>
+                    <p>
+                      We would like to learn more about packages and rates for
+                      weddings at Hotel Gracia Golf. Can you send through some
+                      additional information? Thanks!
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div style="padding: 30px 80px">
+                <div class="d-flex flex-row gap-4">
+                  <div>
+                    <img
+              loading="lazy"        src="../../../../assets/images/w1.svg"
+                      width="80px"
+                      class="rounded-circle"
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <h5>Arun</h5>
+                    <p>
+                      <span class="badge custom-badge"
+                        >4.5 <i class="fa-solid fa-star"></i
+                      ></span>
+                      <small>Sent on 05/09/2022</small>
+                    </p>
+                    <p>
+                      We would like to learn more about packages and rates for
+                      weddings at Hotel Gracia Golf. Can you send through some
+                      additional information? Thanks!
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev controls-button"
+            type="button"
+            data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next controls-button"
+            type="button"
+            data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
+        <button class="w-100 fs-20 py-2 custom-button1">Seel all</button>
+      </div> -->
+
+      <!-- <div class=" text-center mt-5">
+        <h5 class="custom-text-color text-bg-light bg-white">No Reviews</h5>
+      </div>
+    </div> -->
+  <!-- </div>
+  <div class="p-4 d-flex flex-column gap-5">
+    <div class="message-box overflow-hidden">
+      <div class="p-4">
+        <h5>FEATURE HIGHLIGHT</h5>
+        <p class="align-items-center">
+          <i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i
+            class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i> 4.0 / 5.0
+        </p>
+        <h4>Boost your credibility with reviews</h4>
+        <p>
+          Quickly and easily request reviews with a customised email to your
+          past clients.
+        </p>
+      </div>
+      <button class="w-100 fs-20 py-2 custom-button1">Request reviews</button>
+    </div>
+    <div class="message-box p-4 tips">
+      <h5>TIP</h5>
+      <h4>Improve your response time</h4>
+      <p>
+        Respond to leads within 24 hours to increase your booking opportunity!
+      </p>
+    </div>
+  </div> -->

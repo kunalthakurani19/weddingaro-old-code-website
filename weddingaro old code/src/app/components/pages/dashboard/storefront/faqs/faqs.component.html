@@ -1,0 +1,195 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="faq-div">
+        <h2 class="faqs">FAQs</h2>
+        <div class="d-flex flex-column gap-4 details align-items-center">
+          <div><img loading="lazy" src="../../../../../../assets/images/faq.svg" alt="" /></div>
+          <div class="fs-18">
+            <h5>Please provide details about your services.</h5>
+            <p class="pb">
+              Add answers to frequently asked questions about your business to give couples a better understanding of
+              your offering before deciding whether to contact you.
+            </p>
+          </div>
+        </div>
+        <div class="fs-18 questions">
+          <h5>4 more questions require answers</h5>
+          <p class="pb">
+            We recommend you answer all the FAQs for your category so you receive higher-quality leads from couples.
+          </p>
+        </div>
+        <div class="faq-form">
+          <div>
+            <div class="done d-flex justify-content-between align-items-center">
+              <h5 style="max-width: 700px">
+                <span class="done1">1.</span> What is the price of items that includes beverages, food appetisers, main course &
+                dessert items?
+              </h5>
+              <i class="done1 fa-solid fa-check fa-2xl"></i>
+            </div>
+            <div>
+              <p>
+                Enter your average pricing in order for your Storefront to appear
+                in results when couples search by price.
+              </p>
+              <div>
+                <label class="form-label">Price Per Plate</label>
+                <div class="input-group fs-24">
+                  <span style="margin-right: 10px">₹</span>
+                  <input class="faq-input" [(ngModel)]="faqForm.platePricing" type="number" min="0" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="pending d-flex justify-content-between align-items-center">
+              <h5 style="max-width: 700px">
+                <span class="pending1">2.</span> How many guests can you
+                accommodate in your event space?
+              </h5>
+              <h5 class="pending1">PENDING</h5>
+            </div>
+            <div class="d-flex gap-5 flex-wrap">
+              <div class="d-flex fs-18 flex-column flex-nowrap">
+                <label class="form-label">Minimum number of guests</label>
+                <input class="faq-input" type="text" [(ngModel)]="faqForm.guestAccomodation.min" type="number" min="0"
+                  [max]="faqForm.guestAccomodation.max" />
+              </div>
+              <div class="d-flex fs-18 flex-column flex-nowrap">
+                <label class="form-label">Maximum number of guests</label>
+                <input class="faq-input" type="text" [(ngModel)]="faqForm.guestAccomodation.max" type="number"
+                  [min]="faqForm.guestAccomodation.min" />
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="pending d-flex justify-content-between align-items-center">
+              <h5 style="max-width: 700px">
+                <span class="pending1">3.</span> Are you ready to host/provide
+                service to events during COVID19, following the government
+                guidelines?
+              </h5>
+              <h5 class="pending1">PENDING</h5>
+            </div>
+            <div class="d-flex gap-5 flex-wrap">
+              <div class="d-flex fs-18 flex-row align-items-center flex-nowrap">
+                <input class="faq-checkbox" type="checkbox"
+                  [(ngModel)]="faqForm.covid19Enabled.informationNotAvailable" />
+                <label>Information not available</label>
+              </div>
+              <div class="d-flex fs-18 flex-row align-items-center flex-nowrap">
+                <input class="faq-checkbox" type="checkbox" [(ngModel)]="faqForm.covid19Enabled.notOperational" />
+                <label>Not operational</label>
+              </div>
+              <div class="d-flex fs-18 flex-row align-items-center flex-nowrap">
+                <input class="faq-checkbox" type="checkbox" [(ngModel)]="faqForm.covid19Enabled.yes" />
+                <label>Yes</label>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="pending d-flex justify-content-between align-items-center">
+              <h5 style="max-width: 700px">
+                <span class="pending1">4.</span> What all menus & catering options
+                do you have?
+              </h5>
+              <h5 class="pending1">PENDING</h5>
+            </div>
+            <div class="row row-cols-3 gy-5">
+              <div class="d-flex fs-18 flex-row align-items-center flex-nowrap">
+                <input class="faq-checkbox" type="checkbox" [(ngModel)]="faqForm.menuCaterings.northIndian" />
+                <label>North indian/ mughlai</label>
+              </div>
+              <div class="d-flex fs-18 flex-row align-items-center flex-nowrap">
+                <input class="faq-checkbox" type="checkbox" [(ngModel)]="faqForm.menuCaterings.italian" />
+                <label>Italian/ european/ continental</label>
+              </div>
+              <div class="d-flex fs-18 flex-row align-items-center flex-nowrap">
+                <input class="faq-checkbox" type="checkbox" [(ngModel)]="faqForm.menuCaterings.chinese" />
+                <label>Chinese/ thai/ oriental</label>
+              </div>
+              <div class="d-flex fs-18 flex-row align-items-center flex-nowrap">
+                <input class="faq-checkbox" type="checkbox" [(ngModel)]="faqForm.menuCaterings.southIndian" />
+                <label>South indian</label>
+              </div>
+              <div class="d-flex fs-18 flex-row align-items-center flex-nowrap">
+                <input class="faq-checkbox" type="checkbox" [(ngModel)]="faqForm.menuCaterings.garlicOnionFree" />
+                <label>Garlic Free/ Onion Free</label>
+              </div>
+              <div class="d-flex fs-18 flex-row align-items-center flex-nowrap">
+                <input class="faq-checkbox" type="checkbox" [(ngModel)]="faqForm.menuCaterings.liveFoodCounters" />
+                <label>Live food counters</label>
+              </div>
+              <div class="d-flex fs-18 flex-row align-items-center flex-nowrap">
+                <input class="faq-checkbox" type="checkbox" [(ngModel)]="faqForm.menuCaterings.chaat" />
+                <label>Chaat & indian street food</label>
+              </div>
+              <div class="d-flex fs-18 flex-row align-items-center flex-nowrap">
+                <input class="faq-checkbox" type="checkbox" [(ngModel)]="faqForm.menuCaterings.seafood" />
+                <label>Seafood</label>
+              </div>
+              <div class="d-flex fs-18 flex-row align-items-center flex-nowrap">
+                <input class="faq-checkbox" type="checkbox" [(ngModel)]="faqForm.menuCaterings.drinks" />
+                <label>Drinks (non-alcoholic)</label>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="pending d-flex justify-content-between align-items-center">
+              <h5 style="max-width: 700px">
+                <span class="pending1">5.</span> How would you describe your event
+                spaces?
+              </h5>
+              <h5 class="pending1">PENDING</h5>
+            </div>
+            <div class="row row-cols-3 gy-5">
+              <div class="d-flex fs-18 flex-row align-items-center flex-nowrap">
+                <input class="faq-checkbox" type="checkbox" [(ngModel)]="faqForm.eventSpaces.banquet" />
+                <label>Banquet</label>
+              </div>
+              <div class="d-flex fs-18 flex-row align-items-center flex-nowrap">
+                <input class="faq-checkbox" type="checkbox" [(ngModel)]="faqForm.eventSpaces.hotel" />
+                <label>Hotel</label>
+              </div>
+              <div class="d-flex fs-18 flex-row align-items-center flex-nowrap">
+                <input class="faq-checkbox" type="checkbox" [(ngModel)]="faqForm.eventSpaces.farmHouse" />
+                <label>Farmhouse</label>
+              </div>
+              <div class="d-flex fs-18 flex-row align-items-center flex-nowrap">
+                <input class="faq-checkbox" type="checkbox" [(ngModel)]="faqForm.eventSpaces.lawn" />
+                <label>Lawn</label>
+              </div>
+              <div class="d-flex fs-18 flex-row align-items-center flex-nowrap">
+                <input class="faq-checkbox" type="checkbox" [(ngModel)]="faqForm.eventSpaces.resort" />
+                <label>Resort</label>
+              </div>
+              <div class="d-flex fs-18 flex-row align-items-center flex-nowrap">
+                <input class="faq-checkbox" type="checkbox" [(ngModel)]="faqForm.eventSpaces.marriageGarden" />
+                <label>Marriage garden</label>
+              </div>
+              <div class="d-flex fs-18 flex-row align-items-center flex-nowrap">
+                <input class="faq-checkbox" type="checkbox" [(ngModel)]="faqForm.eventSpaces.palace" />
+                <label>Palace/fort</label>
+              </div>
+              <div class="d-flex fs-18 flex-row align-items-center flex-nowrap">
+                <input class="faq-checkbox" type="checkbox" [(ngModel)]="faqForm.eventSpaces.mandapam" />
+                <label>Mandapam</label>
+              </div>
+              <div class="d-flex fs-18 flex-row align-items-center flex-nowrap">
+                <input class="faq-checkbox" type="checkbox" [(ngModel)]="faqForm.eventSpaces.marriageGarden" />
+                <label>Marriage or community halls</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center align-items-center text-center mt-4">
+        <button class="faq-save" (click)="submitForm()">Next</button>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <app-common-store-sidebar></app-common-store-sidebar>
+    </div>
+  </div>
+</div>

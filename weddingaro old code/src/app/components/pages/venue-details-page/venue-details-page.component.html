@@ -1,0 +1,395 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="">
+        <div class="container1">
+
+          <div class="horizontal shadow  "><img loading="lazy" class="img-fluid"
+              [src]="store?.photos?.[1]?.url || imgLink.noImageAvailble" />
+          </div>
+          <div class="vertical position-relative">
+            <img loading="lazy" class="img-fluid" [src]="store?.photos?.[0]?.url || imgLink.noImageAvailble" />
+
+            <div class="all-photo-button position-absolute bottom-0 start-0 w-100">
+              <button class="button1 w-100 h-100" (click)="scrollToUserPhotos()">All Photo</button>
+            </div>
+          </div>
+
+
+
+          <div class="horizontal shadow"><img loading="lazy" class="img-fluid"
+              [src]=" store?.photos?.[2]?.url || imgLink.noImageAvailble " /></div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mt-3 mt-md-0">
+      <div class="d-flex justify-content-between align-items-start">
+        <div class="venue-heading text-start">{{ store?.businessdetails?.businessName }}</div>
+        <!-- hearticon -->
+        <div>
+          <!-- <div class="position-absolute heart-container"  >
+            <div class="small-heart" (click)="toggleSelected(venueId)">
+              <div class="inner-heart"></div>
+            </div>
+          </div>
+  
+          <div class="position-absolute heart-container" >
+            <div class="large-heart" (click)="toggleSelected(venueId)">
+              <div class="inner-heart"></div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+
+      <div style="border: 2px solid gray; display: inline-flex" class="my-2 gap-2 p-1 align-items-center flex-row h-30">
+        <div *ngIf="reviewDetails?.overworlreview !== undefined; else noReview">
+          {{ reviewDetails?.overworlreview || "no reviews" }} <i class="fa-solid fa-star custom-text-color"></i>
+        </div>
+        <ng-template #noReview>
+          No review available
+        </ng-template>
+
+        <div style="height: 80%; border: 1px solid gray"></div>
+        <div>{{reviewDetails?.totalreviews}} reviews</div>
+      </div>
+
+      <div class="my-2">
+        <i class="fa-sharp fa-solid fa-location-dot mx-1 custom-text-color"></i>
+        {{ store?.location?.formatted_address || "location not available"}}
+      </div>
+
+      <div class="my-2">
+        <div class="guests-price">
+          <div>
+            <i
+              class="{{ showGuestCountField ? 'fa-solid fa-utensils' : 'fa-solid fa-wallet' }} mx-1 custom-text-color"></i>
+            {{ showGuestCountField ? 'Price per Plate:' : 'Pricing:' }}<span> {{ store?.faq?.platePricing || "NA" }}
+            </span>
+          </div>
+          <div style="border: 1px solid gray; padding: 0px"></div>
+          <div *ngIf="showGuestCountField">
+            <div
+              *ngIf="showGuestCountField && (store?.faq?.guestAccomodation?.min !== null && store?.faq?.guestAccomodation?.min !== '') && (store?.faq?.guestAccomodation?.max !== null && store?.faq?.guestAccomodation?.max !== '')">
+              <i class="fa-solid fa-users mx-1 custom-text-color"></i>
+              {{ store?.faq?.guestAccomodation?.min }} to {{ store?.faq?.guestAccomodation?.max }} guests
+            </div>
+            <div
+              *ngIf="showGuestCountField && (store?.faq?.guestAccomodation?.min === null || store?.faq?.guestAccomodation?.min === '') || (store?.faq?.guestAccomodation?.max === null || store?.faq?.guestAccomodation?.max === '')">
+              <i class="fa-solid fa-users mx-1 custom-text-color"></i>
+              Guests Capacity: <span>{{ "NA" }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button class="button1 w-100 rounded h-60" (click)="openModal()">Request pricing</button>
+      </div>
+      <div>
+      </div>
+    </div>
+  </div>
+
+  <div class="my-40">
+    <div>
+      <h4>ABOUT</h4>
+
+      <p class="lead">On Weddingaro since 2020 . Last update: June 2023</p>
+
+      <p [innerHTML]="store?.businessdetails?.description">
+      </p>
+    </div>
+  </div>
+  <div class="my-40">
+    <h4>MORE INFORMATION</h4>
+
+    <div *ngIf="store?.menus?.length > 0">
+      <div class="mb-2">What all menus & catering options do you have?</div>
+      <div class="photo-grid1">
+        <div class="container p-2 rounded-3  " *ngFor="let item of store?.menus"
+          style="height: max-content; background-color: rgb(246, 246, 246); ">
+          <div class="text-center">
+            <h4>{{item.menuName}}</h4>
+            <div class="text-black-50" [innerHTML]="item.menuDetails"></div>
+            <p> <span class="text-black-50">Price:</span> ₹{{item.price}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- <div class="w-100 d-flex align-content-center justify-content-center"> -->
+    <!-- <button style="
+          border: 2px solid#f36666;
+          font-size: 20px;
+          background-color: #fff;
+        " class="rounded px-5 py-2 custom-text-color">
+        View more FAQs
+      </button> -->
+    <!-- </div> -->
+  </div>
+  <div class="my-40">
+    <div class="d-flex flex-row justify-content-between align-items-center">
+      <div>
+        <h4>Ratings <i class="fa-regular fa-star"></i></h4>
+      </div>
+      <div>
+        <button style="
+            border: 2px solid#f36666;
+            font-size: 20px;
+            background-color: #fff;
+          " class="rounded px-5 py-2 custom-text-color" (click)="navigateToVenueDetails(venueId)">
+          Write a review
+        </button>
+      </div>
+    </div>
+    <div class="d-flex rating-section" *ngIf="reviewDetails && reviewDetails?.totalreviews > 0">
+      <div class="text-center">
+        <div class="fs-70">
+          <div *ngIf="reviewDetails?.overworlreview !== undefined; else noReview">
+            {{ reviewDetails?.overworlreview }} <i class="fa-solid fa-star custom-text-color"></i>
+          </div>
+          <ng-template #noReview>
+            No review available
+          </ng-template>
+        </div>
+        <!-- <p>{{reviewDetails?.totalreviews}} Ratings</p> -->
+      </div>
+      <div class="vr-div"></div>
+      <div class="circle-progress-div">
+        <div>
+          <div>
+            <circle-progress
+              [percent]="reviewDetails?.totalreview?.qualityservice?.average ? reviewDetails.totalreview.qualityservice.average * 20 : 0"
+              [title]="reviewDetails?.totalreview?.qualityservice?.average ? reviewDetails.totalreview.qualityservice.average.toFixed(1) : 'N/A'"
+              [outerStrokeColor]="'rgba(153, 153, 153, 1)'" [innerStrokeColor]="'rgba(153, 153, 153, 0.3)'"
+              [outerStrokeGradientStopColor]="'rgba(153, 153, 153, 1)'"></circle-progress>
+            <div>Quality of service</div>
+          </div>
+        </div>
+        <div>
+          <circle-progress [outerStrokeColor]="'rgba(255, 191, 82, 1)'" [innerStrokeColor]="'rgba(255, 191, 82, 0.3)'"
+            [outerStrokeGradientStopColor]="'rgba(255, 191, 82, 1)'"
+            [percent]="reviewDetails?.totalreview?.responsiveness?.average ? reviewDetails.totalreview.responsiveness.average * 20 : 0"
+            [title]="reviewDetails?.totalreview?.responsiveness?.average ? reviewDetails.totalreview.responsiveness.average.toFixed(1) : 'N/A'"></circle-progress>
+          <div>Response time</div>
+        </div>
+        <div>
+          <circle-progress [outerStrokeColor]="'rgba(255, 156, 56, 1)'" [innerStrokeColor]="'rgba(255, 156, 56, 0.3)'"
+            [outerStrokeGradientStopColor]="'rgba(255, 156, 56, 1)'"
+            [percent]="reviewDetails?.totalreview?.professionalism?.average ? reviewDetails.totalreview.professionalism.average * 20 : 0"
+            [title]="reviewDetails?.totalreview?.professionalism?.average ? reviewDetails.totalreview.professionalism.average.toFixed(1) : 'N/A'"></circle-progress>
+          <div>Professionalism</div>
+        </div>
+        <div>
+          <circle-progress [outerStrokeColor]="'rgba(143, 224, 49, 1)'" [innerStrokeColor]="'rgba(143, 224, 49, 0.3)'"
+            [outerStrokeGradientStopColor]="'rgba(143, 224, 49, 1)'"
+            [percent]="reviewDetails?.totalreview?.value?.average ? reviewDetails.totalreview.value.average * 20 : 0"
+            [title]="reviewDetails?.totalreview?.value?.average ? reviewDetails.totalreview.value.average.toFixed(1) : 'N/A'"></circle-progress>
+          <div>Value</div>
+        </div>
+        <div>
+          <circle-progress [outerStrokeColor]="'rgba(44, 199, 44, 1)'" [innerStrokeColor]="'rgba(44, 199, 44, 0.3)'"
+            [outerStrokeGradientStopColor]="'rgba(44, 199, 44, 1)'"
+            [percent]="reviewDetails?.totalreview?.flexibility?.average ? reviewDetails.totalreview.flexibility.average * 20 : 0"
+            [title]="reviewDetails?.totalreview?.flexibility?.average ? reviewDetails.totalreview.flexibility.average.toFixed(1) : 'N/A'"></circle-progress>
+          <div>Flexibility</div>
+        </div>
+      </div>
+
+    </div>
+    <div *ngIf="!reviewDetails || reviewDetails?.totalreviews === 0">
+      <p>No reviews available</p>
+    </div>
+
+    <div>
+      <h4>{{reviewDetails?.totalreviews}} Reviews</h4>
+      <div class="my-40 review-div" *ngFor="let item of reviewDetails?.reviews">
+        <div class="d-flex gap-3">
+          <div class="d-flex flex-column align-items-end justify-content-end review-left-div">
+            <!-- <div class="review-owner-img">
+              <div> {{item.user.fname}}  </div>
+            </div> -->
+          </div>
+          <div class="review-side h-100 w-100">
+            <div class="p-20 review-header">
+              <div>
+                <span class="mr-20 rating-span">{{averageOverall }} <i class="fa-solid fa-star"></i></span>
+                <!-- <span>Married on 10/08/2022</span> -->
+              </div>
+              <div class="fs-20 fw-bold">{{item.title}}</div>
+              <div class="fs-17">
+                {{item.experiance}}
+              </div>
+            </div>
+            <div class="h-66 review-footer px-20">
+              <div class="review-owner-name">{{item.user.fname}} {{item.user.lname}}</div>
+              <div class="review-date">Sent on 23/12/2022</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- <div class="w-100 d-flex align-items-center justify-content-center">
+        <button style="
+            border: 2px solid#f36666;
+            font-size: 20px;
+            background-color: #fff;
+            text-align: center;
+          " class="rounded px-5 py-2 custom-text-color">
+          See more reviews <i class="fas fa-arrow-right"></i>
+        </button>
+      </div> -->
+    </div>
+
+    <div id="user-photos">
+      <h4>PHOTOS</h4>
+      <div class="d-flex flex-wrap ">
+        <div class="uploaded-image-container rounded border-1 shadow mx-3 my-3" *ngFor="let photo of store?.photos">
+          <div class="title-image">
+            <img loading="lazy" src="{{ photo?.url }}" alt="Photo" class="title-image" (click)="openImagePreviewDialog(photo?.url)">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="m-2"></div>
+
+  </div>
+  <div>
+
+  </div>
+</div>
+
+
+
+<div *ngIf="showModal" class="modal" [ngClass]="{ show: showModal }">
+  <div class="modal-content" style="width: 500px">
+    <button (click)="closeModal()" type="button" class="btn-close close mt-2 mr-2" aria-label="Close"></button>
+    <div>
+      <div class="text-center fs-25 fw-400" style="font-family: Baskervville">
+        Request Pricing
+      </div>
+      <hr />
+      <form [formGroup]="taskForm">
+        <label for="dishName" class="form-label m-0 p-0">NAME <span class="label-color">*</span></label>
+        <input type="text  " class="form-control mb-3" id="dishName" placeholder="Enter Full Name"
+          formControlName="name" />
+
+        <div class="row">
+          <div class="">
+            <label class="form-label m-0 p-0">Email <span class="label-color">*</span></label>
+            <input type="email" class="form-control mb-3" id="dishName" placeholder="Enter Your Email"
+              formControlName="email" />
+          </div>
+
+        </div>
+
+
+        <div class="row">
+          <div class="col-6">
+            <label class="form-label m-0 p-0">Event Date <span class="label-color">*</span></label>
+            <input type="date" class="form-control mb-3" id="dishName" placeholder="Enter Your Event Date"
+              formControlName="evendate" style="text-transform: uppercase;" />
+          </div>
+          <div *ngIf="store?.faq?.guestAccomodation?.min  > 0 && store?.faq?.guestAccomodation?.max  > 2" class="col-6">
+            <ng-container *ngIf="showGuestCountField">
+              <label class="form-label m-0 p-0">Approx. Guest Count <span class="label-color">*</span></label>
+              <input type="number" class="form-control mb-3" placeholder="Enter Guest Member"
+                formControlName="totalguest" min="1" max="{{ store?.faq?.guestAccomodation?.max }}" />
+              <div *ngIf="taskForm.get('totalguest')!.hasError('max')
+                  " class="text-danger">
+                Please provide the guest count in the range 1 to {{store?.faq?.guestAccomodation?.max }}.
+              </div>
+            </ng-container>
+          </div>
+        </div> 
+
+
+
+        <div class="form-group">
+          <label class="form-label m-0 p-0">Phone number <span class="label-color">*</span></label>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <select class="form-control dropdown" id="exampleFormControlSelect1" formControlName="countrycode">
+                <option value="" selected>
+                  country code
+                </option>
+                <option *ngFor="let countryCode of countryCodes" [value]="countryCode.dial_code">
+                  {{ countryCode.dial_code }} - {{ countryCode.code }}
+                </option>
+              </select>
+            </div>
+            <input type="tel" class="form-control" aria-label="Text input with dropdown button"
+              formControlName="phonenumber" maxlength="10" minlength="10">
+          </div>
+
+          <div class="text-danger" *ngIf="taskForm.get('phonenumber')?.errors?.pattern">
+            Please enter a valid mobile number with 10 digits
+          </div>
+        </div>
+
+
+
+
+
+
+        <label for="dishName" class="form-label m-0 p-0">Message<span class="label-color">*</span></label>
+        <textarea class="form-control" id="dishDescription" placeholder="Description of message..."
+          formControlName="message" rows="5"></textarea>
+
+
+        <div class="d-flex justify-content-between align-items-center m-2"></div>
+        <div class="text-center">
+          <button type="button" class="btn btn-danger custom-button-dark m-2" (click)="createRequest()"
+            [disabled]="taskForm.invalid">
+            Send
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="showSuccessModal" class="modal" [ngClass]="{ show: showSuccessModal }">
+  <div class="modal-content" style="width: 500px; border-radius: 25px">
+    <!-- <button (click)="closeSuccessModal()" type="button" class="btn-close close mt-2 mr-2" aria-label="Close"></button> -->
+    <div class="text-center">
+      <div class="text-center mt-2">
+        <img loading="lazy" src="/assets/images/check.svg" alt="" height="90px" width="90px" />
+      </div>
+      <div class="text-center fs-30 fw-500 m-2" style="font-family: Baskervville">
+        Success!
+      </div>
+      <div class="text-center fs-17 fw-500 m-2" style="font-family: Baskervville">
+        Your messsage send sucessfully we will get back with you soon...
+      </div>
+      <div class="text-center mt-3">
+        <button type="button" class="btn btn-danger custom-button-dark" (click)="closeSuccessModal()">
+          close
+        </button>
+      </div>
+      <!-- Display your success message content here -->
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- imp -->
+
+
+<!-- <div class="photo-grid">
+      
+      
+      
+    </div> -->

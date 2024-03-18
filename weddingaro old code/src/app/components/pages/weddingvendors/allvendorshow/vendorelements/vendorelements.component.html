@@ -1,0 +1,202 @@
+<div class="contaienr ">
+    <div class="d-flex align-items-center justify-content-between">
+        <div>
+            <span class="fw-400 fs-35 mr-10" style="font-family: Baskervville;">All</span>
+            <span class="  fs-20 text-black-50" style="font-family: Baskervville;"> {{storeDetails.length}}
+                vendors</span>
+        </div>
+        <!-- <button type="button" class="btn btn-primary custom-button-dark m-3" routerLink="/">Add Vendor</button> -->
+
+    </div>
+    <hr class="mt-4 mb-4">
+
+    <!-- <ng-container *ngFor="let venue of venueCards">
+          <app-venue-card [cardInput]="venue"></app-venue-card>
+        </ng-container> -->
+
+
+    <!-- <ng-container *ngIf="searchPerformed" class="m-0 p-0">
+    <div class="mx-5 featured-wedding-title">Search Result </div>
+    <ng-container *ngIf="stores && stores.length > 0; else noData">
+      <div class="row p-0 m-0">
+        <div *ngFor="let venue of stores" class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 ">
+          <app-venue-card [cardInput]="venue"></app-venue-card>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #noData>
+      <div class="text-center">
+        <img loading="lazy" src="https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/no-data.png" height="400" width="400" alt="" srcset="">
+      </div>
+    </ng-template>
+  </ng-container> -->
+
+
+    <div class="container-fluid">
+        <ng-container *ngIf="storeDetails.length else noData">
+            <div class="row">
+                <div *ngFor="let venue of storeDetails"
+                    class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 zoom-img cursor-hover">
+                    <div class="card-weaper cursor-hover">
+
+
+
+
+                        <div class="card-img-div"  >
+                            <carousel [isAnimated] ="true" >
+                                <slide *ngFor="let photo of venue.store?.photos; let i = index">
+                                    <img loading="lazy" height="200px" width="320px" [src]="photo.url" alt="" />
+
+                                    <div class="heart-icon"
+                                        (click)="removeFavoriteVendor(venue.store?._id, venue.category?._id)">
+                                        <i class="material-icons"
+                                            style="color: white; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);">close</i>
+                                    </div>
+                                </slide>
+                            </carousel>
+                        </div>
+
+
+
+
+
+
+                        <div class="c-card-footer" (click)="navigateToVenueDetails(venue.store?._id)">
+                            <div class="text-center d-flex  justify-content-centerd-flex  justify-content-center ">
+
+
+                            </div>
+
+                            <div class="contaner">
+                                <div class="p-3">
+                                    <div class="fw-500 fs-17 text-truncate">
+                                        {{venue.store?.businessdetails?.businessName || ""}}
+                                    </div>
+                                    <div class="fw-400 fs-23">
+                                        {{venue.store?.location?.city || ""}}
+                                    </div>
+                                    <div class="fw-400 fs-17 custom-text-truncate">
+                                        {{venue.store?.location?.place || ""}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-cols-2 mx-15 fs-13 fw-600 mt-4">
+
+                                <div class="col mb-4">
+
+                                    <div class="fs-17 fw-400 ">
+                                        PRICE
+                                    </div>
+                                    <div>
+                                        <i class="fa-solid fa-utensils mx-1 custom-text-color"></i>FROM
+                                        {{ venue.store?.faq?.platePricing }}
+                                    </div>
+                                    <div>
+                                        <i class="fa-solid fa-users mx-1 custom-text-color"></i>
+                                        {{ venue.store?.faq?.guestAccomodation.min }} to
+                                        {{venue.store?.faq?.guestAccomodation.max }}
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="card-a text-center h-40 fw-bold " (click)="openModal()">
+                                Request Pricing
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+        <ng-template #noData>
+            <div class="text-center ">
+                <img loading="lazy" src="https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/no-favroite.png" height="400" width="400" alt="" srcset="">
+            </div>
+        </ng-template>
+    </div>
+
+    <div *ngIf="showModal" class="modal" [ngClass]="{ show: showModal }">
+        <div class="modal-content" style="width: 500px">
+            <button (click)="closeModal()" type="button" class="btn-close close mt-2 mr-2" aria-label="Close"></button>
+            <div>
+                <div class="text-center fs-25 fw-400" style="font-family: Baskervville">
+                    Request Pricing
+                </div>
+                <hr />
+                <form [formGroup]="taskForm">
+                    <label for="dishName" class="form-label m-0 p-0">NAME <span class="label-color">*</span></label>
+                    <input type="text  " class="form-control mb-3" id="dishName" placeholder="Enter Full Name"
+                        formControlName="name" />
+
+                    <div class="row">
+                        <div class="">
+                            <label class="form-label m-0 p-0">Email <span class="label-color">*</span></label>
+                            <input type="email" class="form-control mb-3" id="dishName" placeholder="Enter Your Email"
+                                formControlName="email" />
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-6">
+                            <label class="form-label m-0 p-0">Event Date <span class="label-color">*</span></label>
+                            <input type="date" class="form-control mb-3" id="dishName"
+                                placeholder="Enter Your Event Date" formControlName="evendate" style="text-transform: uppercase;"  />
+                        </div>
+                        <div class="col-6">
+                            <!-- <ng-container *ngIf="showGuestCountField">
+                                <label class="form-label m-0 p-0">Approx. Guest Count <span
+                                        class="label-color">*</span></label>
+                                <input type="text" class="form-control mb-3" placeholder="Enter Guest Member"
+                                    formControlName="totalguest" min="{{ cardInput.capacity.min }}"
+                                    max="{{ cardInput.capacity.max }}" required pattern="^[0-9]+$" />
+                                <div *ngIf="
+                          taskForm.get('totalguest')!.hasError('min') ||
+                          taskForm.get('totalguest')!.hasError('max') ||
+                          taskForm.get('totalguest')!.hasError('pattern')
+                        " class="text-danger">
+                                    Please provide the guest count in the range
+                                    {{ cardInput.capacity.min }} to {{ cardInput.capacity.max }}.
+                                </div>
+                            </ng-container> -->
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label m-0 p-0">Phone number <span class="label-color">*</span></label>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <select class="form-control dropdown" id="exampleFormControlSelect1" formControlName="countrycode">
+                              <option value="" selected>
+                                country code
+                              </option>
+                              <option *ngFor="let countryCode of countryCodes" [value]="countryCode.dial_code">
+                                {{ countryCode.dial_code }} - {{ countryCode.code }}
+                              </option>
+                            </select>
+                          </div>
+                          <input type="tel" class="form-control" aria-label="Text input with dropdown button"
+                            formControlName="phonenumber" maxlength="10" minlength="10">
+                        </div>
+              
+                        <div class="text-danger" *ngIf="taskForm.get('phonenumber')?.errors?.pattern">
+                          Please enter a valid mobile number with 10 digits
+                        </div>
+                      </div>
+
+                    <label for="dishName" class="form-label m-0 p-0">Message<span class="label-color">*</span></label>
+                    <textarea class="form-control" id="dishDescription" placeholder="Description of message..."
+                        formControlName="message" style="height: 80px"></textarea>
+
+
+                    <div class="d-flex justify-content-between align-items-center m-2"></div>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-danger custom-button-dark m-2" (click)="createRequest()"
+                            [disabled]="taskForm.invalid">
+                            Send
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

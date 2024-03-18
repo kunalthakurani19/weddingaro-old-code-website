@@ -1,0 +1,29 @@
+
+.chat-container {
+  border: 1px solid #ccc;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#chat-window {
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.input-container {
+  margin-top: 10px;
+}
+
+input {
+  width: 70%;
+  padding: 8px;
+}
+
+button {
+  width: 28%;
+  padding: 8px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}

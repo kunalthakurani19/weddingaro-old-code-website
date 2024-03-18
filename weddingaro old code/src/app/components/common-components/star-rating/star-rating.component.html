@@ -1,0 +1,6 @@
+<!-- star-rating.component.html -->
+
+<div class="star-rating">
+    <span *ngFor="let star of [1, 2, 3, 4, 5]" (click)="rateStar(star)" [class.selected]="star <= rating">&#9733;</span>
+  </div>
+  

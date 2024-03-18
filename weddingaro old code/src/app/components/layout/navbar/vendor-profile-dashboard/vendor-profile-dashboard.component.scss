@@ -1,0 +1,135 @@
+.navbar {
+    height: 90px;
+    background-color: #fff !important;
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+  }
+  
+  .row-container {
+    // column-count: 2 !important; /* Adjust the number of columns as needed */
+    column-gap: 20px !important;
+    /* Adjust the gap between columns as needed */
+  }
+  
+  
+  .navbar-brand {
+    margin-left: 1rem !important;
+    // border: 1px solid red;
+    max-width: 20%;
+  }
+  
+  .navbar-brand .mobile_logo {
+    display: inline;
+    width: 100%;
+  }
+  
+  .navbar-brand .desktop_logo {
+    display: none;
+  }
+  
+  .navbar-brand img {
+    width: 100%;
+    image-rendering: optimizeQuality;
+  }
+  
+  .navbar-nav {
+    display: flex;
+    gap: 1rem;
+    font-size: 1.25rem !important;
+  }
+  
+  .dropdown {
+    position: static !important;
+    margin-top: 0rem;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 1px;
+  }
+  
+  .dropdown1 {
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 1px;
+  }
+  
+  // .dropdown-menu {
+  //   width: 98vw;
+  //   margin: 0rem calc(100vw - 99vw);
+  //   box-shadow: 1px 5px 6px #7c7c7c;
+  //   padding: 3rem 0rem !important;
+  //   cursor: pointer;
+  // }
+  
+  .dropdown-henu {
+    width: 98vw;
+    margin: 0rem calc(100vw - 99vw) !important;
+    border-radius: 0px !important;
+    border-top: 0.3px solid grey !important;
+    width: 100vw;
+    margin: 0rem calc(0vw) !important;
+    box-shadow: 1px 5px 6px #7c7c7c;
+    padding: 3rem 0rem !important;
+    cursor: pointer;
+  }
+  
+  
+  
+  .navItemDiv {
+    font-weight: 300;
+    font-style: normal;
+  
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 2rem;
+  }
+  
+  .dropdown-item {
+    width: fit-content !important;
+  }
+  
+    
+  .dropdown:hover .dropdown-menu {
+    display: block;
+    
+  }
+  
+  
+  
+  
+  @media (min-width :993px) {
+    .navbar-brand .mobile_logo {
+      display: none;
+    }
+  
+    .navbar-brand .desktop_logo {
+      display: flex;
+    }
+  
+    .navbar-brand {
+      padding-top: 25px;
+    }
+  }
+  
+  @media (min-width : 990px) and (max-width : 1250px) {
+    .navbar-nav {
+      font-size: 1rem !important;
+    }
+  }
+  
+  .cursor-hover-red:hover {
+  
+    color:  #F33535;
+    cursor: pointer;
+  }
+  .your-class-name:hover {
+    color: red; /* Change this to the desired color */
+  }
+  
+  .ml-3{
+    margin-left: 4px !important;
+  }
+  
+  

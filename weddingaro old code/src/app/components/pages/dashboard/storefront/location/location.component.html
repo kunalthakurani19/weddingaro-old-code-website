@@ -1,0 +1,85 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-9 col-md-12">
+      <div class="store-front-header fw-light">
+        Edit location and map
+      </div>
+
+      <div class="fs-18 questions rounded-4 px-3 py-2 mt-2 d-flex justify-content">
+        <div style="margin-right: 10px; ">
+          <img loading="lazy" src="/assets/images/map-marker.png" class="img-fluid" alt="Business Image">
+        </div>
+        <div>
+          <h5 class="pb fw-lighter">
+            Edit your business location on the map by dragging the marker to your desired address.
+          </h5>
+          <h6 class="pb fw-lighter">
+            Address must contain the street name and any additional information (building number, floor, suite, etc.).
+          </h6>
+        </div>
+
+      </div>
+      <div>
+        <h5 class="mt-4">
+          Location information
+        </h5>
+      </div>
+      <form [formGroup]="locationForm" (keydown.enter)="$event.preventDefault()" class="container">
+        <div class="row">
+          <div class="col-md-6 my-2">
+            <label for="">Complete Address<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" formControlName="completeAddress"
+                   placeholder="Enter Your Complete Address">
+          </div>
+      
+          <div class="col-md-6 my-2">
+            <label for="">State<span class="text-danger">*</span></label>
+            <select class="form-control" (change)="onStateChange($event)" formControlName="state">
+              <option value="">State</option>
+              <ng-container *ngFor="let state of states">
+                <option [value]="state">{{state}}</option>
+              </ng-container>
+            </select>
+          </div>
+      
+          <div class="col-md-6 my-2">
+            <label for="">City/Town<span class="text-danger">*</span></label>
+            <select class="form-control" formControlName="city">
+              <option value="">Select a city</option>
+              <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+            </select>
+          </div>
+      
+          <div class="col-md-6 my-2">
+            <label for="">Pincode<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" formControlName="pincode" placeholder="Pincode">
+          </div>
+      
+          <div class="col-md-6 my-2">
+            <label for="">Search Place<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" matInput #inputField formControlName="place"
+                   placeholder="Search for a place">
+          </div>
+        </div>
+      
+        <div class="row">
+          <div class="col-md-12 my-2">
+            <google-map #myGoogleMap height="500px" width="100%" [center]="center" [options]="options"></google-map>
+          </div>
+        </div>
+      
+        <div class="row">
+          <div class="col-md-12 text-center mt-4 fw-light">
+            <button class="btn-danger btn" [disabled]="locationForm.invalid"
+                    (click)="storeId ? updateStore() : submitForm()">Save
+            </button>
+          </div>
+        </div>
+      </form>
+      
+    </div>
+    <div class="col-lg-3 col-md-12">
+      <app-common-store-sidebar></app-common-store-sidebar>
+    </div>
+  </div>
+</div>

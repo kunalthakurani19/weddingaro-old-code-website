@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Photo Details</h2>
+<div mat-dialog-content>
+  <form [formGroup]="photoForm" (ngSubmit)="onSubmit()" autocomplete="off">
+    <mat-form-field appearance="outline" class="w-100">
+      <input matInput placeholder="Title" formControlName="title" required />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="w-100">
+      <textarea
+        matInput
+        placeholder="Description"
+        formControlName="description"
+        required
+      ></textarea>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button
+    mat-button
+    (click)="onSubmit()"
+    [disabled]="photoForm.invalid"
+    cdkFocusInitial
+  >
+    Save
+  </button>
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+</div>

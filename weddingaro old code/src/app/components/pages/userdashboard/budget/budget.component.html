@@ -1,0 +1,124 @@
+<div class="container-fluid">
+
+
+    <div class="d-flex justify-content-center">
+          <div *ngIf="selectedButton === 'Budget Planner'" class="text-center fs-35 fw-400 mb-4"
+        style="font-family: Baskervville;">
+        Budget Planner
+    </div>
+    <!-- <div *ngIf="selectedButton === 'payment'" class="text-center fs-35 fw-400 mb-4" style="font-family: Baskervville;">
+        Payments
+    </div> -->
+    </div>
+  
+
+    <div class="row">
+        <div class="col-auto text-center">
+            <div class="btn-group-toggle" data-toggle="buttons">
+                <button class="btn" style="border-radius: 0;" [ngClass]="{
+                    'bg-light-red': selectedButton === 'Budget Planner',
+                    'white': selectedButton !== 'Budget Planner',
+                    'unselected-border': selectedButton !== 'Budget Planner'
+                }" (click)="selectButton('Budget Planner')">
+                    Budget planner
+                </button>
+                <!-- <button class="btn" style="border-radius: 0;" [ngClass]="{
+                    'bg-light-red': selectedButton === 'payment',
+                    'white': selectedButton !== 'payment',
+                    'unselected-border': selectedButton !== 'payment'
+                }" (click)="selectButton('payment')">
+                    Payment
+                </button> -->
+            </div>
+        </div>
+        <div *ngIf="selectedButton === 'Budget Planner'" class="col text-end">
+            <div class="d-flex align-items-end justify-content-end">
+                <div class="print mr-10 cursor">
+                    <div class="rectangle-306"></div>
+                    <img loading="lazy" class="print2" src="assets\images\printIcon.svg" />
+                </div>
+
+                <div class="print mr-10 cursor">
+                    <div class="rectangle-306"></div>
+                    <img loading="lazy" class="print2" src="assets\images\shareIcon.svg" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="m-3"></div>
+
+    <div *ngIf="selectedButton === 'Budget Planner'" class="row">
+        <div class="col-4">
+            <div class="container rounded border p-2">
+
+                <div class="d-flex align-items-center cursor-hover">
+                    
+                    <img loading="lazy" src="/assets/images/addIcon.svg" alt="" height="30px" width="30px">
+                    <div class="flex-grow-1 status-item ml-3 custom-text-color" routerLinkActive="custom-text-color" routerLink="/user-dashboard/budget/">
+                        New category
+                    </div>
+                </div>
+
+            </div>
+            <div *ngFor="let item of category" class="container rounded border p-2">
+
+                <div class="d-flex align-items-center custom-text-hover ">
+
+                    <img loading="lazy" [src]="[item.img]" class="mr-4" alt="" height="30px" width="30px">
+                    <div class="flex-grow-1 status-item ml-3"  routerLink={{item.route}}>
+                        {{ item.title }}
+                    </div>
+                    <div class="count">₹{{ item.count }}</div>
+                </div>
+            </div>
+        </div>
+        <div  class="col-8">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+
+
+    <!-- "Print" Elements Container (Right Aligned) -->
+
+
+
+
+
+
+
+
+
+    <div *ngIf="selectedButton === 'payment'" class="row align-items-center mt-4 mb-4">
+        <!-- First content column (checkbox) -->
+        <div class="col-1">
+            <label class="custom-checkbox d-flex align-items-center custom-mat-checkbox">
+                <div class="text-black-50 fs-5 cursor-hover">Show: <Strong>All</Strong></div>
+
+            </label>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        =
+    </div>
+
+    <div class="container border rounded p-4">
+        <!-- Your content goes here -->
+    </div>
+
+
+
+
+
+
+</div>

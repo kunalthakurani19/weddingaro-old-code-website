@@ -1,0 +1,191 @@
+// .md-img {
+//     margin: 0 50px;
+//     border-radius: 10px;
+//     overflow: hidden;
+//   }
+  
+//   .text-h {
+//     color: #000;
+//     text-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25);
+//     font-size: 35px;
+//     font-style: italic;
+//     font-weight: 400;
+//     line-height: normal;
+//     letter-spacing: 1.75px;
+//   }
+//   .carousel-wrapper-div::-webkit-scrollbar {
+//     display: none; /* Adjust the scrollbar width as per your preference */
+//   }
+  
+//   .carousel-wrapper-div > a {
+//     color: black;
+//   }
+//   .carousel-wrapper-div > a:link {
+//     text-decoration: none;
+//   }
+//   .carousel-wrapper-div {
+//     align-items: center;
+//     text-align: center;
+//     display: flex;
+//     gap: 62px;
+//     max-width: 1340px;
+//     overflow: hidden;
+//     overflow-x: scroll;
+//   }
+//   .carousel-a {
+//     display: inline-block;
+//   }
+//   .icon {
+//     text-align: center;
+//     position: absolute;
+//     margin: auto;
+//   }
+//   .hover-div {
+//     background-color: rgb(10, 10, 10);
+//     opacity: 0.7;
+//     width: 170px;
+//     height: 150px;
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     left: 0;
+//     bottom: 0;
+//   }
+//   .hover-div > div > p {
+//     color: white;
+//     margin: 0;
+//     padding: 0;
+//     text-align: start;
+//   }
+//   .hover-div > div {
+//     margin-top: 50%;
+//     margin-left: 10%;
+//   }
+//   .img-div {
+//     overflow: hidden;
+//     position: relative;
+//     border-radius: 10px;
+//     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+//   }
+//   .img-c {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     object-fit: cover;
+//   }
+//   .venue-link-button {
+//     border: 1px solid;
+//   }
+  
+//   .factors-container {
+//     display: flex !important;
+//     flex-direction: column;
+//     gap: 20px !important;
+//   }
+//   .factors-p {
+//     color: #000;
+//     font-size: 20px;
+//     font-family: Baskervville;
+//     font-style: normal;
+//     font-weight: 400;
+//     line-height: normal;
+//   }
+  
+//   .factors-p > p > span {
+//     color: #f33535;
+//   }
+//   .zone-list {
+//     display: flex !important;
+//     flex-wrap: wrap !important;
+//     justify-content: space-between;
+//     gap: 20px !important;
+//   }
+//   .zone-list > li {
+//     max-width: 320px !important;
+//     width: 100% !important;
+//     font-size: 20px;
+//     font-family: Inter;
+//     font-style: normal;
+//     font-weight: 500;
+//     line-height: normal;
+//     letter-spacing: 1px;
+//     cursor: pointer;
+//   }
+//   .zone-list > li > :nth-child(2) {
+//     color: rgba(0, 0, 0, 0.5);
+//   }
+//   .all-type-venues {
+//     display: flex !important;
+//     flex-direction: row !important;
+//     gap: 15px !important;
+//   }
+//   .all-type-venues > li {
+//     font-size: 17px !important;
+//     font-family: Inter !important;
+//     font-style: normal !important;
+//     font-weight: 300 !important;
+//     line-height: normal !important;
+//     letter-spacing: 0.85px !important;
+//   }
+  
+//   .search-box {
+//     left: 15%;
+//     position: relative;
+//     height: 56px;
+//     max-width: 50%;
+//     width: 100% !important;
+//     // border: 1px solid red;
+//   }
+//   .inner-div-out {
+//     top: 65%;
+//     left: 0;
+//     right: 0;
+//     max-width: 1440px !important;
+//     width: 100% !important;
+//   }
+//   .centered-card {
+//     position: absolute;
+//     top: 70%;
+//     left: 10%;
+//     transform: translate(-10%, -50%);
+//     background-color: rgba(255, 255, 255, 0.8); /* Background color with some transparency */
+//     padding: 20px;
+//     border-radius: 10px;
+//     text-align: center;
+//     width: 75%;
+//   }
+  
+//   /* Style for the image container */
+//   .image-container {
+//     position: relative;
+   
+//      /* Set the maximum width of the image container */
+//   }
+  
+//   /* Style for the image itself */
+//   .image-container img {
+//     width: 100%;
+//     height: auto;
+//     display: block;
+//   }
+
+
+@media (min-width: 768px) {
+  .carousel {
+    max-width: 100%; /* Ensure the carousel takes up the full width on larger screens */
+  }
+}
+
+@media (max-width: 767px) {
+  .col-12 {
+    justify-content: center !important; /* Center on small screens */
+  }
+}
+
+@media (min-width: 768px) {
+  .col-md-6 {
+    justify-content: end !important; /* Align to the end on larger screens */
+  }
+}

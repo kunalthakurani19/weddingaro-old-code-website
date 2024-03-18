@@ -1,0 +1,487 @@
+
+
+.featured-wedding-title {
+  font-family: 'Merriweather', 'Merriweather-fallback-TimesNewRoman', Times, serif;
+  font-weight: 500;
+  text-align: left;
+  font-size: 1.45rem;
+}
+
+
+.ideaDiv-text {
+  font-size: 1rem !important;
+}
+
+.article-card {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  max-width: 540px;
+  width: 540px;
+}
+
+.articleCard_TextContainer {
+  padding: 20px;
+  text-align: left;
+}
+
+.articleCard_TextContainer h5 {
+  text-transform: capitalize;
+}
+
+.articleCard_ImageContainer {
+  width: 100%;
+}
+
+.articleCard_ImageContainer img {
+  width: 100%;
+}
+.home-search-div {
+  width: 95%;
+}
+
+.home-search-in {
+  height: 56px;
+  width: 100%;
+  position: relative;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .home-search-div {
+    width: 100%;
+  }
+}
+
+@media (min-width: 300px) {
+  .home-search-in {
+    max-width: 90%;
+    // margin: 0 auto; /* Center the element */
+  }
+}
+
+/* Tablets or Landscape Mobile */
+@media (min-width: 750px) {
+  .home-search-in {
+    max-width: 100%;
+  }
+}
+ 
+
+
+.community-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px;
+  border-radius: 15px 15px 15px 0px;
+  min-height: 240px;
+  background: #fff;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25)
+}
+
+.community-card-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between !important;
+  border-radius: 15px !important;
+  width: 380px;
+  height: 100%;
+}
+
+.community-owner {
+  width: 300px;
+  height: 60px;
+  padding-top: 5px !important;
+  border-radius: 0px 0px 15px 0px;
+}
+
+.community-heading {
+  color: #000;
+  font-family: Inter;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 1.05px;
+}
+
+.community-deatils {
+  margin-top: 20px !important;
+  color: rgba(0, 0, 0, 0.7);
+  font-family: Inter;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.85px;
+}
+
+.community-owner-name {
+  color: #fff;
+  font-family: Inter;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 1.1px;
+}
+
+.community-date {
+  color: #fff;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.75px;
+}
+
+.comm-div {
+  min-width: 180px !important;
+}
+
+.avatar-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+  font-family: Inter;
+  font-size: 39px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 1.95px;
+}
+
+.avatar-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.community-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.destination-card {
+  width: 200px;
+  height: 350px;
+  position: relative !important;
+}
+
+.destination-link {
+  position: absolute !important;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 42px;
+  background: #ffffff;
+  color: #000;
+  text-align: center;
+  font-family: Inter;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.85px;
+  bottom: -5%;
+  left: 25px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+.destination-img {
+  position: relative !important;
+  overflow: hidden;
+  width: 200px;
+  height: 350px;
+  border-radius: 15px;
+}
+
+.destination {
+  margin-bottom: 51px !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+
+
+
+.locations-list {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px 50px;
+}
+
+.locations-list>li {
+  color: #000;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 1px;
+}
+
+.no-link-style {
+  text-decoration: none;
+  color: inherit;
+
+}
+
+.separator {
+  margin: 0 0.25rem; /* Add spacing around the separator */
+}
+
+// Responsive Design
+
+
+// mobile responsive
+
+@media (min-width:300px) {
+
+ 
+
+  .weddingIdeasGallery {
+    flex-wrap: wrap;
+    gap: 3rem;
+  }
+
+  .ideasDiv {
+    width: 100%;
+  }
+
+
+
+  .bannerDiv {
+    flex-wrap: wrap;
+    margin-left: 1rem;
+  }
+
+  .article-card {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .article-card img {
+    width: 100%;
+  }
+
+  .community-container {
+    padding: 3rem 0rem;
+    overflow-x: scroll;
+    gap: 1rem;
+    // box-shadow: -2px 2px 20px #b0b0b0;
+    border-radius: 1rem;
+    width: 100%;
+    // width: 100vw;
+
+  }
+
+  .destination {
+    padding: 3rem 0rem;
+    gap: 2rem;
+    overflow-x: scroll;
+    border-radius: 1rem;
+  }
+
+  .locations-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .vendors-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2rem;
+    row-gap: 1rem;
+    padding: 0rem;
+    text-align: left;
+  }
+
+}
+
+// fontSize responsive
+@media (min-width : 600px) {
+  .featured-wedding-title {
+    font-size: 2rem;
+  }
+
+  .featuredDescription {
+    line-height: 1.50rem;
+  }
+
+}
+
+@media (min-width : 650px) and (max-width : 699px) {
+  .article-card img {
+    width: 80vw;
+  }
+
+}
+
+
+// Tablets or Landscape Mobile
+@media (min-width:750px) {
+
+
+
+  .ideasDiv {
+    width: 45%;
+  }
+
+  .article-card {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .article-card img {
+    width: 100%;
+  }
+
+  .locations-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .vendors-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// Laptops and Wide Screens
+
+@media (min-width : 1200px) {
+  .weddingIdeasGallery {
+    gap: 0rem;
+  }
+
+  .ideasDiv {
+    width: 15%;
+  }
+
+  .ideaDiv-text {
+    font-size: 0.6rem !important;
+    font-weight: 700;
+  }
+}
+
+
+// Handlign the search bar aswell
+@media (min-width : 100%) and (max-width : 100%){
+  .homeImg{
+    margin-bottom: 1rem;
+    height: 200px;
+  }
+
+  
+}
+
+
+.container-fluid {
+  position: relative;
+  text-align: center;
+  /* Center-align the content within the container */
+}
+
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(0, 1fr));
+  grid-gap: 20px; /* Adjust the gap between grid items */
+}
+
+@media (min-width: 1200px) {
+  .grid-container {
+    grid-template-columns: repeat(4, 1fr); /* 4 items per row for screens wider than 1200px */
+  }
+}
+
+
+
+
+.container-fluid {
+  position: relative;
+  text-align: center;
+  /* Center-align the content within the container */
+}
+
+
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(0, 0.5fr));
+  // grid-gap: 10px; /* Adjust the gap between grid items */
+}
+
+@media (min-width: 1200px) {
+  .grid-container {
+    grid-template-columns: repeat(4, 0.5fr); /* 4 items per row for screens wider than 1200px */
+  }
+}
+
+.custom-text-truncate {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Number of lines to display before truncating */
+  -webkit-box-orient: vertical;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .carousel-control-next-icon {
+//   background-image: url('/assets/images/right.png');
+//   background-size: cover;
+//   height: 90px;
+//   width: 90px;
+// }
+
+
+
+
+
+
+
+// .carousel-control-prev-icon {
+//   background-image: url('/assets/images/left.png');
+//   background-size: cover;
+//   height: 90px;
+//   width: 90px;
+
+// }
+
+
+
+
+.shading{
+  box-shadow: #000;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .mf1 {
+      font-size: 18px; 
+  }
+  .mf2 {
+      font-size: 15px;
+  }
+}

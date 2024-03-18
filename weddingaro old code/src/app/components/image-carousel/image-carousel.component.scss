@@ -1,0 +1,24 @@
+.image-prev {
+  right: 89% !important;
+}
+.image-next {
+  left: 89% !important;
+}
+.arrow-top {
+  z-index: 1000 !important;
+  position: absolute !important;
+  border: 1px solid;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 50%;
+  background-color: rgba(211, 211, 211, 0.3);
+  display: none;
+}
+.img-div {
+  width: 100px !important;
+  height: 100px !important;
+  overflow: hidden;
+}
+.arrow-top > i {
+  font-size: 1rem !important;
+}

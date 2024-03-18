@@ -1,0 +1,91 @@
+<div class="container-fluid mt-4">
+    <div class="row">
+        <!-- Bootstrap col-lg-2 (instead of col-lg-3) for the left sidebar to reduce its width -->
+        <!-- Left Side - Sidebar -->
+        <!-- <div class="col-lg-2 col-md-3 col-sm-12">
+            <div class="fw-500 fs-18  mb-2 ">FOLDERS</div>
+            <hr class="mt-2 mb-2">
+            <div *ngFor="let item of status" class="mb-3 d-flex align-items-center cursor-hover">
+
+                <div class="flex-grow-1 status-item mt-2" [routerLink]="item.route"
+                    routerLinkActive="custom-text-color">
+                    {{ item.title }}
+                </div>
+                <div class="count">{{ item.count }}</div>
+            </div>
+
+
+        </div> -->
+
+        <!-- Right Side - Main Content Area -->
+        <div class="col-lg-10 col-md-9 col-sm-12 pt-lg-0 pt-md-4">
+            <div class="container">
+                <p class="fw-400 fs-35  " style="font-family: Baskervville;">Inbox</p>
+                <hr class="py-2">
+                <div class="row align-items-center mt-4 mb-4">
+                    <!-- First content column (checkbox) -->
+                    <div class="col-auto">
+                        <label class="custom-checkbox d-flex align-items-center custom-mat-checkbox">
+                            <mat-checkbox class="mr-2"></mat-checkbox>
+                            <div class="text-black-50 fs-5 cursor-hover">Select all</div>
+                        </label>
+                    </div>
+
+
+
+                    <!-- Text column: Mark as -->
+                    <div class="col-auto">
+
+                        <mat-divider vertical style="height: 25px"></mat-divider>
+
+                    </div>
+
+
+                    <!-- Icon column: Delete -->
+                    <div class="col-auto">
+                        <!-- Use ml-auto class to move the delete icon to the right -->
+                        <div class="d-flex align-items-center">
+                            <img loading="lazy" src="assets/images/delete.svg" height="20px" width="20px" />
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="container-fluid">
+                    <div *ngFor="let items of data">
+                        <div class="container rounded shadow my-3 hover-container" >
+                            <div class="d-flex justify-content-center align-items-center m-2">
+                                <div class="m-2">
+                                    <mat-checkbox class="mr-2"></mat-checkbox>
+                                </div>
+                        
+                                <div class="m-2" routerLink="/user-dashboard/my-wedding/user-messages">
+                                    <img loading="lazy" class="w-40 h-40"  [src]="items.img" alt="User Image" />
+                                </div>
+                        
+                                <div class="m-2" routerLink="/user-dashboard/my-wedding/user-messages">
+                                    <div class="text-black">
+                                        {{ items.name }}
+                                    </div>
+                                    <div class="text-black date-time">
+                                        On 29/06/2023 at 16:16
+                                    </div>
+                                    <div class="text-black">
+                                        We would like to learn more about packages and rates for weddings at Hotel Gracia Golf. Can you send through some additional information? Thanks!
+                                    </div>
+                                </div>
+                        
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

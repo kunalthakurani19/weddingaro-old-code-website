@@ -1,0 +1,83 @@
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  z-index: 1;
+}
+
+.centered-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  color: white;
+  /* You can adjust the text color as needed */
+  font-size: 18px;
+  /* You can adjust the font size as needed */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(0, 1fr));
+  grid-gap: 20px;
+  /* Adjust the gap between grid items */
+}
+
+@media (min-width: 1200px) {
+  .grid-container {
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 items per row for screens wider than 1200px */
+  }
+}
+
+
+/* Add this to your global styles or component styles */
+.d-flex {
+  display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.grid-item {
+  flex: 0 0 calc(20% - 20px); /* 20% width with 20px margin */
+  margin: 10px; /* Adjust as needed */
+}
+
+/* Add media queries for responsiveness */
+@media (max-width: 1200px) {
+  .grid-item {
+    flex: 0 0 calc(25% - 20px); /* 25% width with 20px margin for smaller screens */
+  }
+}
+
+@media (max-width: 992px) {
+  .grid-item {
+    flex: 0 0 calc(33.33% - 20px); /* 33.33% width with 20px margin for even smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-item {
+    flex: 0 0 calc(50% - 20px); /* 50% width with 20px margin for small screens */
+  }
+}
+
+@media (max-width: 576px) {
+  .grid-item {
+    flex: 0 0 calc(100% - 20px); /* 100% width with 20px margin for extra small screens */
+  }
+}

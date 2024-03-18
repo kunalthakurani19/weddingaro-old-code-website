@@ -1,0 +1,8 @@
+<div class="container rounded-3">
+    <h2 mat-dialog-title>Confirmation</h2>
+    <div mat-dialog-content>{{ data.message }}</div>
+    <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">No</button>
+        <button mat-button color="warn" (click)="onYesClick()">Yes</button>
+    </div>
+</div>

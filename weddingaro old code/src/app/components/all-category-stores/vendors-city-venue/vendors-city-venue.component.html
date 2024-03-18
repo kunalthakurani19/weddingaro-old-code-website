@@ -1,0 +1,23 @@
+
+<div class="mt-70" *ngFor="let venue of venues">
+    <ng-container *ngIf="venue.city">
+  
+    <div class="venue-heading">All vendors in {{ venue.city }}</div>
+    <app-custom-slider [g]="2" >
+      <div class="venue-carousel-wrapper ">
+    <div class="venue-card-div ">
+      <ng-container *ngFor="let data of venue.venues">
+        <app-venue-card class="app-venue-card" [cardInput]="data"></app-venue-card>
+      </ng-container>
+    </div>
+  
+  </div>
+  
+  </app-custom-slider>
+  <!-- <div class="button-link">
+    <a class="btn" role="button">Discover {{venue.venues.length}} venues in {{ venue.city }} <i class="fas fa-arrow-right"></i></a>
+  </div> -->
+  </ng-container>
+  
+  
+  

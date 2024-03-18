@@ -1,0 +1,116 @@
+<div class="container-fluid">
+
+  <div class="container-fluid m-0 p-0">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-6 col-12 mt-4 order-md-1 order-2">
+        <h2 class="main-font al">
+          Wedding Vendors</h2>
+        <div class="home-search-div">
+          <div class="home-search-in">
+            <app-search-bar (searchFilter)="searchVenues($event)" [location]="location"></app-search-bar>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carousel Column -->
+
+
+
+
+
+
+
+      <div class="col-md-6 col-12 d-flex align-items-end justify-content-end mb-4 order-md-2 order-1">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators rounded-3">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+              aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+              aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner" style="border-top-left-radius: 500px; border-bottom-left-radius: 500px;">
+            <div class="carousel-item active">
+              <div class="d-flex justify-content-center">
+                <img
+              loading="lazy"    src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzN8fHdlZGRpbmclMjB2ZW5kb3JzfGVufDB8MHwwfHx8MA%3D%3D"
+                  class="img-fluid " alt="...">
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="d-flex justify-content-center">
+                <img
+              loading="lazy"    src="https://images.unsplash.com/photo-1510076857177-7470076d4098?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2VkZGluZyUyMHZlbnVlc3xlbnwwfHwwfHx8MA%3D%3D"
+                  class="img-fluid " alt="...">
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="d-flex justify-content-center">
+                <img
+              loading="lazy"    src="https://images.unsplash.com/photo-1515232389446-a17ce9ca7434?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTB8fGluZGlhbiUyMHdlZGRpbmclMjB2ZW5kb3JzfGVufDB8MHwwfHx8MA%3D%3D"
+                  class="img-fluid " alt="...">
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+  <div class="container" *ngIf="!location.length">
+
+
+    <div class="">
+
+      <ng-container *ngIf="venuesByCity.length > 0 else noData">
+        <app-vendors-city-venue [venues]="venuesByCity"></app-vendors-city-venue>
+      </ng-container>
+      <ng-template #noData>
+        <div class="text-center mt-5">
+          <img loading="lazy" class="rounded-3 shadow " src="https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/noresultfound.png" height="400" width="350" alt=""
+            srcset="">
+        </div>
+      </ng-template>
+
+
+    </div>
+
+  </div>
+  <div class="container" *ngIf="location.length ">
+    <ng-container *ngIf="venuesList.length else noData ">
+      <ng-container *ngFor="let venue of venuesList">
+        <app-venue-card [cardInput]="venue"></app-venue-card>
+      </ng-container>
+    </ng-container>
+
+    <ng-template #noData>
+      <div class="text-center mt-5">
+        <img loading="lazy" class="rounded-3 shadow " src="https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/noresultfound.png" height="400" width="350" alt="" srcset="">
+      </div>
+    </ng-template>
+  </div>
+
+
+  <div class="m-5"></div>
+</div>

@@ -1,0 +1,158 @@
+<div class="container-fluid">
+  <div class="row p-0 m-0">
+    <div class="col-lg-9">
+      <div class="store-front-header fw-light">
+        Edit Business Information
+      </div>
+      <!-- <div class="edit-business d-flex flex-column flex-sm-row p-3 mt-3">
+        <div class="background-container mb-3 mb-sm-0">
+          <img loading="lazy" src="/assets/images/Inscription.png" class="img-fluid" alt="Business Image">
+        </div>
+        <div class="mx-2 flex-grow-1">
+          <h5 class="fw-light">
+            Edit your business information and admin access details.
+          </h5>
+          <h6 class="fw-lighter">
+            Content will be reviewed and updated as needed to meet our content requirements.
+          </h6>
+        </div>
+      </div> -->
+
+
+      <div class="fs-18 questions rounded-4 px-3 py-2 mt-2 d-flex justify-content">
+        <div style="margin-right: 10px; ">
+          <img loading="lazy" src="/assets/images/Inscription.png" class="img-fluid" alt="Business Image">
+        </div>
+        <div>
+          <h5 class="pb fw-lighter">
+            Edit your business information and admin access details.
+          </h5>
+          <h6 class="pb fw-lighter">
+            Content will be reviewed and updated as needed to meet our content requirements.
+          </h6>
+        </div>
+
+      </div>
+
+
+      <div>
+        <h5 class="mt-5">
+          Login information
+        </h5>
+      </div>
+      <div>
+        <form [formGroup]="businessForm">
+          <div class="form-group w-50 my-2">
+            <label for="">Business Name <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" formControlName="businessName">
+          </div>
+          <div class="form-group w-100 my-2 d-flex mb-4">
+            <div class="w-50 mr-2">
+              <label for="exampleFormControlSelect1">Select Sector <span class="text-danger">*</span></label>
+              <select class="form-control" formControlName="sector">
+                <option value="" selected>Select</option>
+                <option *ngFor="let item of sectors" [value]="item?._id">{{item?.name}}</option>
+              </select>
+            </div>
+            <div class="w-50 mx-2">
+              <label for="exampleFormControlSelect1">Select Category <span class="text-danger">*</span></label>
+              <select class="form-control" formControlName="category">
+                <option value="" selected>Select</option>
+                <option *ngFor="let item of sectorCategoryMapper[businessForm.value['sector']]" [value]="item?._id">
+                  {{item?.name}}</option>
+              </select>
+            </div>
+
+          </div>
+          <!-- <div class="form-group w-50 my-2 mb-4">
+
+        </div> -->
+
+
+          <div class="">
+            <div class="form-group mt-2 mb-5 ">
+              <label for="">Describe your business and services <span class="text-danger">*</span></label>
+              <div class="mt-2 p-3  border rounded-2">
+                <div class="fs-6 fw-light mt-2 my-4">
+                  Share unique, descriptive information about your business in order to convert couples and improve your
+                  ranking
+                  across top search engines. Please do not include any contact information in this section.
+                </div>
+                <ckeditor [editor]="Editor" formControlName="description"></ckeditor>
+              </div>
+            </div>
+          </div>
+          <div class="p-4  border rounded">
+            <div>
+              Contact details
+            </div>
+            <div class="notifications-tab p-3  my-4 ">
+              Lead notifications and updates from Weddingaro will be sent to this contact.
+            </div>
+
+            <div class="form-group w-50 my-4">
+              <label for="">Person Name <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" formControlName="personName">
+            </div>
+            <div class="form-group w-50 my-4">
+              <label for="">Phone Number <span class="text-danger">*</span></label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <select class="form-control dropdown" id="exampleFormControlSelect1" formControlName="countrycode">
+                    <option value="" selected>
+                      country code
+                    </option>
+                    <option *ngFor="let countryCode of countryCodes" [value]="countryCode.dial_code">
+                      {{ countryCode.dial_code }} - {{ countryCode.code }}
+                    </option>
+                  </select>
+                </div>
+
+
+
+                <input type="tel" class="form-control" aria-label="Text input with dropdown button"
+                  formControlName="mobile" maxlength="10" minlength="10" >
+                  
+                 
+              </div>
+              <mat-error *ngIf="businessForm.get('mobile')?.errors?.pattern">
+                Please enter a valid mobile number with 10 digits
+              </mat-error>
+              
+
+
+            </div>
+
+            <div class="form-check mb-2">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName="recieveOnWhatsapp">
+              <label class="form-check-label" for="exampleCheck1">Receive notifications for new messages on
+                WhatsApp</label>
+            </div>
+            <!-- <div class="input-group mb-3">
+
+            <input type="text" class="form-control" aria-label="Text input with dropdown button">
+          </div> -->
+
+
+            <div class="form-group w-50 mt-4">
+              <label for="">Email <span class="text-danger">*</span></label>
+              <input type="email" class="form-control" formControlName="email">
+            </div>
+
+          </div>
+          <div class="w-100 text-center mt-4 fw-light">
+            Published content is required to meet Weddingaro's Terms of Use.
+          </div>
+          <div class="w-100 text-center mt-4 fw-light">
+            <button class="btn-danger btn" [disabled]="businessForm.invalid"
+              (click)="storeId? updateStore() : submitForm()">Next</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-lg-3">
+      <app-common-store-sidebar></app-common-store-sidebar>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div
+  (mouseout)="handleHide()"
+  (mouseover)="handleShow()"
+  class="d-flex overflow-hidden position-relative flex-row justify-content-center align-items-center text-center"
+>
+  <div
+    (click)="handlePrev()"
+    [ngClass]="{ 'd-flex': show }"
+    class="image-prev arrow-top justify-content-center align-items-center"
+  >
+    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+  </div>
+  <div class="img-div" class="position-relative">
+    <img loading="lazy" [src]="list[current]"   />
+  </div>
+  <div
+    [ngClass]="{ 'd-flex': show }"
+    (click)="handlenext()"
+    class="image-next arrow-top justify-content-center align-items-center"
+  >
+    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+  </div>
+</div>

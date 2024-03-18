@@ -1,0 +1,36 @@
+<!-- pagination.component.html -->
+
+<div class="container mt-3">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6 d-flex justify-content-center">
+      <div class="justify-content-center flex-start d-flex" style="gap: 15px">
+        <button
+          class="btn"
+          [ngClass]="{'selected': isPreviousButtonDisabled(), 'unselected': !isPreviousButtonDisabled()}"
+          (click)="onClickButtonHandler('previous')"
+          [disabled]="isPreviousButtonDisabled()"
+        >
+          ← Previous
+        </button>
+
+        <button
+          *ngFor="let pageNumber of getPageNumbers()"
+          class="btn"
+          [ngClass]="{'selected': selectedButton === pageNumber, 'unselected': selectedButton !== pageNumber}"
+          (click)="onClickButtonHandler(pageNumber)"
+        >
+          {{ pageNumber }}
+        </button>
+
+        <button
+          class="btn"
+          [ngClass]="{'selected': isNextButtonDisabled(), 'unselected': !isNextButtonDisabled()}"
+          (click)="onClickButtonHandler('next')"
+          [disabled]="isNextButtonDisabled()"
+        >
+          Next →
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

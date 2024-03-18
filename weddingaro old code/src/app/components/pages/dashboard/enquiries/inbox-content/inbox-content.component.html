@@ -1,0 +1,210 @@
+<div class="container-fluid">
+  <div class="d-flex align-items-center">
+    <span class="text-black fs-3"
+      style="font-family: Baskervville; font-weight: 400; word-wrap: break-word">Enquiries</span>
+    <span class="text-black-50 fs-3" style="font-weight: 400; word-wrap: break-word"> ({{ allrequest.length}})</span>
+  </div>
+
+  <div class="container-fluid mt-4">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mt-2 justify-content-between">
+      <!-- <ng-container *ngFor="let item of cards">
+        <div class="col-lg-2 col-md-4 col-sm-12 mb-4">
+          <div class="rounded-2 border-1 card text-center p-4">
+            <div class="center">
+              <img loading="lazy" [src]="item.icon" height="60px" width="60px" />
+              <span class="text-bold fs-3 align-middle mx-1">0</span>
+              <div class="col">
+                <div style="font-size: 20px; font-weight: 400">
+                  {{ item.title }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container> -->
+    </div>
+  </div>
+  <!-- now next code -->
+
+  <ng-template #noData>
+    <div class="text-center">
+      <img loading="lazy" src="https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/no-message.png" height="400" width="400" alt="" srcset="">
+
+    </div>
+  </ng-template>
+  <div>
+    <mat-tab-group>
+      <mat-tab *ngFor="let store of allrequest" label="{{ store?.store?.businessdetails?.businessName }}">
+        <div *ngFor="let items of store?.request else noData">
+
+          <div class="col-lg-3 col-md-4 col-sm-12">
+            <div class="container mt-3 mb-2">
+              <div class="row cursor-hover">
+                <div class="col-12 col-md-6">
+                  <div class="position-relative" style="width: 1069px; height: 165px">
+                    <div class="position-absolute" style="
+                        width: 1069px;
+                        height: 160px;
+                        left: 0px;
+                        top: 0px;
+                        border-radius: 10px;
+                        background-color: #f36666 ;
+                      "></div>
+                    <div class="position-absolute" style="
+                        width: 1069px;
+                        height: 160px;
+                        left: 0px;
+                        top: 5px;
+                        background: white;
+                        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+                        border-radius: 10px;
+                      "></div>
+                    <div class="position-absolute" style="width: 35px; height: 35px; left: 30px; top: 72px">
+                      <!-- checkbox  -->
+                      <!-- <mat-checkbox class="mr-2"></mat-checkbox> 
+                      -->
+                      <div class="d-flex align-items-center" (click)="confirmDelete(items._id)">
+                          <img loading="lazy" src="assets/images/delete.svg" height="30px" width="30px" />
+                        </div>
+                    </div>
+
+                    <!-- <img loading="lazy" class="position-absolute w-80 h-80" routerLink="/dashboard/enquiries/replied"
+                      style="left: 100px; top: 45px; border-radius: 9999px" [src]="items.img" /> -->
+                    <div class="position-absolute" style="
+                        left: 120px;
+                        top: 35px;
+                        color: black;
+                        font-size: 23px;
+        
+                        font-weight: 400;
+                        word-wrap: break-word;
+                      ">
+                      {{ items?.name }}
+                    </div>
+                    <div class="position-absolute" style="
+                        left: 120px;
+                        top: 68px;
+                        color: rgba(0, 0, 0, 0.5);
+                        font-size: 14px;
+        
+                        font-weight: 400;
+                        word-wrap: break-word;
+                      ">
+                      <!-- On {{ items.createdAt | date: 'dd-MM-yyyy' }} -->
+                    </div>
+                    <!-- <div class="position-absolute" [style.color]="
+                        items?.status === 'pending'
+                          ? '#F3B640'
+                          : items.status === 'Replied'
+                          ? '#3FB2F2'
+                          : items.status === 'Booked'
+                          ? '#56ED3E'
+                          : items.status === 'Discarded'
+                          ? '#ED3E5D'
+                          : null
+                      " style="
+                        left: 300px;
+                        top: 68px;
+        
+                        font-size: 14px;
+        
+                        font-weight: 500;
+                        word-wrap: break-word;
+                      ">
+                      {{ items?.status }}
+                    </div> -->
+                    <div class="position-absolute" style="
+                        width: 600px;
+                        left: 120px;
+                        top: 95px;
+                        color: rgba(0, 0, 0, 0.7);
+                        font-size: 14px;
+        
+                        font-weight: 400;
+                        line-height: 20px;
+                        letter-spacing: 0.42px;
+                        word-wrap: break-word;
+                      ">
+                      {{items?.message}}
+                    </div>
+                    <div class="position-absolute" style="
+                        width: 600px;
+                        left: 120px;
+                        top: 110px;
+                        color: rgba(0, 0, 0, 0.7);
+                        font-size: 14px;
+        
+                        font-weight: 400;
+                        line-height: 20px;
+                        letter-spacing: 0.42px;
+                        word-wrap: break-word;
+                      ">
+                      {{items?.phonenumber}}
+                    </div>
+                    <div class="position-absolute" style="
+                        width: 600px;
+                        left: 120px;
+                        top: 125px;
+                        color: rgba(0, 0, 0, 0.7);
+                        font-size: 14px;
+        
+                        font-weight: 400;
+                        line-height: 20px;
+                        letter-spacing: 0.42px;
+                        word-wrap: break-word;
+                      ">
+                      {{items?.email}}
+                    </div>
+                    <img loading="lazy" class="position-absolute" style="width: 30px; height: 30px; left: 976px; top: 25px"
+                      src="/assets/images/people.svg" />
+                    <img loading="lazy" class="position-absolute" style="width: 30px; height: 30px; left: 976px; top: 95px"
+                      src="/assets/images/calendar.svg" />
+                    <div class="position-absolute text-center" style="
+                        right: 70px;
+                        top: 55px;
+                        color: rgba(0, 0, 0, 0.6);
+                        font-size: 14px;
+        
+                        font-weight: 400;
+                        line-height: 20px;
+                        letter-spacing: 0.42px;
+                        word-wrap: break-word;
+                      ">
+                      <div class="text-center">
+                        {{items?.totalguest}}
+                      </div>
+
+                    </div>
+                    <div class="position-absolute" style="
+                        left: 939px;
+                        top: 125px;
+                        color: rgba(0, 0, 0, 0.6);
+                        font-size: 14px;
+        
+                        font-weight: 400;
+                        line-height: 20px;
+                        letter-spacing: 0.42px;
+                        word-wrap: break-word;
+                      ">
+                      {{ items?.evendate | date: 'dd-MM-yyyy' }}
+                    </div>
+                    <div class="position-absolute" style="
+                        width: 120px;
+                        height: 0px;
+                        left: 913px;
+                        top: 25px;
+                        transform: rotate(90deg);
+                        transform-origin: 0 0;
+                        border: 0.5px rgba(0, 0, 0, 0.5) solid;
+                      "></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

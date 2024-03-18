@@ -1,0 +1,413 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-5 col-md-12 position-relative overflow-hidden">
+      <input type="file" style="display: none;" (change)="onFileSelected($event)" #fileInput accept="image/*">
+      <img loading="lazy" class="wedding-status-img img-fluid" [src]="getImageSrc()" (dragover)="onDragOver($event)"
+        (dragleave)="onDragLeave($event)" (drop)="onDrop($event)">
+
+
+      <div class="position-absolute cursor p-2" style="top: 20px; right: 20px;">
+        <img loading="lazy" src="https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/change-wedding-photo.png" (click)="fileInput.click()">
+      </div>
+      <!-- <img loading="lazy" class="position-absolute cursor" style="top: 20px; right: 20px;"
+        src="/assets/images/share-wedding-photo.png"> -->
+      <!-- <div class="position-absolute " style="right: 20px; bottom: 10px;">
+        <div class="countdown-timer d-flex text-white" style="letter-spacing: 0.7;">
+          <div class="timer-item text-center mx-4">
+            <div class="timer-number">{{ countdown.days }}</div>
+            <div class="timer-label fs-6">Days</div>
+          </div>
+
+          <div class="timer-item text-center mx-4">
+            <div class="timer-number">{{ countdown.hours }}</div>
+            <div class="timer-label fs-6">Hours</div>
+          </div>
+          <div class="mt-2 fs-2">
+            :
+          </div>
+          <div class="timer-item text-center mx-4">
+            <div class="timer-number">{{ countdown.minutes }}</div>
+            <div class="timer-label fs-6">Min</div>
+          </div>
+          <div class="mt-2 fs-2">
+            :
+          </div>
+          <div class="timer-item text-center mx-4">
+            <div class="timer-number">{{ countdown.seconds }}</div>
+            <div class="timer-label fs-6">Sec</div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+    <div class="col-lg-6 col-md-12 shadow" style="margin-top: 2%; margin-left: 12px; overflow-x: hidden;">
+      <div class="w-100 text-end mt-3">
+        <!-- <button class="btn btn-lg px-4 p-1 border-danger custom-text-color  custom-btn "  >
+           Edit
+         </button> -->
+        <button mat-raised-button class=" btn btn-lg px-4 p-1 custom-text-color " (click)="openModal()">Edit</button>
+
+      </div>
+      <div class="w-100 d-flex justify-content-center mt-1 ">
+        <div class="">
+          <img loading="lazy" [src]="getProfileSrc()" alt="" width="120px" height="120px"
+            style="border-radius: 50%; object-fit: cover;">
+        </div>
+        <div class="text-secondary fs-1 mt-4 mx-3">
+          &
+        </div>
+        <div class="">
+          <img loading="lazy" [src]="getParentSrc()" alt="" width="120px" height="120px"
+            style="border-radius: 50%; object-fit: cover;">
+        </div>
+      </div>
+      <div class="w-100 text-center ">
+        <div class="fs-2 fw-light">{{weddingDetails.name ? weddingDetails.name:'Test Name'}}</div>
+        <div class="fs-5 text-secondary fw-light">{{weddingDetails.eventDate | date : 'mediumDate'}}</div>
+      </div>
+      <div class="text-muted  d-flex  mt-4 justify-content-around">
+        <div>
+          STATUS:
+        </div>
+        <div>
+          JUST SAID YES? LET'S GET STARTED!
+        </div>
+      </div>
+      <div class="d-flex progress-container justify-content-center ">
+        <div class="progress">
+          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+            [ngStyle]="{'width': statusPercentage+'%'}" style=" background: linear-gradient(to right,#F33535,#FFA500);">
+          </div>
+        </div>
+      </div>
+      <div class="w-100 d-flex justify-content-around mt-3 text-center fs-5 text-secondary fw-light">
+        <!-- <div>
+          <div>
+            {{weddingDetails.completedService}} of {{weddingDetails.totalService}}
+          </div>
+          <div>
+            Services Hired
+          </div>
+        </div> -->
+        <div>
+          <div>
+            {{weddingDetails.completedTask}} of {{weddingDetails.totalTask}}
+          </div>
+          <div>
+            Task Completed
+          </div>
+        </div>
+        <div>
+          <div>
+            {{weddingDetails.attendingGuest}} of {{weddingDetails.totalGuest}}
+          </div>
+          <div>
+            Guest Attending
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="d-flex justify-content-between mt-4 mb-2">
+    <div class="fs-24 fw-500">Vendor Manager</div>
+    <p class="text-white custom-text-color px-4 cursor-hover-red" routerLink="/user-dashboard/wedding-vendors">
+      View All vendors <i class="fa-solid fa-chevron-right mx-1 custom-text-color"></i>
+    </p>
+  </div>
+
+
+  <div class="d-flex justify-content-center">
+    <ng-container *ngIf="items.length else noData">
+      <div *ngFor="let item of items.slice(0,4)" class="zoom-img mr-10 cursor-hover">
+        <div (click)="goToAllVendorByCategory(item._id)" class="responsive-container">
+          <img loading="lazy" src="/assets/images/Venue.svg" alt="" class="responsive-img" />
+          <div class="overlay"></div>
+          <div class="centered-text">
+            <img loading="lazy" src="/assets/images/Home.svg" alt="" class="icon" />
+            <h5>{{ item.name }}</h5>
+            <h6>{{ item.store.length }} saved</h6>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+
+
+
+  <div class="d-flex justify-content-between mt-5 mb-3">
+    <div class="fs-24 fw-500 ">All Task </div>
+    <p class="text-white custom-text-color px-4 cursor-hover-red" routerLink="/user-dashboard/checklist">
+      {{ notcompleted }} pending tasks<i class="fa-solid fa-chevron-right mx-1 custom-text-color"></i>
+    </p>
+  </div>
+
+  <div class="container-fluid bg-light-red p-3" *ngIf="alltask.length else noData">
+    <div class="card mb-2" *ngFor="let item of alltask.slice(0,3)">
+      <div class="card-body cursor " routerLink="/user-dashboard/checklist">
+        <div class="d-flex align-items-center">
+          <i class="fa-solid fa-circle-check custom-text-color ml-3 mr-10 "
+            [ngClass]="{ 'custom-green-color': item.isCompleted }" style="font-size: 50px;"></i>
+
+          <div class="ml-3">
+            <div class="fs-20 fw-300 hel">{{ item.name}}</div>
+            <p class=" fs-17 text-black-50"> {{item.description}} </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #noData>
+    <div class="text-center cursor-hover-red" routerLink="/user-dashboard/checklist">
+      <img loading="lazy" src="https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/no-task.png" height="300" width="300" alt="" srcset="">
+
+    </div>
+  </ng-template>
+
+  <div class="m-3"></div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <div class="fs-24 fw-500">Guest List</div>
+        <p class="text-white custom-text-color px-4 cursor-hover-red m-0" routerLink="/user-dashboard/guests">
+          See Guest List <i class="fa-solid fa-chevron-right mx-1 custom-text-color"></i>
+        </p>
+      </div>
+
+      <div class="border-1 border border-secondary-subtle mt-3 p-3 rounded-3">
+        <ng-container *ngFor="let group of groupsData | keyvalue">
+          <div class="border-1 border border-secondary-subtle mt-2 p-3 rounded-3">
+            <table class="w-100">
+              <thead class="group-th">
+                <tr class="">
+                  <th class="group-table-image align-items-center">
+                    <div class="fs-4">{{ group.key | titlecase }}</div>
+                  </th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody class="tbody-select">
+                <tr *ngFor="let item of group.value">
+                  <td class="group-table-image">
+                    <img loading="lazy" src="{{ item.image }}" width="50px" alt="" />
+                    <div>{{ item.name }}</div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div>
+              <p class="custom-text-color px-2 cursor-hover-red m-0 fs-14 text-end" routerLink="/user-dashboard/guests">
+                See All Guest
+              </p>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <div class="fs-24 fw-500">Budget</div>
+        <p class="text-white custom-text-color px-4 cursor-hover-red m-0">
+          View Budget <i class="fa-solid fa-chevron-right mx-1 custom-text-color"></i>
+        </p>
+      </div>
+      <div class="p-3">
+        <img loading="lazy" class="img-fluid"
+          src="https://t3.ftcdn.net/jpg/04/15/88/54/360_F_415885483_EH1lSzhuVgZJhwTBcmk5nSVWpCGUcw8g.jpg" alt="" />
+      </div>
+    </div>
+  </div>
+
+
+
+
+</div>
+
+
+
+
+
+<div *ngIf="showModal" class="modal" [ngClass]="{ 'show': showModal }" (keyup.esc)="closeModal()">
+  <div class="modal-content">
+    <button (click)="closeModal()" type="button" class="btn-close close mt-2 mr-2" aria-label="Close"></button>
+    <div [formGroup]="weddingForm">
+      <div class="text-center fs-25 fw-400">
+        MY WEDDING
+      </div>
+      <hr>
+
+      <div class="row ">
+        <div class="col-6">
+          <div class=" text-center w-100">
+            <input type="file" style="display: none;" (change)="onPFileSelected($event)" #filePInput accept="image/*">
+            <img loading="lazy" [src]="getProfileSrc()" (click)="filePInput.click()" height="120px" width="120px" alt=""
+              style="border-radius: 50%; object-fit: cover;">
+          </div>
+          <div class="form-group mt-2">
+            <label class="mb-2">I AM</label>
+            <input type="text" class="form-control" formControlName="name"
+              placeholder="{{weddingDetails.name || 'Test Name'}}" readonly style="cursor: not-allowed;">
+          </div>
+          <div class="px-4 mt-4">
+            <div class="">I AM </div>
+            <div class=" w-75 text-center mt-2 d-flex">
+
+              <div class="image-radio-button d-flex ">
+                <label>
+                  <input type="radio" value="bride" formControlName="sector">
+                  <img loading="lazy" class="bride-option"
+                    [src]="weddingForm.get('sector')?.value=='bride' ? '/assets/images/bride-option-selected.png': '/assets/images/bride-option.png'"
+                    alt="Option 1">
+                </label>
+                <div class="mt-1 mx-2">Bride</div>
+              </div>
+
+              <div class="image-radio-button d-flex">
+                <label>
+                  <input type="radio" value="groom" formControlName="sector">
+                  <img
+              loading="lazy"      [src]="weddingForm.get('sector')?.value=='groom' ? '/assets/images/groom-option-selected.png': '/assets/images/groom-option.png'"
+                    alt="Option 2">
+                </label>
+                <div class="mt-1 mx-2">
+                  Groom
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-6">
+          <div class="text-center w-100">
+            <input type="file" style="display: none;" (change)="onParentSelected($event)" #fileParentInput
+              accept="image/*">
+            <img loading="lazy" [src]="getParentSrc()" (click)="fileParentInput.click()" height="120px" width="120px" alt=""
+              style="border-radius: 50%; object-fit: cover;">
+          </div>
+          <div class="form-group mt-2">
+            <label class="mb-2">Partner's Name</label>
+            <input type="text" class="form-control" formControlName="parentName">
+          </div>
+          <div class="px-4 mt-4">
+            <div class="">My PARTNER IS...</div>
+            <div class=" w-75 text-center mt-2 d-flex">
+
+              <div class="image-radio-button d-flex ">
+                <label>
+                  <input type="radio" value="bride" formControlName="parentsector">
+                  <img loading="lazy" class="bride-option"
+                    [src]="weddingForm.get('parentsector')?.value=='bride' ? '/assets/images/bride-option-selected.png': '/assets/images/bride-option.png'"
+                    alt="Option 1">
+                </label>
+                <div class="mt-1 mx-2">Bride</div>
+              </div>
+
+              <div class="image-radio-button d-flex">
+                <label>
+                  <input type="radio" value="groom" formControlName="parentsector">
+                  <img
+              loading="lazy"      [src]="weddingForm.get('parentsector')?.value=='groom' ? '/assets/images/groom-option-selected.png': '/assets/images/groom-option.png'"
+                    alt="Option 2">
+                </label>
+                <div class="mt-1 mx-2">
+                  Groom
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+
+      </div>
+      <div class="row justify-content-center mt-5">
+        <button class="btn btn-danger" style="width: 100px;" (click)="updateWeddingDetails()">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- needed code for later it is remaining UI which is not functioned -->
+
+
+<!-- <hr class="m-4" style="margin-top: 10px;"> -->
+
+<!-- <div class="text-center mt-2 mb-2 fs-24 fw-500 " style="margin-top: 20px !important">Wedding details</div>
+
+
+
+
+  <div class="d-flex justify-content-center">
+    <div *ngFor="let item of carditems" class="card m-3" style="width: 220px; display: inline-block;">
+      <div class="card-body m-0 p-0 text-center">
+        <p class="text-end custom-text-color cursor-hover-red p-2">
+          Edit
+        </p>
+        <img loading="lazy" [src]="[item.img]" alt="" height="60" width="60">
+        <div class="fs-17 fw-400 text-black-50">{{item.title}}</div>
+        <div class="fs-17 fw-500">{{item.season}}</div>
+        <p class="custom-text-color">
+          {{item.couples}}
+        </p>
+      </div>
+    </div>
+  </div>
+  <hr class="m-2">
+
+  <div class="text-center mt-2 mb-2 fs-24 fw-500 " style="margin-top: 20px !important">Wedding details</div>
+
+
+
+  <div class="d-flex justify-content-center mb-4">
+    <div *ngFor="let item of [1,2,3]" class="message-box overflow-hidden justify-content-center m-3 cursor-hover" routerLink="/comming-soon">
+      <div class="p-4">
+        <div class="text-center">
+          <img loading="lazy" src="assets\images\profilePic.png" alt="" height="90" width="90">
+          <div class="text-center fw-500 fs-20 mt-3 mb-3">
+            Telegram: Junwork52 Update
+            Sell dl Scan Front, Back + ssn
+            number Usa-cvv usa-uk-au-eu
+            -inter
+          </div>
+          <div class="text-center fw-400 fs-17 mt-3 mb-3">
+            ---- Welcome To My Store ----
+            REAL INFOS FULLZ SSN DOB + DL
+            ( DRIVING LICENSE ) Fresh 100% for
+            all state...
+          </div>
+        </div>
+      </div>
+      <button class="w-100 fs-20 py-2 custom-button1 cursor-hover" routerLink="/comming-soon">View discussion</button>
+    </div>
+
+  </div>
+
+
+
+  <div class="container bg-light-red p-4 rounded " style="width: 1000px;">
+    <div class="text-center">
+      <div class="fs-30 fw-400 mb-2" style="font-family: Baskervville;">Ask the community </div>
+      <div class="fs-17 fw-400 mb-3">Need help planning your wedding? The WeddingWire Community is the best place
+        to ask questions and share
+        your ideas with other families planning weddings.
+      </div>
+      <button class="w-40 fs-20 p-2 custom-button rounded" style="color: white;">View discussion</button>
+    </div>
+  </div> -->

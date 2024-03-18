@@ -1,0 +1,13 @@
+.btn.selected {
+    background-color: #f33535;
+    color: white;
+  }
+  
+  .btn.unselected {
+    background-color: white;
+    color: #f33535;
+    border-color: #f33535; 
+  }
+  .btn:disabled {
+    opacity: 0.2;
+  }

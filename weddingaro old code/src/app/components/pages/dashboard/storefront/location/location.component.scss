@@ -1,0 +1,18 @@
+@media (max-width: 992px) {
+    .my-2 {
+      width: 100%;
+    }
+  }
+  
+  /* Add padding to the container to prevent overflow */
+  .container-fluid {
+ 
+    overflow-x: hidden;
+  }
+  
+  /* Optionally, you can adjust the width of the form inputs for smaller screens */
+  @media (max-width: 768px) {
+    .form-group.w-50 {
+      width: 100%;
+    }
+  }

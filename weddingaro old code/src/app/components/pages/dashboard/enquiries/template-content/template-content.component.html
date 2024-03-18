@@ -1,0 +1,96 @@
+<section>
+    <div class="align-items">
+      <div class="text-black fs-3 mt-4 section-header">
+        Templates
+      </div>
+  
+      <div style="position: relative; width: 100%">
+        <div class="container-box"></div>
+        <div style="position: absolute; top: 50%; left: 30px; transform: translateY(-50%);">
+          <div class="text-black template-text">
+            Create and edit message templates to quickly and easily reply to couples.
+          </div>
+        </div>
+      </div>
+  
+      <div class="mt-4">
+        <div class="position-relative bg-white p-4 rounded-lg shadow">
+          <div class="mb-4">
+            <div class="text-left text-black fs-3 add-template-header">
+              Add Template
+            </div>
+  
+            <div class="text-black fs-6 mt-3 template-field">
+              Template name
+            </div>
+            <div class="input-group mt-3">
+              <input
+                type="text"
+             
+                class="form-control col-lg-9 col-md-8 col-sm-7 col-6"
+                placeholder="Enter template name"
+                style="
+                  font-size: 17px;
+                  
+                  font-weight: 400;
+                "
+              />
+            </div>
+  
+            <div class="text-black fs-6 mt-3 template-field">
+              Subject
+            </div>
+            <div class="input-group mt-3">
+              <input
+                type="text"
+             
+                class="form-control col-lg-9 col-md-8 col-sm-7 col-6"
+                placeholder="Enter subject"
+                style="
+                  font-size: 17px;
+                  
+                  font-weight: 400;
+                "
+              />
+            </div>
+  
+            <div class="form-group mt-2 mb-5">
+              <div class="text-black fs-6 mt-3 message-field">
+                Message
+              </div>
+  
+              <div class="form-group mt-2 mb-5">
+                <ckeditor [editor]="Editor" formControlName="description"></ckeditor>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button class="btn btn-danger add-template-button">Add template</button>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <div class="text-left text-black fs-3 mt-2 add-template-header">
+        Save Template
+      </div>
+   <!-- Your HTML code remains the same -->
+<div class="container-left mt-3">
+    <div class="row justify-content-left">
+      <div class="col-lg-3 col-md-6 col-sm-8 col-10 mt-2">
+        <div class="template-box">
+          <div class="template-image">
+            <img loading="lazy" style="width: 100%; height: 100%" src="assets/images/templateIcon.svg" />
+          </div>
+          <div class="template-name">Template name</div>
+          <div class="template-date">24/11/2021</div>
+          <div class="add-template-button">
+            <button class="btn btn-danger" style="font-size: 18px; font-family: Inter; font-weight: 500">Add template</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  </section>
+  

@@ -1,0 +1,22 @@
+<hr class="m-0 p-0"  />
+<div class="d-flex border-bottom shadow-sm p-2" style="background-color: rgba( 243, 53, 53, 0.1);">
+  <div class="w-100 dashboardNavTab" >
+    <div class="navItemsDiv">
+      <ul *ngFor="let item of navItems" class="list-unstyled mb-0 ">
+        <li class="mx-5 text-center cursor " [routerLink]="item.route" >
+          <div >
+              <img loading="lazy" [src]="item.icon" height="25px" > 
+            <div  routerLinkActive="custom-text-color">
+                {{item.title}}
+              </div>
+
+      </div>
+        </li>
+      </ul>
+    </div>
+    
+  </div>
+</div>
+<div class="p-4">
+  <router-outlet></router-outlet>
+</div>

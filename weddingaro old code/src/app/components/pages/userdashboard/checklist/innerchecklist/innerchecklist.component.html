@@ -1,0 +1,226 @@
+<div class="contaienr">
+  <p class="fw-400 fs-35  " style="font-family: Baskervville;">Checklist</p>
+
+  <div class="d-flex justify-content-between ">
+    <div>
+      <p class=" fs-17 text-black-50">You have completed <strong>{{completed}} out of {{totaltask}} </strong> tasks</p>
+      <!-- <div class="progress-container">
+                <div class="progress-bar" [style.width]="(completed) + '%'"></div>
+                <div class="remaining-bar" [style.width]="(totaltask) - (completed) + '%'"></div>
+              </div> -->
+      <app-progress-bar [progress]="totaltask === 0 ? 0 : (completed / totaltask * 100)"></app-progress-bar>
+
+    </div>
+
+    <!-- <div class="align-items-end d-flex">
+      <div class="print mr-10 cursor">
+        <div class="rectangle-306"></div>
+        <img loading="lazy" class="print2" src="assets\images\printIcon.svg" />
+      </div>
+
+      <div class="print mr-10 cursor">
+        <div class="rectangle-306"></div>
+        <img loading="lazy" class="print2" src="assets\images\shareIcon.svg" />
+      </div>
+    </div> -->
+
+  </div>
+
+  <div class="card mb-2 mt-4">
+    <div class="card-body cursor " (click)="openModal()">
+      <div class="d-flex align-items-center">
+        <i class="fa-solid fa-circle-plus custom-text-color ml-3 mr-10  hel2" style="font-size: 50px;"></i>
+        <div class="ml-3">
+          <!-- <div class="fs-20 fw-300 hel">{{ item.title}}</div> -->
+          <p class=" fs-25 text-black-50"> Add a new task </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="m-3"></div>
+
+  
+
+  <div class="d-flex justify-content-between align-items-center mt-20">
+    <div class="fs-24 fw-500 mb-3">ALL Task</div>
+  </div>
+
+
+
+
+  
+  <ng-container *ngIf="alltask.length else noData">
+    <div class="card mb-3" *ngFor="let item of alltask">
+      <div class="card-body cursor" style="height: 100px;">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center" (click)="openSecondModal(item)">
+            <i class="fa-solid fa-circle-check custom-text-color ml-3 mr-10 hel2"
+              [ngClass]="{ 'custom-green-color': item.isCompleted }" style="font-size: 50px;"></i>
+
+            <div class="ml-3">
+              <div class="fs-20 fw-300 hel">{{ item.name }}</div>
+              <p class="fs-17 text-black-50"> {{ item.description }} </p>
+            </div>
+          </div>
+          <div>
+
+            <img loading="lazy" class="m-3" src="../../../../../../assets/images/Edit.svg " height="35px" width="35px" (click)="openSecondModal(item)" />
+            <i class="fa-solid fa-trash-can" style="color: #7e67d0; font-size: 25px;"
+              (click)="deleteTask(item._id)"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-pagination
+  [selectedButton]="currentPage"
+  [totalPages]="totalPages"
+  (onClickButton)="updatePage($event)"
+></app-pagination>
+  </ng-container>
+  <ng-template #noData>
+    <div class="text-center">
+      <img loading="lazy" src="https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/no-task.png" height="400" width="400" alt="" srcset="">
+
+    </div>
+  </ng-template>
+
+
+</div>
+
+<!-- add task model  -->
+<div *ngIf="showModal" class="modal" [ngClass]="{ 'show': showModal }">
+  <div class="modal-content">
+    <button (click)="closeModal()" type="button" class="btn-close close mt-2 mr-2" aria-label="Close"></button>
+    <div>
+      <div class="text-center fs-25 fw-400">
+        ADD NEW TASK
+      </div>
+      <hr>
+      <form [formGroup]="taskForm">
+
+        <label for="dishName" class="form-label m-0 p-0">NAME <span class="label-color">*</span></label>
+        <input type="text  " class="form-control mb-3" id="dishName" placeholder="Enter task name"
+          formControlName="name" />
+        <label for="dishName" class="form-label m-0 p-0">DESCRIPTION<span class="label-color">*</span></label>
+        <textarea class="form-control" id="dishDescription" placeholder="Description of task..."
+          formControlName="description" style="height: 90px;"></textarea>
+        <div class="d-flex justify-content-between align-items-center m-2">
+          <!-- <div class="mx-2"> -->
+          <!-- <select class="form-control" formControlName="sector" >
+            <option value="" selected>Select</option>
+            <option *ngFor="let item of sectors" [value]="item?._id">{{item?.name}}</option>
+          </select> -->
+
+          <!-- </div> -->
+          <div class="mx-2">
+            <select class="form-control" formControlName="category">
+              <option value="" selected>Select a category</option>
+              <option *ngFor="let category of categories" [value]="category._id">{{ category.name }}</option>
+            </select>
+          </div>
+
+
+          <div class="mx-2">
+            <select id="startDateSelect" class="form-control" formControlName="startdate">
+              <option value="" selected>Select Date</option>
+              <option value="Form 10 to 12 months">From 10 to 12 months</option>
+              <option value="Form 7 to 9 months">From 7 to 9 months</option>
+              <option value="Form 4 to 6 months">From 4 to 6 months</option>
+              <option value="Form 2 to 3 months">From 2 to 3 months</option>
+              <option value="The Last Month">The Last Month</option>
+              <option value="2 week">2 weeks</option>
+              <option value="Last day">Last day</option>
+              <option value="Wedding day">Wedding day</option>
+              <option value="After the wedding">After the wedding</option>
+            </select>
+          </div>
+
+
+        </div>
+        <div class="text-center">
+          <button type="button" class="btn btn-danger custom-button-dark m-2" (click)="createTask()"
+            [disabled]="taskForm.invalid">Create</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- edit task model  -->
+<div *ngIf="showSecondModal" class="modal" [ngClass]="{ 'show': showSecondModal }">
+  <div class="modal-content" style="width: 900px !important; ">
+
+    <div>
+
+      <form [formGroup]="taskForm">
+
+        <div class="container-fluid">
+          <div class="d-flex justify-content-between align-items-center ">
+            <div class="d-flex justify-content  align-items-center">
+
+              <button type="button" class="btn btn-outline-danger custom-danger-btn"
+                (click)="markTaskAsCompleted(selectedTask._id)" [disabled]="(selectedTask.isCompleted)">Mark
+                complete</button>
+              <div class="mx-1">
+                <select class="form-control" formControlName="category">
+                  <option value="" selected>Select a category</option>
+                  <option *ngFor="let category of categories" [value]="category._id">{{ category.name }}</option>
+                </select>
+              </div>
+              <div class="mx-1">
+                <select id="startDateSelect" class="form-control" formControlName="startdate">
+                  <option value="" selected>Select Date</option>
+                  <option value="Form 10 to 12 months">From 10 to 12 months</option>
+                  <option value="Form 7 to 9 months">From 7 to 9 months</option>
+                  <option value="Form 4 to 6 months">From 4 to 6 months</option>
+                  <option value="Form 2 to 3 months">From 2 to 3 months</option>
+                  <option value="The Last Month">The Last Month</option>
+                  <option value="2 week">2 weeks</option>
+                  <option value="Last day">Last day</option>
+                  <option value="Wedding day">Wedding day</option>
+                  <option value="After the wedding">After the wedding</option>
+                </select>
+              </div>
+
+            </div>
+
+
+
+            <div class="align-items-end d-flex">
+              <i class="fa-solid fa-trash-can  m-2  close "
+                style="color: #7e67d0; font-size: 25px; margin-right: 50px !important;  "
+                (click)="deleteTask(selectedTask._id)"></i>
+
+              <button (click)="closeSecondModal()" type="button" class="btn-close close m-2 "
+                aria-label="Close"></button>
+            </div>
+          </div>
+        </div>
+        <hr>
+
+
+        <div class="fs-30 fw-400 m-2">
+          <input type="text" class="form-control" formControlName="name" placeholder="Task Name" />
+        </div>
+        <div class="fs-17 fw-400 m-2">
+          <textarea class="form-control" formControlName="description" placeholder="Task Description"></textarea>
+        </div>
+
+        <!-- Add other form fields here if needed -->
+        <div class="text-center">
+          <button type="button" class="btn btn-primary custom-button-dark m-2"
+            (click)="updateTask(selectedTask._id , taskForm )">Save</button>
+        </div>
+
+      </form>
+
+
+
+
+
+
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,97 @@
+<div class="formMainContainer">
+  <div class="imageContainer">
+
+    <div class="signup-banner">
+      <div class="sign-text fs-4 m-auto ">
+        {{role=='user' ? 'Plan your Wedding hassle free' : 'Boost your business with us'}}
+      </div>
+      <div class="mt-2">
+        with Weddingaro
+      </div>
+    </div>
+    <img loading="lazy" class="flowers" [src]="role=='user'?'https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/flowers-signup.png':'https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/vendor-login.png'">
+
+
+  </div>
+  <div class="formContainer">
+    <div class="w-100 text-center custom-text-color">
+      <div class="w-100 text-center custom-text-color">
+        <img loading="lazy" src="https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/logo_desktop.png" routerLink="/home" alt="Logo" height="75" class="d-inline-block align-text-top">
+      </div>
+    </div>
+    <div class="w-100 text-center fs-3 font-weight-light mt-4">
+      Hello! Welcome back
+    </div>
+    <div class="text-center ">
+      Don't have an account? <span class="custom-text-color cursor"
+        [routerLink]="role=='user'? '/signup/user' : '/signup/vendor'">Sign Up</span>
+    </div>
+    <div class="signup-form mt-4">
+      <form class="example-form " [formGroup]="loginForm">
+        <div class="formfield_div">
+          <div>
+            <mat-form-field class="example-full-width">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput formControlName="username">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="formfield_div">
+          <div>
+            <mat-form-field class="example-full-width">
+              <mat-label>Password</mat-label>
+              <input  [type]="showPassword ? 'text' : 'password'" matInput formControlName="password">
+              <mat-icon matSuffix (click)="toggleShowPassword()">
+                {{ showPassword ? 'visibility_off' : 'visibility' }}
+              </mat-icon>
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+
+
+      <div class="w-100 text-center">
+        <button class="btn custom-button w-100" (click)="login()" [disabled]="this.loginForm.invalid"
+          [ngClass]="{'custom-text-color':this.loginForm.invalid}">
+          Login
+        </button>
+      </div>
+      <div class="w-100 text-end font-weight-light custom-text-color mt-2 cursor " (click)="forgotPassword()"
+        style="padding-right: 2.5rem;">
+        Forgot your password?
+      </div>
+      <div class="d-flex w-100 justify-content-center mt-4" *ngIf="role=='user'">
+        <hr style="width: 210px;" class="mx-2">
+        <span class="mt-1">Or</span>
+        <hr style="width: 210px;" class="mx-2">
+      </div>
+      <div class="mt-3 text-center" *ngIf="role=='user'">
+        <button class="btn btn-social-icon btn-google" (click)="signInWithGoogle()">
+          <asl-google-signin-button type="standard" size="large"> </asl-google-signin-button>
+        </button>
+        <!-- <img loading="lazy" src="/assets/images/facebook-signup.png" class="mt-2 auth-signup" alt="/assets/" srcset="">
+        <img loading="lazy" src="/assets/images/google-signup.png" class="mt-2 auth-signup" alt="/assets/" srcset="">
+        <img loading="lazy" src="/assets/images/apple-signup.png" class="mt-2 auth-signup" alt="/assets/" srcset=""> -->
+      </div>
+      <div class="fs-14 text-center mt-4 text-secondary">
+        {{role=='user'?'Are you a vendor?' : 'Are you a user?'}} <span class="custom-text-color cursor"
+          [routerLink]="role=='user' ? '/login/vendor' : '/login/user' ">
+          {{role=='user'?'Vendor login' : 'User login'}}</span>
+      </div>
+      <div class="d-flex justify-content-around fs-12 mt-5 text-secondary mt-3">
+        <div routerLink="/contact-us" class="cursor-hover-red">
+          Contact Us
+        </div>
+        <div routerLink="/terms-and-condition" class="cursor-hover-red">
+          Terms & Condition
+        </div>
+        <div routerLink="/about-us" class="cursor-hover-red">
+          About Us
+        </div>
+      </div>
+      <div [routerLink]="'/'" class="text-center fs-12 text-secondary mt-2 cursor-hover-red ">
+        Weddingaro.com
+      </div>
+    </div>
+  </div>
+</div>

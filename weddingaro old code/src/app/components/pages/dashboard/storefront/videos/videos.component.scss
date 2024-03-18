@@ -1,0 +1,28 @@
+.photo-upload-container {
+  height: 400px;
+}
+
+.edit-business {
+  width: 100%;
+  max-width: 979px;
+  height: auto;
+  background: #9747ff1a;
+  border-radius: 15px;
+}
+
+.uploaded-image-container {
+  max-width: 100%;
+}
+
+.title-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px 10px 0px 0px;
+}
+
+/* Ensure the video upload area is responsive */
+.mt-2.cursor.text-center img {
+  width: 100%;
+  height: auto;
+  max-width: 80%; /* Adjust the max-width as needed */
+}

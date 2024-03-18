@@ -1,0 +1,51 @@
+<div class="container-fluid" style="overflow-x: auto;">
+  <div class="row">
+    <div class="col-12 col-md-9">
+      <h2 class="social-networks">Social networks</h2>
+      <div class="social-div">
+        <div>
+          <img loading="lazy" src="https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/socialnetworks.png" width="100%" alt="" />
+        </div>
+        <div class="social-link" [formGroup]="socialNetworkForm">
+          <p class="fs-20">
+            Share your social handles with us and increase the chances to have
+            your pictures posted on our socials. When we make a post with one of
+            your photos, we'll tag your business.
+          </p>
+          <div class="link-div">
+            <div class="links">
+              <div>
+                <img loading="lazy" width="40px" style="margin: 10px" src="../../../../../../assets/images/facebook.svg" alt="" />
+              </div>
+              <input type="text" placeholder="facebook.com/business-information" formControlName="facebook" />
+            </div>
+            <div class="links">
+              <div>
+                <img loading="lazy" width="40px" style="margin: 10px" src="../../../../../../assets/images/instagram.svg" alt="" />
+              </div>
+              <input formControlName="instagram" type="text" placeholder="instagram.com/business-information" />
+            </div>
+            <div class="links">
+              <div>
+                <img loading="lazy" width="40px" style="margin: 10px" src="../../../../../../assets/images/twitter.svg" alt="" />
+              </div>
+              <input formControlName="twitter" type="text" placeholder="twitter.com/business-information" />
+            </div>
+            <div class="links">
+              <div>
+                <img loading="lazy" width="40px" style="margin: 10px" src="../../../../../../assets/images/pinterest.svg" alt="" />
+              </div>
+              <input formControlName="pinterest" type="text" placeholder="pinterest.com/business-information" />
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center align-items-center text-center">
+          <button class="faq-save" (click)="submitForm()">Save</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-3 mt-3 mt-md-0">
+      <app-common-store-sidebar></app-common-store-sidebar>
+    </div>
+  </div>
+</div>

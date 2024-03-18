@@ -1,0 +1,88 @@
+<div class="d-flex align-items-center">
+
+  <div class="m-3 d-flex align-items-center ">
+    <h5 class="mb-0 mr-4">{{ userDetail?.user?.fname }} {{userDetail?.user?.lname}} </h5>
+  </div>
+  <mat-menu #profileMenu="matMenu">
+    <div class="container">
+      <div class="text-center">
+        <h3 class="m-0 p-0 cursor-hover-red mt-2 mb-1" routerLink="/dashboard/home" routerLinkActive="custom-text-color">
+          {{ userDetail?.user?.fname }} {{userDetail?.user?.lname}}</h3>
+        <input type="file" (change)="onFileSelected($event)" #fileInput style="display: none" accept="image/*">
+        <p class="cursor-hover-red" (click)="fileInput.click()">Edit Profile Picture</p>
+        
+      </div>
+      <hr class="my-3">
+
+      <div class="container mt-3">
+        <div class="row">
+          <div *ngFor="let item of draweritems" class="col-4">
+            <div class="cursor-hover-red mb-3" routerLink={{item.route}} routerLinkActive="custom-text-color">
+              <img loading="lazy" src={{item.imgURL}} height="30px" class="me-2 mb-2" />
+              <div class="text-black cursor-hover-red " style="font-size: 14px" routerLinkActive="custom-text-color">
+                {{item.title}} </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <hr>
+      <div class="text-center mb-2">
+        <div class="cursor-hover-red" style="font-size: 20px" (click)="logout()">Logout</div>
+      </div>
+
+    </div>
+
+  </mat-menu>
+
+
+
+  <mat-menu #profileMenu="matMenu">
+    <div class="container">
+      <div class="d-flex justify-content-start align-items-center">
+
+        <div class=" ">
+          <img loading="lazy" [src]="userDetail?.user?.profilePic" style="border-radius: 50%; object-fit: cover;" height="50px"
+            width="50px" alt="Image">
+        </div>
+        <div class="ml-3">
+          <h4 class="m-2">{{ userDetail?.user?.fname }} {{ userDetail?.user?.lname || ''}}</h4>
+
+        </div>
+
+      </div>
+
+
+
+      <hr class="my-3">
+      <div class="container mt-3">
+        <div class="row">
+          <div *ngFor="let item of draweritems" class="col-4">
+            <div class="cursor-hover-red mb-3" routerLink={{item.route}} routerLinkActive="custom-text-color">
+              <img loading="lazy" src={{item.imgURL}} height="30px" class="me-2 mb-2" />
+              <div class="text-black cursor-hover-red " style="font-size: 14px" routerLinkActive="custom-text-color">
+                {{item.title}} </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+      <div class="fs-17 fw-400 text-start ml-3 cursor-hover-red " (click)="logout()">
+        Log out
+      </div>
+    </div>
+
+  </mat-menu>
+
+
+
+
+  <img loading="lazy" class="active custom-text-hover" type="button"
+    [src]="userDetail?.user?.profilePic + '?t=' + userDetail?.user?.updatedAt" height="40" width="40"
+    style="border-radius: 50%; object-fit: cover;" [matMenuTriggerFor]="profileMenu">
+
+</div>

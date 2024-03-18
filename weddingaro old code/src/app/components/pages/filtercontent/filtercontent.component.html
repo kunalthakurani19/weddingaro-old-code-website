@@ -1,0 +1,58 @@
+<div class="page-width">
+    <div class="mb-3">
+        <div class="ff-b m-50 text-h">
+
+            <button type="button" class="btn btn-primary custom-button-dark m-3 " (click)="openModal()">
+
+                <img loading="lazy" src="\assets\images\equalizer.svg" height="20px" width="20px" alt="">
+                <span class="px-2 fs-15">Filter</span>
+            </button>
+        </div>
+    </div>
+
+
+    <div class="d-flex justify-content-center   " >
+        <div class="text-center d-inline-block ideasDiv ">
+            <div class="grid-container">
+                <ng-container *ngFor="let venue of venuesList">
+                    <app-venue-card [cardInput]="venue"></app-venue-card>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+    <div class="m-5"></div>
+</div>
+
+
+<!-- add task model  -->
+<div *ngIf="showModal" class="modal" [ngClass]="{ 'show': showModal }">
+    <div class="modal-content" style="width: 60%;">
+        <button (click)="closeModal()" type="button" class="btn-close close mt-2 mr-2" aria-label="Close"></button>
+        <div>
+            <div class="text-start fs-25 fw-400">
+                Filter
+            </div>
+
+            <table class="table table-borderless">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Per Plate</th>
+                        <th>Capacity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of tableData">
+                        <td> <mat-checkbox class="mr-2"></mat-checkbox> {{ row.type }}</td>
+                        <td> <mat-checkbox class="mr-2"></mat-checkbox> {{ row.perPlate }}</td>
+                        <td> <mat-checkbox class="mr-2"></mat-checkbox> {{ row.capacity }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+
+        </div>
+    </div>
+</div>

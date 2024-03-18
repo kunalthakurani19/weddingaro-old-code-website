@@ -1,0 +1,29 @@
+
+.progress-container {
+    width: 100%;
+    height: 20px;
+    background: #ccc;
+    /* Grey background for the whole progress container */
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    /* Needed for positioning the remaining-bar */
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #F33535, #FFA500);
+    border-radius: 10px 0 0 10px;
+    transition: width 0.3s;
+}
+
+.remaining-bar {
+    height: 100%;
+    background-color: #ccc;
+    /* Grey color for the remaining portion */
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 0 10px 10px 0;
+    transition: width 0.3s;
+}

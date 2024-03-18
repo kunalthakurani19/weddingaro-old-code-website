@@ -1,0 +1,55 @@
+<div class="out-div">
+  <h2 class="ff-b fs-35">Bills</h2>
+  <div class="discription-div">
+    <p class="fs-20 fw-500 p-0 m-0 mb-10">
+      Check your pending invoices and pay for services on Weddingaro.
+    </p>
+    <p class="fs-19 p-0 m-0">Click into each invoice to make a payment.</p>
+  </div>
+  <div>
+    <div class="fs-25 fw-500 border-bottom border-2 px-10 mb-30">
+      Pending Invoices
+    </div>
+    <div class="table-div">
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th class="table-cell" *ngFor="let item of ths">{{ item }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-row" *ngFor="let item of pandingBills">
+            <td class="table-cell">{{ item.dueDate }}</td>
+            <td class="table-cell">{{ item.invoiceNumber }}</td>
+            <td class="table-cell">{{ item.amount }}</td>
+            <td class="table-cell button-td">
+              <button class="table-button due-button">Pay</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div>
+    <div class="fs-25 fw-500 border-bottom border-2 px-10 mb-30">Paid</div>
+    <div class="table-div">
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th class="table-cell" *ngFor="let item of ths">{{ item }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-row" *ngFor="let item of paidBills">
+            <td class="table-cell">{{ item.dueDate }}</td>
+            <td class="table-cell">{{ item.invoiceNumber }}</td>
+            <td class="table-cell">{{ item.amount }}</td>
+            <td class="table-cell button-td">
+              <button class="table-button paid-button">Paid</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

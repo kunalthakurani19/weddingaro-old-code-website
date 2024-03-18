@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="store-front-header fw-light">
+        Videos
+      </div>
+
+      <div class="edit-business d-md-flex p-3 mt-3">
+        <div>
+          <img loading="lazy" src="/assets/images/cinema.png">
+        </div>
+        <div class="mx-2">
+          <h5 class="fw-light">
+            Showcase your work by adding videos to your Storefront.
+          </h5>
+          <h6 class="fw-lighter">
+            Add unlimited videos related to your business and wedding services.
+          </h6>
+        </div>
+      </div>
+
+      <div class="mt-4 p-1">
+        <h5 class="text-center">Add Videos</h5>
+        <div class="mt-2 cursor text-center">
+          <input type="file" style="display: none;" (change)="onFileSelected($event)" #fileInput accept="video/*">
+          <img
+            src="https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/video-upload-area.png" class="img-fluid" height="350"
+            alt="Select Video"
+            (click)="fileInput.click()"
+            (dragover)="onDragOver($event)"
+            (dragleave)="onDragLeave($event)"
+            (drop)="onDrop($event)"
+          >
+        </div>
+      </div>
+
+      <div class="mt-4 d-flex flex-wrap justify-content-center">
+        <div class="uploaded-image-container rounded border-1 shadow mx-3 my-3 col-12 col-sm-6 col-md-4" *ngFor="let item of videos">
+          <div class="title-image">
+            <video class="title-image img-fluid" controls>
+              <source [src]="item.url">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="p-2">
+            <div class="fw-light inter fs-14 text-truncate w-100" [matTooltip]="item.title">Title: <span>{{item.title}}</span></div>
+            <div class="fw-light inter fs-14 text-truncate w-100" [matTooltip]="item.description">Description: {{item.description}}</div>
+          </div>
+          <div class="w-100 text-end">
+            <mat-icon color="warn" class="cursor" (click)="deleteVideo(item.uuid)">delete</mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <app-common-store-sidebar></app-common-store-sidebar>
+    </div>
+  </div>
+</div>

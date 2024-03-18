@@ -1,0 +1,91 @@
+<div class="container-fluid mt-4">
+    <div class="row">
+        <!-- Bootstrap col-lg-2 (instead of col-lg-3) for the left sidebar to reduce its width -->
+        <!-- Left Side - Sidebar -->
+        <div class="col-lg-2 col-md-3 col-sm-12">
+            <div class="fw-500 fs-18  mb-4 ">STATUS</div>
+
+            <div *ngFor="let item of status" class="mb-3 d-flex align-items-center cursor-hover">
+                <div [style.background-color]="item.color" class="rounded-circle me-3 status-bullet"></div>
+
+                <div class="flex-grow-1 status-item">
+                    {{ item.title }}
+                </div>
+                <div class="count">{{ item.count }}</div>
+            </div>
+
+            <hr>
+
+
+
+            <!-- Add a chip for each selected date filter -->
+            <!-- Add this code inside the ChecklistComponent template -->
+            <!-- <div class="selected-filters">
+                <div class="chip" *ngFor="let dateFilter of selectedDateFilters" (click)="removeDateFilter(dateFilter)">
+                    {{ dateFilter }}
+                    <span class="close-icon">&times;</span>
+                </div>
+                <div class="chip" *ngFor="let categoryFilter of selectedCategoryFilters "
+                    (click)="removeCategoryFilter(categoryFilter)">
+                    {{ getCategoryName(categoryFilter) }}
+                    <span class="close-icon">&times;</span>
+                </div>
+                <div class="chip" *ngFor="let statusFilterId of selectedStatusFilters"
+                    (click)="removeStatusFilter(statusFilterId)">
+                    {{ statusFilterId }}
+                    <span class="close-icon">&times;</span>
+                </div>
+
+            </div> -->
+
+
+            <div class="chips-container">
+                <div *ngFor="let selectedDate of selectedDates" class="chip" (click)="removeDate(selectedDate)">
+                    {{ selectedDate }}
+                    <span class="close-icon">&#10006;</span>
+                </div>
+
+                <div *ngFor="let selectedCategory of selectedCategories" class="chip"
+                    (click)="removeCategory(selectedCategory)">
+                    {{ selectedCategory.name }}
+                    <span class="close-icon">&#10006;</span>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+            <div class="fw-500 fs-18  mb-4 ">DATE</div>
+
+            <div *ngFor="let item of inboxitem" class="mb-3 d-flex align-items-center cursor-hover">
+                <div [style.background-color]="item.color " class="rounded-circle me-3 status-bullet"></div>
+
+                <div class="flex-grow-1 status-item" (click)="addDate(item.title)">
+                    {{ item?.title }}
+                </div>
+                <div class="count">{{ item?.count }}</div>
+            </div>
+            <hr />
+
+            <div class="fw-500 fs-18  mb-4 ">CATEGORY</div>
+            <div *ngFor="let item of category | keyvalue" class="mb-3 d-flex align-items-center cursor-hover">
+                <ng-container>
+                    <div class="flex-grow-1 status-item" (click)="addCategory(item?.value?.id, item?.value?.name)">
+                        {{ item?.value?.name }}
+                    </div>
+                    <div class="count">{{ item?.value?.count }}</div>
+                </ng-container>
+
+            </div>
+        </div>
+
+        <!-- Right Side - Main Content Area innerchecklist part (task showing part) -->
+        <div class="col-lg-10 col-md-9 col-sm-12 pt-lg-0 pt-md-4">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

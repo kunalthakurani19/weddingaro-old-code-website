@@ -1,0 +1,93 @@
+<div mat-dialog-content class="p-4" [formGroup]="weddingForm">
+  <div class="row text-center mt-3">
+    <button (click)="closeDialog()" type="button" class="btn-close close mt-2" style="margin-right: 10px !important"
+      aria-label="Close"></button>
+    <h2 class="text-bold">
+      MY WEDDING
+    </h2>
+  </div>
+  <hr>
+  <div class="row ">
+    <div class="col-6">
+      <div class=" text-center w-100">
+        <img loading="lazy" src="/assets/images/partner-photo.png" alt="">
+      </div>
+      <div class="form-group mt-2">
+        <label class="mb-2">I AM</label>
+        <input type="text" class="form-control" formControlName="name">
+      </div>
+      <div class="px-4 mt-4">
+        <div class="">I AM </div>
+        <div class=" w-75 text-center mt-2 d-flex">
+
+          <div class="image-radio-button d-flex ">
+            <label>
+              <input type="radio" value="bride" formControlName="sector">
+              <img loading="lazy" class="bride-option"
+                [src]="weddingForm.get('sector')?.value=='bride' ? '/assets/images/bride-option-selected.png': '/assets/images/bride-option.png'"
+                alt="Option 1">
+            </label>
+            <div class="mt-1 mx-2">Bride</div>
+          </div>
+
+          <div class="image-radio-button d-flex">
+            <label>
+              <input type="radio" value="groom" formControlName="sector">
+              <img
+              loading="lazy"  [src]="weddingForm.get('sector')?.value=='groom' ? '/assets/images/groom-option-selected.png': '/assets/images/groom-option.png'"
+                alt="Option 2">
+            </label>
+            <div class="mt-1 mx-2">
+              Groom
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-6">
+      <div class="text-center w-100">
+        <img loading="lazy" src="/assets/images/partner-photo.png" alt="">
+      </div>
+      <div class="form-group mt-2">
+        <label class="mb-2">Partner's Name</label>
+        <input type="text" class="form-control" formControlName="partnerName">
+      </div>
+      <div class="px-4 mt-4">
+        <div class="">My PARTNER IS...</div>
+        <div class=" w-75 text-center mt-2 d-flex">
+
+          <div class="image-radio-button d-flex ">
+            <label>
+              <input type="radio" value="bride" formControlName="parentsector">
+              <img loading="lazy" class="bride-option"
+                [src]="weddingForm.get('parentsector')?.value=='bride' ? '/assets/images/bride-option-selected.png': '/assets/images/bride-option.png'"
+                alt="Option 1">
+            </label>
+            <div class="mt-1 mx-2">Bride</div>
+          </div>
+
+          <div class="image-radio-button d-flex">
+            <label>
+              <input type="radio" value="groom" formControlName="parentsector">
+              <img
+              loading="lazy"  [src]="weddingForm.get('parentsector')?.value=='groom' ? '/assets/images/groom-option-selected.png': '/assets/images/groom-option.png'"
+                alt="Option 2">
+            </label>
+            <div class="mt-1 mx-2">
+              Groom
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3">
+
+  </div>
+  <div class="row justify-content-center mt-5">
+    <button class="btn btn-danger" style="width: 100px;" (click)="onSubmit()">
+      Save
+    </button>
+  </div>
+</div>

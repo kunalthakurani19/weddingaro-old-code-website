@@ -1,0 +1,191 @@
+
+
+<div class="container-fluid ">
+  <div class="card-weaper cursor-hover-red m-0 p-0 shadow" >
+    <div class="card-img-div">
+      <carousel  [isAnimated] ="true" [interval]="0" >
+        <slide *ngFor="let photo of images; let i = index" >
+          <div class="">
+            <img
+              loading="lazy" height="190px"
+              width="290px"
+              class="rounded-bottom-0 rounded-2"
+              style="object-fit: fill;"
+              [src]="photo"
+              loading="lazy"
+              alt=""
+            
+            />
+            <div class="position-absolute heart-container" style="top: 10px; right: 68px">
+              <div class="small-heart" [class.selected]="selected" (click)="toggleSelected(cardInput.id)">
+                <div class="inner-heart"></div>
+              </div>
+            </div>
+    
+            <div class="position-absolute heart-container" style="top: 11px; right: 65px">
+              <div class="large-heart" [class.selected]="selected" (click)="toggleSelected(cardInput.id)">
+                <div class="inner-heart"></div>
+              </div>
+            </div>
+          </div>
+        </slide>
+      </carousel>
+    </div>
+    <div class="c-card-footer" >
+      <div class="container " (click)="navigateToVenueDetails(cardInput.id)">
+        <div class="p-3">
+          <div class="fw-500 fs-20 text-truncate">
+            {{ cardInput.name || "No Name"}}
+          </div>
+          <div class="fw-400 fs-23">
+            {{ cardInput.address || "No Address"}}
+          </div>
+          <div class="fw-400 fs-13 text-truncate ">
+            {{ cardInput.formatted_address || " "}}
+          </div>
+        </div>
+      </div>
+
+      <!-- Show this div only if there is data -->
+      <div class="row mb-2">
+        <div class="col-6">
+          <div class="col">
+            <i
+              class="{{ showGuestCountField ? 'fa-solid fa-utensils' : 'fa-solid fa-wallet' }} mx-1 custom-text-color"></i>FROM
+            {{ cardInput.lowestFood || "NA" }}
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div *ngIf="showGuestCountField" class="col text-start">
+            <i class="fa-solid fa-users mx-1 custom-text-color"></i>
+            {{ cardInput.capacity.min || "NA" }} to {{ cardInput.capacity.max || "NA" }}
+          </div>
+        </div>
+      </div>
+
+      <div class="card-a text-center h-40 fw-bold " (click)="openModal()" >
+        Request Pricing
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div *ngIf="showModal" class="modal" [ngClass]="{ show: showModal }">
+  <div class="modal-content text-start" style="width: 500px">
+    <button (click)="closeModal()" type="button" class="btn-close close mt-2 mr-2" aria-label="Close"></button>
+    <div>
+      <div class="text-center fs-25 fw-400" style="font-family: Baskervville">
+        Request Pricing
+      </div>
+      <hr />
+      <form [formGroup]="taskForm">
+        <label for="dishName" class="form-label m-0 p-0">NAME <span class="label-color">*</span></label>
+        <input type="text  " class="form-control mb-3" id="dishName" placeholder="Enter Full Name"
+          formControlName="name" />
+
+        <div class="row">
+          <div class="">
+            <label class="form-label m-0 p-0">Email <span class="label-color">*</span></label>
+            <input type="email" class="form-control mb-3" id="dishName" placeholder="Enter Your Email"
+              formControlName="email" />
+          </div>
+
+        </div>
+
+
+        <div class="row">
+          <div class="col-6">
+            <label class="form-label m-0 p-0">Event Date <span class="label-color">*</span></label>
+            <mat-form-field  style="width: 95%; "  >
+              <mat-label >Event Date</mat-label>
+              <input matInput [matDatepicker]="startDatePicker" formControlName="evendate" (dateChange)="onDateChange($event)">
+
+              <mat-datepicker-toggle matIconSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #startDatePicker></mat-datepicker>
+            </mat-form-field>
+            <!-- <input type="date" class="form-control mb-3" id="dishName" placeholder="Enter Your Event Date"
+              formControlName="evendate" style="text-transform: uppercase;" /> -->
+          </div>
+
+
+          <div *ngIf="cardInput.capacity.min > 0 && cardInput.capacity.max > 2" class="col-6">
+            <ng-container *ngIf="showGuestCountField">
+              <label class="form-label m-0 p-0 ">Approx. Guest Count <span class="label-color">*</span></label>
+              <input type="number" class="form-control mb-3" placeholder="Enter Guest Member" 
+                formControlName="totalguest" min="1" max="{{ cardInput.capacity.max }}" />
+              <div *ngIf="
+                   
+                    taskForm.get('totalguest')!.hasError('max') 
+                  " class="text-danger">
+                Please provide the guest count in the range 1 to {{ cardInput.capacity.max }}.
+              </div>
+            </ng-container>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label m-0 p-0">Phone number <span class="label-color">*</span></label>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <select class="form-control dropdown" id="exampleFormControlSelect1" formControlName="countrycode">
+                <option value="" selected>
+                  country code
+                </option>
+                <option *ngFor="let countryCode of countryCodes" [value]="countryCode.dial_code">
+                  {{ countryCode.dial_code }} - {{ countryCode.code }}
+                </option>
+              </select>
+            </div>
+            <input type="tel" class="form-control" aria-label="Text input with dropdown button"
+              formControlName="phonenumber" maxlength="10" minlength="10">
+          </div>
+
+          <div class="text-danger" *ngIf="taskForm.get('phonenumber')?.errors?.pattern">
+            Please enter a valid mobile number with 10 digits
+          </div>
+        </div>
+
+        <label for="dishName" class="form-label m-0 p-0">Message<span class="label-color">*</span></label>
+        <textarea class="form-control" id="dishDescription" placeholder="Description of message..."
+          formControlName="message" style="height: 80px"></textarea>
+
+
+        <div class="d-flex justify-content-between align-items-center m-2"></div>
+        <div class="text-center">
+          <button type="button" class="btn btn-danger custom-button-dark m-2" (click)="createRequest()"
+            [disabled]="taskForm.invalid">
+            Send
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="showSuccessModal" class="modal" [ngClass]="{ show: showSuccessModal }">
+  <div class="modal-content" style="width: 500px; border-radius: 25px">
+    <!-- <button (click)="closeSuccessModal()" type="button" class="btn-close close mt-2 mr-2" aria-label="Close"></button> -->
+    <div class="text-center">
+      <div class="text-center mt-2">
+        <img loading="lazy" src="/assets/images/check.svg" alt="" height="90px" width="90px" />
+      </div>
+      <div class="text-center fs-30 fw-500 m-2" style="font-family: Baskervville">
+        Success!
+      </div>
+      <div class="text-center fs-17 fw-500 m-2" style="font-family: Baskervville">
+        Your messsage send sucessfully we will get back with you soon...
+      </div>
+      <div class="text-center mt-3">
+        <button type="button" class="btn btn-danger custom-button-dark" (click)="closeSuccessModal()">
+          close
+        </button>
+      </div>
+      <!-- Display your success message content here -->
+    </div>
+  </div>
+</div>
+

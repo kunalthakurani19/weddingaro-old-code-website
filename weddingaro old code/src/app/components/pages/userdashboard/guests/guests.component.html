@@ -1,0 +1,224 @@
+<div class="container-fluid">
+
+  <div class="text-center fs-35 fw-400 mb-4" style="font-family: Baskervville;">
+    Guest List
+  </div>
+
+  <div class="container col-md-9">
+    <div class="d-md-flex justify-content-between align-items-center">
+      <div class="col-md-4 mb-3 mb-md-0">
+        <div class="d-flex justify-content-align-items-center">
+          <img loading="lazy" class="m-2" src="/assets/images/Team.svg" alt="" height="100px" width="60px" />
+          <div class="m-2">
+            {{guests?.countings?.totalGuest}}
+            <div class="text-black-50">Guests</div>
+          </div>
+          <div class="m-2">
+            <div class="text-black-50"><strong> {{guests?.countings?.adultGuest}}</strong> Adults</div>
+            <div class="text-black-50">
+              <strong>{{guests?.countings?.childGuest}}</strong> Childrens ,
+              <strong>{{guests?.countings?.babyGuest}}</strong> babies
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1">
+        <div class="vertical-line d-none d-md-block" style="border-left: 1px solid black; height: 100px;"></div>
+      </div>
+      <div class="col-md-4">
+        <div class="d-flex justify-content-align-items-center">
+          <img loading="lazy" class="m-2" src="/assets/images/Heart Health.svg" alt="" height="60px" width="60px" />
+          <div class="m-2">
+            {{guests?.countings?.attandanceGuest}}
+            <div class="text-black-50">Attending</div>
+          </div>
+          <div class="m-2">
+            {{guests?.countings?.pendingGuest}}
+            <div class="text-black-50">Pending</div>
+          </div>
+          <div class="m-2">
+            {{guests?.countings?.declineGuest}}
+            <div class="text-black-50">Declined</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center flex-column flex-md-row">
+      <div class="mb-2 mb-md-0">
+        <button type="button" class="btn btn-primary custom-button-dark m-2" (click)="openAddGuestModel()">Add Guest</button>
+        <button type="button" class="btn btn-primary custom-button-dark m-2" (click)="openAddGroupModel()">Add Group</button>
+        <button type="button" class="btn btn-primary custom-button-dark m-2" (click)="openMenuModal()">Add Menu</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- add group modal -->
+<div *ngIf="showGroupModal" class="modal" [ngClass]="{ 'show': showGroupModal }">
+  <div class="modal-content" style="width: 500px !important; ">
+    <button (click)="closeGroupModal()" type="button" class="btn-close close mt-2 mr-2" aria-label="Close"></button>
+    <div>
+      <div class="text-center fs-25 fw-500">
+        Add group of guests
+      </div>
+      <hr>
+      <label for="dishName" class="form-label m-0 p-0 fs-15 fw-500 ">Group Name <span
+          class="label-color">*</span></label>
+      <input type="text" class="form-control mb-3" placeholder="Group" [(ngModel)]="groupName" />
+
+      <div class="text-center">
+        <button type="button" class="btn btn-primary custom-button-dark m-2" (click)="addGroup()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showMenuModal" class="modal" [ngClass]="{ 'show': showMenuModal }">
+  <div class="modal-content" style="width: 500px !important; ">
+    <button (click)="closeMenuModal()" type="button" class="btn-close close mt-2 mr-2" aria-label="Close"></button>
+    <div [formGroup]="menuForm">
+      <div class="text-center fs-25 fw-500">
+        Add Menu Of Guests
+      </div>
+      <hr>
+      <label for="dishName" class="form-label m-0 p-0 fs-15 fw-500 ">Menu Name <span
+          class="label-color">*</span></label>
+      <input formControlName="menuname" type="text" class="form-control mb-3" />
+      <label for="dishName" class="form-label m-0 p-0 fs-15 fw-500 ">Menu Description <span
+          class="label-color">*</span></label>
+      <input formControlName="menuDescription" type="text" class="form-control mb-3" />
+      <div class="text-center">
+        <button type="button" class="btn btn-primary custom-button-dark m-2" (click)="addMenu()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- add guest modal -->
+<div *ngIf="showGuestModal" class="modal" [ngClass]="{ 'show': showGuestModal }">
+  <div class="modal-content " style="width: 500px !important; margin-top: 100px; " [formGroup]="guestForm">
+    <button (click)="closeGuestModal()" type="button" class="btn-close close mt-2 mr-2" aria-label="Close"></button>
+    <div>
+      <div class="text-center fs-25 fw-500">
+        Add guest
+      </div>
+      <hr>
+      <div class="d-flex align-items-center">
+        <img loading="lazy" src="/assets/images/Profile icon.svg" height="50px" width="50px" alt="">
+        <div class="mx-2 mb-2">
+          <p class=" fs-15 fw-500 m-0 p-0"> Guest Name </p>
+          <input type="text" class="fs-15 m-0 p-0" style="border: none;
+          border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+          outline: none;" placeholder="Name" formControlName="fname">
+        </div>
+      </div>
+
+
+      <div>
+        <div class="container-fluid bg-light-red p-2">
+          <div class="text-start fs-16 fw-500">
+            GUEST INFORMATION
+          </div>
+        </div>
+        <div class="row mb-3 mt-2">
+          <div class="col-6">
+            <div class="fw-500 fs-15">AGE</div>
+            <select class="form-control w-100 " formControlName="age">
+              <option value="Adult">Adult</option>
+              <option value="Child">Child</option>
+              <option value="Baby">Baby</option>
+            </select>
+          </div>
+          <div class="col-6">
+            <div class="fw-500 fs-15">GENDER</div>
+            <select class="form-control w-100" formControlName="gender">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+        </div>
+        <div class="row my-3">
+          <div class="col-6">
+            <div class="fw-500 fs-15">GROUP</div>
+            <select class="form-control w-100 " formControlName="group">
+              <option *ngFor="let item of groups" [value]="item._id">{{item.groupname}}</option>
+
+            </select>
+          </div>
+          <div class="col-6">
+            <div class="fw-500 fs-15">MENUS</div>
+            <select class="form-control w-100" formControlName="menues">
+              <option *ngFor="let item of menues" [value]="item._id"> {{item.menuname}}</option>
+
+            </select>
+          </div>
+
+        </div>
+        <div class="container-fluid bg-light-red my-4 p-2">
+          <div class=" text-start fs-16 fw-500">
+            CONTACT INFORMATION
+          </div>
+        </div>
+        <div class="row mb-3 mt-2">
+          <div class="col-6">
+            <div class="fw-500 fs-15">Mobile</div>
+            <input class="form-control w-100 " formControlName="mobilenumber">
+          </div>
+          <div class="col-6">
+            <div class="fw-500 fs-15">Email</div>
+            <input type="email" class="form-control w-100" formControlName="email"
+              [ngClass]="{'is-invalid': guestForm.get('email')?.invalid && (guestForm.get('email')?.dirty || guestForm.get('email')?.touched)}">
+
+            <!-- Display error message if email is invalid -->
+            <div
+              *ngIf="guestForm.get('email')?.invalid && (guestForm.get('email')?.dirty || guestForm.get('email')?.touched)"
+              class="invalid-feedback">
+              Please enter a valid email address.
+            </div>
+          </div>
+
+        </div>
+        <div class="row mb-3 mt-2">
+          <div class="col-6">
+            <div class="fw-500 fs-15">Country</div>
+            <select class="form-control w-100" formControlName="country">
+              <option *ngFor="let item of countryCodes" [value]="item.name"> {{item.name}}</option>
+
+            </select>
+          </div>
+          <div class="col-6">
+            <div class="fw-500 fs-15">Address</div>
+            <input class="form-control w-100 " formControlName="address">
+          </div>
+        </div>
+        <div class="row mb-3 mt-2">
+          <div class="col-6">
+            <div class="fw-500 fs-15">Town</div>
+            <input class="form-control w-100 " formControlName="town">
+          </div>
+          <div class="col-6">
+            <div class="fw-500 fs-15">Pincode</div>
+            <input class="form-control w-100 " formControlName="pincode">
+          </div>
+        </div>
+
+      </div>
+      <div class="text-center my-2">
+        <button type="button" class="btn btn-danger custom-button-dark m-2" [disabled]="guestForm.invalid"
+          (click)="isEditOpen? updateGuest() : addGuest()">{{isEditOpen?'UPDATE':'Add'}}</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<ng-container *ngFor="let group of groupsData | keyvalue">
+  <app-groups (emitDeleteEvent)="deleteEventEmitted()" (emitAttendance)="updateAttendance($event)"
+    (editEmitter)="openEditModal($event)" [title]="group.key" [groups]="group.value" [menues]="menues"></app-groups>
+</ng-container>

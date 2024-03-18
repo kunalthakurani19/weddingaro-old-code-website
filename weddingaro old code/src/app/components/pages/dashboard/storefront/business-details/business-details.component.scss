@@ -1,0 +1,44 @@
+.store-front-header{
+  font-size: 35px;
+  line-height: 45px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.container-fluid {
+  overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+.edit-business {
+  max-width: 100%; /* Allow it to take the full width of the container */
+}
+
+.notifications-tab,
+.img-card {
+  max-width: 100%; /* Make these elements responsive */
+}
+
+@media (max-width: 768px) {
+  .container-fluid {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+:host ::ng-deep .ck-editor__editable_inline {
+  min-height: 300px;
+}
+.questions {
+  background: #9747ff1a !important; font-size: 18px;
+}
+
+@media (max-width: 576px) {
+  .questions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .questions img {
+    margin-bottom: 10px;
+  }
+}
+

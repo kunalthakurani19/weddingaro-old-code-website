@@ -1,0 +1,276 @@
+<div class="container">
+  <div class="row justify-content-start">
+    <div
+      class="align-content-start text-black fs-3"
+      style="font-family: Baskervville; font-weight: 400"
+    >
+      Review Collector
+    </div>
+    <div class="row">
+      <div
+        class="col-12 col-sm-6 col-md-4 col-lg-3 mt-2"
+        *ngFor="let item of cards"
+      >
+        <div class="card text-center" style="max-width: 15rem">
+          <img
+            [src]="item.icon"
+            class="card-img-top img-fluid mx-auto mt-4"
+            alt="Image"
+            style="max-width: 50px; height: auto"
+          />
+          <div class="card-body">
+            <p class="card-text">{{ item.title }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="edit-business d-flex p-3 mt-3 mb-3">
+      <div class="mx-2">
+        <h5 class="fw-light">
+          Edit and send this message to request reviews from your clients. Once
+          sent, you will also receive a copy of the email.
+        </h5>
+      </div>
+    </div>
+
+    <div class="card p-4 chart-container border-1 shadow rounded-2">
+      <form>
+        <div class="row">
+          <div class="text-black fs-4 mt-1" style="font-weight: 500">
+            Recipients
+          </div>
+          <div class="fs-6 mt-1" style="font-weight: 400">
+            Edit and send this message to request reviews from your clients. You
+            will also receive a copy of the email.
+          </div>
+          <div class="text-black fs-5 mt-2" style="font-weight: 500">To:</div>
+        </div>
+
+        <div class="row align-items-end">
+          <!-- Added align-items-end class to align items at the bottom -->
+          <div class="form-group col-md-5">
+            <label for="inputEmail4">Username</label>
+            <input
+              type="username"
+              class="form-control"
+              id="inputUsername"
+              placeholder="Enter Username"
+            />
+          </div>
+          <div class="form-group col-md-5">
+            <label for="inputPassword4">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="inputEmail"
+              placeholder="Enter Email"
+            />
+          </div>
+          <div class="form-group col-md-2">
+            <button class="btn btn-danger">Add</button>
+            <!-- Added Bootstrap button class -->
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 col-sm-12 mt-1">
+          <div class="mb-4 d-flex align-items-center">
+            <img loading="lazy" src="/assets/images/addIcon.svg" height="25px" />
+            <div class="flex-grow-1 m-2 cursor-hover text-danger">
+              Add clients
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="d-flex align-items-end">
+              <span class="text-black fs-5 mr-4" style="font-weight: 500"
+                >Cc:</span
+              >
+              <span class="cc-email">xyz@gmail.com</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-black fs-5 mt-3 mb-3" style="font-weight: 500">
+          Message
+        </div>
+        <div class="card p-3 border-1 shadow-1 rounded-3">
+          <div
+            class="fs-6 mt-1"
+            style="font-weight: 400; color: rgb(165, 165, 165)"
+          >
+            Hi [Name],
+          </div>
+          <p class="fs-6 mt-1">
+            It was a pleasure to be part of your event! If you have a few
+            moments, could you provide a review of our services on
+            Weddingaro?<br />
+            Thank you in advance for your feedback. We greatly appreciate your
+            help! <br />Best, <br />Hotel Gracia Golf
+          </p>
+        </div>
+        <div
+          style="
+            font-weight: 400;
+            color: rgb(165, 165, 165);
+            font-size: 15px;
+            margin-left: 5px;
+          "
+        >
+          Note: a link to write a review directly on your Storefront will be
+          included in the email. [Link]
+        </div>
+
+        <label
+          class="custom-checkbox d-flex align-items-center custom-mat-checkbox mt-2"
+        >
+          <mat-checkbox class="mr-2"></mat-checkbox>
+          <div class="text-black fs-6 cursor-hover">Save as template</div>
+          <mat-divider vertical style="height: 25px"></mat-divider>
+        </label>
+
+        <button class="btn btn-danger mt-2">Send</button>
+      </form>
+    </div>
+
+    <div
+      class="text-black-10 fs-5 mt-4 mb-4 d-flex align-items-start"
+      style="font-weight: 500"
+    >
+      Share your personalised review URL
+    </div>
+    <div class="card p-4 border-1 shadow rounded-3">
+      <p class="fs-6 mt-1" style="font-weight: 400">
+        Send this personalised URL to your past clients for a quick way to
+        collect wedding reviews for your services.
+      </p>
+      <div class="form-group col">
+        <div class="input-group">
+          <input
+            type="username"
+            class="form-control"
+            id="inputUsername"
+            placeholder="Enter Username"
+          />
+          <div class="input-group-append">
+            <div class="flex-grow-1 m-2 cursor-hover text-danger">COPY</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row d-flex justify-content-start mt-3">
+        <div class="col-auto">
+          <img loading="lazy" src="/assets/images/fbLogo.svg" height="40px" width="40px" />
+        </div>
+        <div class="col-auto">
+          <img
+            src="/assets/images/twitterLogo.svg"
+            height="40px"
+            width="40px"
+          />
+        </div>
+        <div class="col-auto">
+          <img loading="lazy" src="/assets/images/whatsApp.svg" height="40px" width="40px" />
+        </div>
+      </div>
+      <div class="mb-4"></div>
+    </div>
+
+    <div
+      class="align-content-start text-black fs-3 mt-3 mb-3"
+      style="font-family: Baskervville; font-weight: 400"
+    >
+      Review requests sent
+    </div>
+
+    <div class="main-container">
+      <div class="tab-bar-container">
+        <mat-tab-group
+          mat-align-tabs="start"
+          mat-dynamic-height
+          [(selectedIndex)]="selectedTabIndex"
+        >
+          <mat-tab label="ALL"></mat-tab>
+          <mat-tab label="REPILED"></mat-tab>
+          <mat-tab label="PENDING"></mat-tab>
+        </mat-tab-group>
+      </div>
+      <div class="tab-content">
+        <!-- Content for Tab 1 -->
+        <ng-container *ngIf="selectedTabIndex === 0">
+          <div
+            class="message-box overflow-hidden mt-3"
+            style="max-width: 25rem"
+          >
+            <div class="d-flex align-items-center p-3">
+              <img
+              loading="lazy"  src="/assets/images/profile2.png"
+                class="card-img-left"
+                alt="Image"
+                height="90"
+                width="90"
+              />
+              <div class="mt-2 ml-10">
+                <h6>Bessie Cooper</h6>
+                <h6 class="text-black-50">Received on 15/12/2020</h6>
+              </div>
+            </div>
+            <button class="w-100 fs-20 py-2 custom-button1">
+              Request reviews
+            </button>
+          </div>
+        </ng-container>
+        <!-- Content for Tab 2 -->
+        <ng-container *ngIf="selectedTabIndex === 1">
+          <div
+            class="message-box overflow-hidden mt-3"
+            style="max-width: 25rem"
+          >
+            <div class="d-flex align-items-center p-3">
+              <img
+              loading="lazy"  src="/assets/images/profilePic.png"
+                class="card-img-left"
+                alt="Image"
+                height="90"
+                width="90"
+              />
+              <div class="mt-2 ml-10">
+                <h6>Bessie Cooper</h6>
+                <h6 class="text-black-50">Received on 15/12/2020</h6>
+              </div>
+            </div>
+            <button class="w-100 fs-20 py-2 custom-button1"  > 
+              Request reviews
+            </button>
+          </div>
+        </ng-container>
+        <!-- Content for Tab 3 -->
+        <ng-container *ngIf="selectedTabIndex === 2">
+          <div
+            class="message-box overflow-hidden mt-3"
+            style="max-width: 25rem"
+          >
+            <div class="d-flex align-items-center p-3">
+              <img
+              loading="lazy"  src="/assets/images/profile2.png"
+                class="card-img-left"
+                alt="Image"
+                height="90"
+                width="90"
+              />
+              <div class="mt-2 ml-10">
+                <h6>Shalion Monk</h6>
+                <h6 class="text-black-50">Received on 15/12/2024</h6>
+              </div>
+            </div>
+            <button class="w-100 fs-20 py-2 custom-button1">
+              View Review
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

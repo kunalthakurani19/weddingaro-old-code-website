@@ -1,0 +1,60 @@
+<!-- <div class="wedding-outer-div">
+  <div class="wedding-header-div mx-auto">
+    <app-image-carousel [list]="weddingInput.photos"></app-image-carousel>
+  </div>
+  <div class="wedding-footer-div px-15 pt-10">
+    <div class="fs-22">{{ weddingInput.name }}</div>
+    <div class="normal-text mt-15">
+      <i
+        class="fa-regular fa-image custom-text-color"
+        style="font-size: 16px"
+      ></i>
+      {{ weddingInput.photos.length }}
+    </div>
+    <div class="normal-text mt-13">
+      <i
+        class="fa-sharp fa-solid fa-location-dot custom-text-color"
+        style="font-size: 16px"
+      ></i>
+      {{ weddingInput.place }}
+    </div>
+  </div>
+</div> -->
+
+
+
+
+<div class="container-fluid ">
+  <div class="card-weaper cursor-hover-red m-0 p-0 shadow">
+    <div class="card-img-div">
+      <carousel [isAnimated] ="true" >
+        <slide >
+          <div class="">
+            <img loading="lazy" height="190px" width="290px" class="rounded-bottom-0 rounded-2" style="object-fit: cover;"
+              [src]="weddingInput.photos" loading="lazy" alt="" />
+
+          </div>
+        </slide>
+      </carousel>
+    </div>
+    <div class="c-card-footer">
+      <div class="container p-3 ">
+        <div class="">
+          <div class="fs-22">{{ weddingInput.name }}</div>
+          <div class="normal-text mt-15">
+            <i class="fa-regular fa-image custom-text-color" style="font-size: 16px"></i>
+            {{ weddingInput.photos.length }}
+          </div>
+          <div class="normal-text mt-13">
+            <i class="fa-sharp fa-solid fa-location-dot custom-text-color" style="font-size: 16px"></i>
+            {{ weddingInput.place }}
+          </div>
+        </div>
+      </div>
+
+
+
+
+    </div>
+  </div>
+</div>

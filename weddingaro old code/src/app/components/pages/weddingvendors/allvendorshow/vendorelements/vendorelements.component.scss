@@ -1,0 +1,135 @@
+.card-weaper {
+  width: 320px !important;
+  width: 100%;
+  position: relative;
+}
+
+.c-card-footer {
+
+  height: 100%;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 10px 0px;
+  overflow: hidden;
+  background: #fff;
+  margin-top: 0px !important;
+  max-width: 320px !important;
+}
+
+.card-img-div {
+  border-radius: 10px 10px 0px 0px;
+  overflow: hidden;
+  margin-bottom: 0px !important;
+  position: relative;
+}
+
+.card-a {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: #F33535;
+  color: white
+}
+
+.heart-icon {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  cursor: pointer;
+  top: 3%;
+  right: 5%;
+  font-size: 30px;
+}
+
+
+
+
+.venue-name {
+  color: #000;
+  font-size: 22px;
+  font-family: 'Baskervville', serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.66px;
+  text-decoration: none;
+}
+
+.text-at-bottom-left {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  color: white;
+  padding: 5px;
+}
+
+.heart-rating {
+  font-size: 24px;
+}
+
+.heart {
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.2s;
+  margin-right: 5px;
+}
+
+.heart.full {
+  color: red;
+}
+
+.underlined-input {
+  border: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+  outline: none;
+  width: 90%;
+}
+
+.container-fluid {
+  position: relative;
+  text-align: center;
+  /* Center-align the content within the container */
+}
+
+.centered-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 300px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px !important;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  z-index: 1;
+}
+.centered-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  color: white; /* You can adjust the text color as needed */
+  font-size: 18px; /* You can adjust the font size as needed */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.custom-text-truncate {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Number of lines to display before truncating */
+  -webkit-box-orient: vertical;
+}

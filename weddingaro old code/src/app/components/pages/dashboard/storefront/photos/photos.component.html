@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="store-front-header fw-light">
+        Photo Gallery
+      </div>
+
+      <div class="edit-business d-md-flex p-3 mt-3">
+        <div>
+          <img loading="lazy" src="/assets/images/Compact-Camera.png">
+        </div>
+        <div class="mx-2">
+          <h5 class="fw-light">
+            Storefronts with more photos typically receive more leads.
+          </h5>
+          <h6 class="fw-lighter">
+            Add at least 8 photos highlighting your products or services to give couples a clear picture of your work.
+          </h6>
+        </div>
+      </div>
+
+      <div class="edit-business d-md-flex p-3 mt-4" style="background: #35F3B41A;">
+        <div class="mx-2">
+          <h6 class="fw-lighter fs-5">
+            Photos should be at least 720 x 540 pixels. Showcase your best work by uploading high-quality photos to your storefront.
+          </h6>
+        </div>
+      </div>
+
+      <div class="mt-4 p-1">
+        <h5 class="text-center">Add Photos</h5>
+        <div class="mt-2 cursor text-center">
+          <input type="file" style="display: none;" (change)="onFilesSelected($event)" #fileInput accept="image/*" multiple>
+          <img loading="lazy" src="https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/image-upload-area.png" class="img-fluid" alt="Select Image" (click)="fileInput.click()"
+            (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)" (drop)="onDrop($event)">
+        </div>
+      </div>
+      
+      <div class="mt-4 d-flex flex-wrap justify-content-center">
+        <div class="uploaded-image-container rounded border-1 shadow mx-3 my-3 col-12 col-sm-6 col-md-4" *ngFor="let item of photos">
+          <div class="title-image">
+            <img loading="lazy" class="title-image img-fluid" [src]="item.url" alt="" srcset="">
+          </div>
+          <div class="w-100 text-end p-1">
+            <mat-icon color="warn" class="cursor" (click)="confirmDelete(item.uuid)">delete</mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <app-common-store-sidebar></app-common-store-sidebar>
+    </div>
+  </div>
+</div>

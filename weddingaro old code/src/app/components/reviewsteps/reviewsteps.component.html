@@ -1,0 +1,153 @@
+<div class="formMainContainer">
+    <div class="imageContainer img-fluid">
+
+        <div class="signup-banner img-fluid ">
+            <div class="baskervil wfs-30 m-auto ">
+                Revive Your Wedding Vendor Team
+            </div>
+            <div class="mt-2 wfs-20">
+                Share your experience and help other couples choose their vendors.
+            </div>
+        </div>
+        <img loading="lazy" class="flowers" src="/assets/images/reviewimg.svg">
+
+
+    </div>
+    <div class="formContainer">
+        <div class="w-100  custom-text-color">
+            <div class="w-100 custom-text-color">
+                <img loading="lazy" src="https://weddingaro.s3.ap-south-1.amazonaws.com/side-images/logo_desktop.png" routerLink="/home" alt="Logo" height="75"
+                    class="d-inline-block align-text-top">
+            </div>
+        </div>
+        <div class="w-100 baskervil wfs-30 font-weight-light mt-4">
+            Share your experience! Your review help other couples choose their vendor team.
+        </div>
+
+
+
+        <mat-stepper [linear]="true" #stepper [formGroup]="reviewForm">
+            <mat-step formGroupName="reviewStep">
+                <ng-template matStepLabel>1</ng-template>
+
+                <div class="baskervil  fw-500 wfs-25 ">
+                    Rate their service based on the following:
+                </div>
+
+
+
+
+                <div class="d-flex justify-content-start align-items-start">
+                    <div>
+                        <img loading="lazy" style="border-radius: 10px !important;"
+                            [src]="storeDetails?.photos?.[1]?.url || imgLink.noImageAvailble" height="100px"
+                            width="100px">
+                    </div>
+                    <div class="ml-3">
+                        <div class="fw-600 inter wfs-20">
+                            {{ storeDetails?.businessdetails?.businessName}}
+                        </div>
+                        <div class="fw-400 inter wfs-15">
+                            {{ storeDetails?.location?.formatted_address || "location not available"}}
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div *ngFor="let item of ratingcategory" class="rating-container">
+                    <div class="category">
+                        {{ item.category }}:
+                    </div>
+                    <div class="rating">
+                        <app-star-rating [(rating)]="item.rating"></app-star-rating>
+                    </div>
+                </div>
+                <div class="text-end">
+                    <button class="btn btn-primary custom-button-dark" type="button" (click)="stepper.next()"
+                        [disabled]="!reviewForm.get('reviewStep')!.valid">Next</button>
+                </div>
+
+
+            </mat-step>
+            <mat-step formGroupName="reviewDetailsStep">
+                <ng-template matStepLabel>2</ng-template>
+
+                <div class="baskervil  fw-500 wfs-25 ">
+                    Would you recommend them to a friend?
+                </div>
+
+                <div class="switch-container">
+                    <span class="switch-label no-label" [class.active]="!reviewForm.get('reviewDetailsStep')?.get('recommend')?.value">No</span>
+                    <label class="switch">
+                      <input type="checkbox" formControlName="recommend">
+                      <span class="slider"></span>
+                    </label>
+                    <span class="switch-label yes-label" [class.active]="reviewForm.get('reviewDetailsStep')?.get('recommend')?.value">Yes</span>
+                  </div>
+                  
+
+                <p class=" fw-600 inter wfs-15 "> REVIEW TITLE </p>
+                <input type="text" class="wfs-15 m-0 p-0 iline w-100"
+                    placeholder="Summarize your experience with this venue" formControlName="title">
+
+
+                <p class=" fw-600 inter wfs-17 mt-2"> Write about your experience. Include any
+                    details that will help other couples make their hiring decision. </p>
+
+                <textarea class="w-100" name="" id="" rows="6" formControlName="experiance"></textarea>
+
+
+
+                <div class="d-flex justify-content-between mt-4">
+                    <button class="btn btn-primary custom-button-dark" type="button"
+                        (click)="stepper.previous()">Back</button>
+                    <button class="btn btn-primary custom-button-dark" type="button" (click)="sendReview()"
+                        [disabled]="!reviewForm.get('reviewDetailsStep')!.valid">Send</button>
+                </div>
+
+            </mat-step>
+            <!-- <mat-step formGroupName="spendStep">
+                <ng-template matStepLabel>3</ng-template>
+
+
+                <div class="baskervil  fw-500 wfs-25 ">
+                    How much did you spend on this vendor?
+                </div>
+
+
+                <p class=" fw-600 inter wfs-17 mt-2 "> Amount </p>
+                <input type="number" class="wfs-15 m-0 p-0 iline" placeholder="0" formControlName="budget">
+
+              
+
+
+
+
+                <p class=" fw-500 inter wfs-17 "> Providing spend helps set couples expectations and find wedding
+                    professionals that fit their budget. This information is kept
+                    anonymous. </p>
+
+
+
+
+                <div class="d-flex justify-content-between mt-4">
+                    <button class="btn btn-primary custom-button-dark text-start" type="button"
+                        (click)="stepper.previous()">Back</button>
+                    <button class="btn btn-primary custom-button-dark text-end" type="button" (click)="sendReview()"
+                        [disabled]="!reviewForm.get('spendStep')!.valid">Send</button>
+                </div>
+
+
+            </mat-step> -->
+        </mat-stepper>
+
+
+
+
+
+    </div>
+</div>
+
+
+<!--  -->

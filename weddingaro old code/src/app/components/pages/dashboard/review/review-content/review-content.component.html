@@ -1,0 +1,240 @@
+<div class="container">
+  <div class="row justify-content-start">
+    <div class="d-flex align-items-center">
+      <span class="text-black baskervil wfs-30">Reviews</span>
+      <span class="wfs-25 ml-3">({{reviewDetails?.totalreviews}})</span>
+    </div>
+
+    <div class="edit-business d-flex p-3 mt-3 mb-3" style="height: auto; width: auto">
+      <div class="row d-flex justify-content-start">
+        <div class="col-1 d-flex align-items-center justify-content-center">
+          <img loading="lazy" src="/assets/images/ratingstar.svg" alt="" height="70" width="70" />
+        </div>
+
+        <div class="col-8">
+          <p style="font-weight: 500">Get reviews from your clients</p>
+          <p style="font-weight: 400">
+            Reviews are critical when it comes time to choose a vendor.
+            Encourage your past clients to leave a review about their experience
+            with your business.
+          </p>
+        </div>
+
+        <!-- <div class="col-3 d-flex align-items-center justify-content-center">
+          <button class="btn btn-danger">Request reviews</button>
+        </div> -->
+      </div>
+    </div>
+
+    <div class="row align-items-center">
+      <div class="col-1">
+        <div class="row">
+          <div class="d-flex align-items-center m-0 p-0">
+            <span class="text-black mr-4" style="font-weight: 400; font-size: 70px">{{ averageOverallReview | number:
+              averageOverallReview % 1 === 0 ? '1.0-0' : '1.1-1' }}</span>
+            <span class="d-none d-md-block">
+              <img loading="lazy" src="/assets/images/star.svg" alt="" height="35" width="35" />
+            </span>
+          </div>
+          <div class="text-black-50 mr-4 d-none d-md-block">out of 5.0</div>
+        </div>
+      </div>
+
+      <!-- Mat Divider -->
+      <div class="col-1 m-4">
+        <mat-divider vertical style="height: 151px; width: 35px"></mat-divider>
+      </div>
+
+      <!-- Circular chart container -->
+      <div class="col">
+        <div class="flex-wrapper d-flex align-items-start justify-content-start">
+          <div class="circle-progress-div">
+            <div>
+              <div>
+                <circle-progress [percent]="allReviews[0].totalreview.qualityservice.average * 20"
+                  [title]="allReviews[0].totalreview.qualityservice.average.toFixed(1)"
+                  [outerStrokeColor]="'rgba(153, 153, 153, 1)'" [innerStrokeColor]="'rgba(153, 153, 153, 0.3)'"
+                  [outerStrokeGradientStopColor]="'rgba(153, 153, 153, 1)'"></circle-progress>
+                <div>Quality of service</div>
+              </div>
+            </div>
+            <div>
+              <circle-progress [outerStrokeColor]="'rgba(255, 191, 82, 1)'"
+                [innerStrokeColor]="'rgba(255, 191, 82, 0.3)'" [outerStrokeGradientStopColor]="'rgba(255, 191, 82, 1)'"
+                [percent]="allReviews[0].totalreview.responsiveness.average * 20"
+                [title]="allReviews[0].totalreview.responsiveness.average.toFixed(1)"></circle-progress>
+              <div>Response time</div>
+            </div>
+            <div>
+              <circle-progress [outerStrokeColor]="'rgba(255, 156, 56, 1)'"
+                [innerStrokeColor]="'rgba(255, 156, 56, 0.3)'" [outerStrokeGradientStopColor]="'rgba(255, 156, 56, 1)'"
+                [percent]="allReviews[0].totalreview.professionalism.average * 20"
+                [title]="allReviews[0].totalreview.professionalism.average.toFixed(1)"></circle-progress>
+              <div>Professionalism</div>
+            </div>
+            <div>
+              <circle-progress [outerStrokeColor]="'rgba(143, 224, 49, 1)'"
+                [innerStrokeColor]="'rgba(143, 224, 49, 0.3)'" [outerStrokeGradientStopColor]="'rgba(143, 224, 49, 1)'"
+                [percent]="allReviews[0].totalreview.value.average * 20"
+                [title]="allReviews[0].totalreview.value.average.toFixed(1)"></circle-progress>
+              <div>Value</div>
+            </div>
+            <div>
+              <circle-progress [outerStrokeColor]="'rgba(44, 199, 44, 1)'" [innerStrokeColor]="'rgba(44, 199, 44, 0.3)'"
+                [outerStrokeGradientStopColor]="'rgba(44, 199, 44, 1)'"
+                [percent]="allReviews[0].totalreview.flexibility.average * 20"
+                [title]="allReviews[0].totalreview.flexibility.average.toFixed(1)"></circle-progress>
+              <div>Flexibility</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <hr class="mt-3 mb-3" />
+
+    <div class="row d-flex justify-content-center align-items-center mt-2">
+      <h3 class="col-auto me-auto">{{reviewDetails?.totalreviews}} Review</h3>
+      <!-- <div class="col-auto">
+        <div class="search-container">
+          <img loading="lazy" class="search-icon" src="/assets/images/searchIcon.svg" height="30px" width="30px" alt="" />
+          <input type="text" class="search-input" placeholder="Find" />
+        </div>
+      </div> -->
+    </div>
+
+    <hr class="mt-3 mb-3" />
+
+    <mat-tab-group>
+
+      <mat-tab *ngFor="let store of storesWithReviews" label="{{store.storeId.businessdetails.businessName}}">
+
+        <div class="card p-4 border-1 shadow rounded-3 mt-2" *ngFor="let item of store.reviews[0].reviews">
+          <div class="row align-items-center">
+            <div class="col-12 col-md-1 align-self-start">
+              <img loading="lazy" src="/assets/images/Profile icon.svg" alt="" height="80" width="80" />
+            </div>
+            <div class="col-12 col-md-10">
+              <h5>{{item.user.fname}} {{item.user.lname}}</h5>
+              <div class="row align-items-center mt-3">
+                <div class="col-12">
+                  <div class="d-flex align-items-center">
+                    <!-- <div class="star-rating">
+                    
+                  </div> -->
+                    <h5 class="ms-2 mb-0">{{item.professionalism/5 + item.qualityservice/5 + item.responsiveness/5 + item.flexibility/5 + item.value/  5 }}</h5>
+                    <!-- <span class="material-icons text-black-50 cursor-hover">keyboard_arrow_up</span> -->
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-12 col-md-6">
+                  <div class="flex-container">
+                    <div class="col-auto mr-3">Quality of service</div>
+                    <div class="d-flex align-items-center">
+                      <div *ngFor="let bar of getBarsArray(item.qualityservice)"
+                        [style]="getBarStyle(bar.color, bar.opacity)" class="mr-2" style="width: 30px; height: 10px">
+                      </div>
+                      <span class="ml-3">{{item.qualityservice}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <div class="flex-container">
+                    <div class="col-auto mr-3">Response time</div>
+                    <div class="d-flex align-items-center">
+                      <div *ngFor="let bar of getBarsArray(item.responsiveness)"
+                        [style]="getBarStyle(bar.color, bar.opacity)" class="mr-2" style="width: 30px; height: 10px">
+                      </div>
+                      <span class="ml-3">{{item.responsiveness}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-12 col-md-6">
+                  <div class="flex-container">
+                    <div class="col-auto mr-3">Professionalism</div>
+                    <div class="d-flex align-items-center">
+                      <div *ngFor="let bar of getBarsArray(item.professionalism)"
+                        [style]="getBarStyle(bar.color, bar.opacity)" class="mr-2" style="width: 30px; height: 10px">
+                      </div>
+                      <span class="ml-3">{{item.professionalism}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <div class="flex-container">
+                    <div class="col-auto mr-3">Flexibility</div>
+                    <div class="d-flex align-items-center">
+                      <div *ngFor="let bar of getBarsArray(item.flexibility)"
+                        [style]="getBarStyle(bar.color, bar.opacity)" class="mr-2" style="width: 30px; height: 10px">
+                      </div>
+                      <span class="ml-3">{{item.flexibility}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-12 col-md-6">
+                  <div class="flex-container">
+                    <div class="col-auto mr-3">Value</div>
+                    <div class="d-flex align-items-center">
+                      <div *ngFor="let bar of getBarsArray(item.value)"
+                        [style]="getBarStyle(bar.color, bar.opacity)" class="mr-2" style="width: 30px; height: 10px">
+                      </div>
+                      <span class="ml-3">{{item.value}}</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="col-12 col-md-6"></div> -->
+              </div>
+
+              <h5 class="mt-3 mb-3">{{item.title}}</h5>
+              <p class="mt-3 mb-1">
+                {{item.experiance}}
+              </p>
+              <!-- <div class="text-black-50 d-none d-md-block" style="font-size: 15px">
+                {{ item.createdAt | date }}
+              </div> -->
+            </div>
+          </div>
+          <hr />
+
+          <!-- Flexbox layout for aligned texts with image -->
+          <!-- <div class="d-flex justify-content-between">
+          <div class="d-flex align-items-center">
+            <img loading="lazy" src="/assets/images/reportNO.svg" height="30px" class="me-2" />
+            <div class="text-black-50 mr-10" style="font-size: 20px">Report</div>
+
+            <img loading="lazy" src="/assets/images/forwardarrow.svg" height="30px" class="me-2" />
+            <div class="text-black-50" style="font-size: 20px">Share</div>
+          </div>
+
+          <button class="btn btn-danger">Request reviews</button>
+        </div> -->
+        </div>
+
+      </mat-tab>
+    </mat-tab-group>
+
+
+
+
+    <!-- <app-pagination></app-pagination> -->
+
+
+
+
+
+
+
+
+
+  </div>
+</div>

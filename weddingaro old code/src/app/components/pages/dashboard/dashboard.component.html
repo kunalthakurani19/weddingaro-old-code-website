@@ -1,0 +1,35 @@
+<hr class="m-0 p-0" />
+<div class="d-flex border-bottom shadow-sm p-2">
+  <div class="w-100 dashboardNavTab">
+    <div class="navItemsDiv">
+      <ul *ngFor="let item of navItems" class="list-unstyled mb-0 ">
+        <li class="mx-5 text-center cursor " [routerLink]="item.route" >
+          <div >
+              <img loading="lazy" [src]="item.icon" height="25px" > 
+              <div  routerLinkActive="custom-text-color">
+                {{item.title}}
+              </div>
+      </div>
+        </li>
+      </ul>
+    </div>
+    <!-- <div class="mt-2">
+      <div class="custom-text-color fs-12 mb-2">
+        Complete your storefront <span>0%</span>
+      </div>
+      <div class="progress">
+        <div
+          class="progress-bar progress-bar-success"
+          role="progressbar"
+          aria-valuenow="0"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          style="width: 0%; background: #3da854"
+        ></div>
+      </div>
+    </div> -->
+  </div>
+</div>
+<div class="p-4">
+  <router-outlet></router-outlet>
+</div>

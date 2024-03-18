@@ -1,0 +1,69 @@
+<div class="container-fluid rounded border p-2">
+
+    <div class="d-flex justify-content-center m-2">
+        <div class="text-center rounded-circle border d-flex justify-content-center align-items-center"
+            style="width: 80px; height: 80px;">
+            <img loading="lazy" src="/assets/images/icons blacks/Home (1).svg" alt="" height="40px" width="40px">
+        </div>
+    </div>
+
+    <div class="text-center fs-35 fw-500 mb-4">
+        Events
+    </div>
+    <div class="d-flex justify-content-center">
+        <div class="d-flex align-items-center ">
+            <div class="m-2 d-flex align-items-center">
+                <div class="fs-17 fw-400 m-2 ">
+                    Estimated budget:
+                </div>
+                <div class="fs-19 ">
+                    ₹ 270,284
+                </div>
+            </div>
+
+            <div class="m-2 d-flex align-items-center">
+                <div class="fs-17 fw-400 m-2">
+                    Final Cost:
+                </div>
+                <div class="fs-19 " style="color: #3DA854;">
+                    ₹ 0
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+
+
+    <div>
+        <table class="datatable my-3">
+            <thead>
+                <tr>
+                    <th class=" fs-17">EXPENSE</th>
+                    <th class=" fs-17">ESTIMATED BUDGET</th>
+                    <th class=" fs-17">FINAL COST</th>
+                    <th class=" fs-17">PAID</th>
+                    <th class=" fs-17"></th>
+
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of products; let odd = odd" [ngClass]="odd ? 'odd_col' : 'even_col'">
+                    <td class="p-3">{{ p.id }}</td>
+                    <td class="p-3">{{ p.name }}</td>
+                    <td class="p-3">{{ p.code }}</td>
+                    <td class="p-3">{{ p.price }}</td>
+                    <td><img loading="lazy" src="/assets/images/delete.svg"  height="20px" width="20px" alt=""> </td>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+
+</div>
